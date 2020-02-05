@@ -1,2 +1,2 @@
-# P2-B.A.M.
+# P2-BAM
 Project 2, an event planning application.
