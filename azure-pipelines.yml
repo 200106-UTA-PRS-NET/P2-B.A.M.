@@ -7,11 +7,15 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 variables:
   buildConfiguration: 'Release'
+  pathtosolution: 'EventPlanning'
+  pathtoproject: 'EventPlanning/EventPlanning.Web'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
+- script: dotnet build 
+    --configuration $(buildConfiguration)
+  workingDirectory: $(pathtosolution)
   displayName: 'dotnet build $(buildConfiguration)'
