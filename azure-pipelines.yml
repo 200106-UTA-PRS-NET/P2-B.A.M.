@@ -15,7 +15,22 @@ variables:
   pathtoproject: 'EventPlanning/EventPlanning.Web'
 
 steps:
+
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'p2connectionSonarCloud'
+    organization: 'p2sonarcloud'
+    scannerMode: 'MSBuild'
+    projectKey: 'p2keysonarcloud'
+    projectName: 'p2_azure_devops'
+
 - script: dotnet build 
     --configuration $(buildConfiguration)
   workingDirectory: $(pathtosolution)
   displayName: 'dotnet build $(buildConfiguration)'
+
+- task: SonarCloudAnalyze@1
+
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
