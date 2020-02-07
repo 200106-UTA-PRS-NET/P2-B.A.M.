@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using Repo_Lib.Abstractions;
+using DB_Data.Models;
+using DB_Data.Repos;
 
 namespace BAM_Web_App
 {
@@ -25,6 +27,15 @@ namespace BAM_Web_App
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionString = Configuration.GetConnectionString("BAMDB");
+
+            services.AddDbContext<BAMDBContext>(options => options.UseSqlServer(connectionString));
+
+            services.AddTransient<IBookingRepo<DB_Data.Models.Bookings>, DB_Data.Repos.BookingRepo>();
+            services.AddTransient<IClientRepo<DB_Data.Models.Clients>, DB_Data.Repos.ClientRepo>();
+            services.AddTransient<IPerformerRepo<DB_Data.Models.Performers>, DB_Data.Repos.PerformerRepo>();
+            services.AddTransient<ITagRepo<DB_Data.Models.Tags>, DB_Data.Repos.TagRepo>();
+
             services.AddControllers();
         }
 
