@@ -46,7 +46,7 @@ namespace BAM_Web_App
             
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Contact API", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "BAM API", Version = "v1" });
             });
 
             services.AddCors(options =>
