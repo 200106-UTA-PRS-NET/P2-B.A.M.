@@ -2,16 +2,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DB_Data.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Repo_Lib.Abstractions;
 using DB_Data.Models;
 using DB_Data.Repos;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
+
 
 namespace BAM_Web_App
 {
@@ -22,6 +28,7 @@ namespace BAM_Web_App
             Configuration = configuration;
         }
 
+        readonly string AllMyOrigins = "_allMyOrigins";
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -36,17 +43,44 @@ namespace BAM_Web_App
             services.AddTransient<IPerformerRepo<DB_Data.Models.Performers>, DB_Data.Repos.PerformerRepo>();
             services.AddTransient<ITagRepo<DB_Data.Models.Tags>, DB_Data.Repos.TagRepo>();
 
+            
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Contact API", Version = "v1" });
+            });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(AllMyOrigins, builder =>
+                {
+                    builder.WithOrigins("http://localhost:44358")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+                });
+            });
             services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var swaggerOptions = new SwaggerOptions();
+            Configuration.GetSection(nameof(SwaggerOptions)).Bind(swaggerOptions);
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwagger(options =>
+            {
+                options.RouteTemplate = swaggerOptions.JsonRoute;
+            });
+
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint(swaggerOptions.UIEndpoint, swaggerOptions.Description);
+            });
+            app.UseCors(AllMyOrigins);
             app.UseHttpsRedirection();
 
             app.UseRouting();
