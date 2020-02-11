@@ -37,6 +37,16 @@ namespace BAM_Web_App.Controllers
                 return NotFound();
         }
 
+        [HttpGet("{GroupName}/{GroupPass}", Name = "SignIn")]
+        public IActionResult GetPerformers(string name, string pass)
+        {
+            var performer = _performerRepo.GetPerformers().FirstOrDefault(x => x.GroupName == name && x.GroupName == pass);
+            if (performer != null)
+                return Ok(performer);
+            else
+                return NotFound();
+        }
+
         [HttpPost]
         public IActionResult PostPerformers([FromBody, Bind("GroupName, PerformanceType, HourlyRate, Rating, GroupPass")] Performers performer)
         {
