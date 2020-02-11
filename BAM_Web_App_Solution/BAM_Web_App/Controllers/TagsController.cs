@@ -39,11 +39,15 @@ namespace BAM_Web_App.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostTags([FromBody, Bind("TagId, Tag, GroupName")] Tags tag)
+        public IActionResult PostTags([FromBody, Bind("Tag, GroupName")] Tags tag)
         {
+            var getTags = _tags.GetTags();
+
+            int newid = getTags.Max(x => x.TagId) + 1;
+            tag.TagId = newid;
             _tags.AddTags(tag);
 
-            return CreatedAtAction("Get", new { Id = tag.TagId }, tag);
+            return CreatedAtAction("Get", new { Id = newid }, tag);
         }
 
         [HttpPut("{TagId}")]

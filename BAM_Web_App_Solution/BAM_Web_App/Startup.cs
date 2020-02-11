@@ -53,7 +53,7 @@ namespace BAM_Web_App
             {
                 options.AddPolicy(AllMyOrigins, builder =>
                 {
-                    builder.WithOrigins("http://localhost:44358")
+                    builder.WithOrigins("https://localhost:44327")
                     .AllowAnyMethod()
                     .AllowAnyHeader();
                 });
