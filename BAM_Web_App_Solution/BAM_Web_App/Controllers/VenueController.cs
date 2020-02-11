@@ -25,7 +25,7 @@ namespace BAM_Web_App.Controllers
         }
 
         //Obtains a specific client. Not used for logging in.
-        [HttpGet("{ClientName}", Name = "Get")]
+        [HttpGet("{ClientName}", Name = "GetVenues")]
         public ActionResult GetVenues(string ClientName)
         {
             var getClients = _repository.GetClients();

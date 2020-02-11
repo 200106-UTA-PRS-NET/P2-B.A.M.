@@ -27,7 +27,7 @@ namespace BAM_Web_App.Controllers
             return _tags.GetTags();
         }
 
-        [HttpGet("{TagId}", Name = "Get")]
+        [HttpGet("{TagId}", Name = "GetTags")]
         public IActionResult GetTags(int id)
         {
             var tag = _tags.GetTags().FirstOrDefault(x => x.TagId == id);
