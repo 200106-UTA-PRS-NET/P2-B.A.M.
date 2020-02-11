@@ -10,7 +10,7 @@ using DB_Data.Models;
 
 namespace BAM_Web_App.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("BAMAPI/[controller]")]
     [ApiController]
     public class TagsController : ControllerBase
     {
@@ -22,13 +22,13 @@ namespace BAM_Web_App.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Tags> Get()
+        public IEnumerable<Tags> GetTags()
         {
             return _tags.GetTags();
         }
 
         [HttpGet("{TagId}", Name = "Get")]
-        public IActionResult Get(int id)
+        public IActionResult GetTags(int id)
         {
             var tag = _tags.GetTags().FirstOrDefault(x => x.TagId == id);
             if (tag != null)
@@ -39,7 +39,7 @@ namespace BAM_Web_App.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody, Bind("TagId, Tag, GroupName")] Tags tag)
+        public IActionResult PostTags([FromBody, Bind("TagId, Tag, GroupName")] Tags tag)
         {
             _tags.AddTags(tag);
 
@@ -47,7 +47,7 @@ namespace BAM_Web_App.Controllers
         }
 
         [HttpPut("{TagId}")]
-        public IActionResult Put(int tagId, [FromBody] Tags tag)
+        public IActionResult PutTags(int tagId, [FromBody] Tags tag)
         {
             if (_tags.GetTags().Any(x => x.TagId == tagId))
             {

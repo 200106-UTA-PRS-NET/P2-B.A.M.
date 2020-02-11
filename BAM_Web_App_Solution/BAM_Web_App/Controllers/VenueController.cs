@@ -18,7 +18,7 @@ namespace BAM_Web_App.Controllers
 
         //Obtains a list of all Clients (Venues)
         [HttpGet]
-        public IEnumerable<Clients> Get()
+        public IEnumerable<Clients> GetVenues()
         {
             var getClients = _repository.GetClients();
             return getClients;
@@ -26,7 +26,7 @@ namespace BAM_Web_App.Controllers
 
         //Obtains a specific client. Not used for logging in.
         [HttpGet("{ClientName}", Name = "Get")]
-        public ActionResult Get(string ClientName)
+        public ActionResult GetVenues(string ClientName)
         {
             var getClients = _repository.GetClients();
             var certainClient = getClients.FirstOrDefault<Clients>(x => x.ClientName == ClientName);
@@ -39,7 +39,7 @@ namespace BAM_Web_App.Controllers
         //TODO: Add an additional Get for logging in as a client.
 
         [HttpPost]
-        public ActionResult Post([FromBody, Bind("ClientName", "Location", "ClientPass")]Clients client)
+        public ActionResult PostVenues([FromBody, Bind("ClientName", "Location", "ClientPass")]Clients client)
         {
             var getClients = _repository.GetClients();
             var certainClient = getClients.FirstOrDefault<Clients>(x => x.ClientName == client.ClientName);
@@ -54,7 +54,7 @@ namespace BAM_Web_App.Controllers
 
         //TODO: Check to see if this properly changes database.
         [HttpPut("{ClientName}")]
-        public IActionResult Put(string ClientName, [FromBody]Clients client)
+        public IActionResult PutVenues(string ClientName, [FromBody]Clients client)
         {
             var getClients = _repository.GetClients();
             if (getClients.FirstOrDefault<Clients>(x => x.ClientName == client.ClientName) is Clients previousClient)

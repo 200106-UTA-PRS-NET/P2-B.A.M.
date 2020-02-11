@@ -20,7 +20,7 @@ namespace BAM_Web_App.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Bookings> Get()
+        public IEnumerable<Bookings> GetBookings()
         //public IActionResult Get()
         {
             
@@ -29,8 +29,8 @@ namespace BAM_Web_App.Controllers
             
         }
 
-        [HttpGet("{id}", Name = "Get")]
-        public IActionResult Get(int id)
+        [HttpGet("{id}", Name = "GetBookings")]
+        public IActionResult GetBookings(int id)
         {
             var getBookings = _repository.GetBookings();
             var certainBooking = getBookings.FirstOrDefault<Bookings>(x => x.BookingId == id);
@@ -42,7 +42,7 @@ namespace BAM_Web_App.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody, Bind("BookingId,GroupName,TimeFrame,BookingStatus,ClientName,Location,Review,Score")]Bookings bookings)
+        public IActionResult PostBookings([FromBody, Bind("GroupName,TimeFrame,BookingStatus,ClientName,Location,Review,Score")]Bookings bookings)
         {          
             // the client can't set the ID
             var getBookings = _repository.GetBookings();
@@ -54,7 +54,7 @@ namespace BAM_Web_App.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Bookings bookings)
+        public IActionResult PutBookings(int id, [FromBody] Bookings bookings)
         {
             var getBookings = _repository.GetBookings();
             if (getBookings.FirstOrDefault<Bookings>(x => x.BookingId == id) is Bookings oldBooking)

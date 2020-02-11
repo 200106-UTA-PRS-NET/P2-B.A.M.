@@ -10,7 +10,7 @@ using DB_Data.Models;
 
 namespace BAM_Web_App.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("BAMAPI/[controller]")]
     [ApiController]
     public class PerformersController : ControllerBase
     {
@@ -22,13 +22,13 @@ namespace BAM_Web_App.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Performers> Get()
+        public IEnumerable<Performers> GetPerformers()
         {
             return _performerRepo.GetPerformers();
         }
 
-        [HttpGet("{GroupName}", Name = "Get")]
-        public IActionResult Get(string name)
+        [HttpGet("{GroupName}", Name = "GetPerformers")]
+        public IActionResult GetPerformers(string name)
         {
             var performer = _performerRepo.GetPerformers().FirstOrDefault(x => x.GroupName == name);
             if (performer != null)
@@ -38,7 +38,7 @@ namespace BAM_Web_App.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody, Bind("GroupName, PerformanceType, HourlyRate, Rating, GroupPass")] Performers performer)
+        public IActionResult PostPerformers([FromBody, Bind("GroupName, PerformanceType, HourlyRate, Rating, GroupPass")] Performers performer)
         {
             _performerRepo.AddPerformers(performer);
 
@@ -46,7 +46,7 @@ namespace BAM_Web_App.Controllers
         }
 
         [HttpPut("{GroupName}")]
-        public IActionResult Put(string GroupName, [FromBody]Performers performer)
+        public IActionResult PutPerformers(string GroupName, [FromBody]Performers performer)
         {
             if (_performerRepo.GetPerformers().Any(x => x.GroupName == GroupName))
             {
