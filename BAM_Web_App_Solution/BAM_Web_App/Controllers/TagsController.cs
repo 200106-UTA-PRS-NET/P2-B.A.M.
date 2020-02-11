@@ -27,10 +27,10 @@ namespace BAM_Web_App.Controllers
             return _tags.GetTags();
         }
 
-        [HttpGet("{TagId}", Name = "GetTags")]
-        public IActionResult GetTags(int id)
+        [HttpGet("{tagId}", Name = "GetTags")]
+        public IActionResult GetTags(int tagId)
         {
-            var tag = _tags.GetTags().FirstOrDefault(x => x.TagId == id);
+            var tag = _tags.GetTags().FirstOrDefault(x => x.TagId == tagId);
             if (tag != null)
             {
                 return Ok(tag);
@@ -50,7 +50,7 @@ namespace BAM_Web_App.Controllers
             return CreatedAtAction("Get", new { Id = newid }, tag);
         }
 
-        [HttpPut("{TagId}")]
+        [HttpPut("{tagId}")]
         public IActionResult PutTags(int tagId, [FromBody] Tags tag)
         {
             if (_tags.GetTags().Any(x => x.TagId == tagId))
