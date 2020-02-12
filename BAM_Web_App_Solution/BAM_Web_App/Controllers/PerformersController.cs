@@ -52,7 +52,7 @@ namespace BAM_Web_App.Controllers
         {
             _performerRepo.AddPerformers(performer);
 
-            return CreatedAtRoute("Get", new { Name = performer.GroupName }, performer);
+            return CreatedAtRoute("GetPerformers", new { GroupName = performer.GroupName }, performer);
         }
 
         [HttpPut("{groupName}")]
