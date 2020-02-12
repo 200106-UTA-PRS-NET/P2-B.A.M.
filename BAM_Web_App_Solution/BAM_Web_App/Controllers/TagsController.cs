@@ -47,7 +47,7 @@ namespace BAM_Web_App.Controllers
             tag.TagId = newid;
             _tags.AddTags(tag);
 
-            return CreatedAtAction("Get", new { Id = newid }, tag);
+            return CreatedAtAction("GetTags", new { Id = newid }, tag);
         }
 
         [HttpPut("{tagId}")]
