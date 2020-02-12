@@ -15,13 +15,15 @@ namespace BAM_Web_App.Controllers
             _repository = repo;
         }
         //TODO: add exception handler.
-
+        //TODO: Do we return action result every time with OK storing info.
         //Obtains a list of all Clients (Venues)
         [HttpGet]
-        public IEnumerable<Clients> GetVenues()
+        public ActionResult Get()
+       // public IEnumerable<Clients> Get()
         {
             var getClients = _repository.GetClients();
-            return getClients;
+            return Ok(getClients);
+     //       return getClients;
         }
 
         //Obtains a specific client. Not used for logging in.
@@ -48,7 +50,7 @@ namespace BAM_Web_App.Controllers
             else
             {
                 _repository.AddClients(client);
-                return CreatedAtRoute("Get", new { ClientName = client.ClientName }, client);
+                return CreatedAtRoute("GetVenues", new { ClientName = client.ClientName }, client);
             }
         }
 
