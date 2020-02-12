@@ -27,20 +27,20 @@ namespace BAM_Web_App.Controllers
             return _performerRepo.GetPerformers();
         }
 
-        [HttpGet("{GroupName}", Name = "GetPerformers")]
-        public IActionResult GetPerformers(string name)
+        [HttpGet("{groupName}", Name = "GetPerformers")]
+        public IActionResult GetPerformers(string groupName)
         {
-            var performer = _performerRepo.GetPerformers().FirstOrDefault(x => x.GroupName == name);
+            var performer = _performerRepo.GetPerformers().FirstOrDefault(x => x.GroupName == groupName);
             if (performer != null)
                 return Ok(performer);
             else
                 return NotFound();
         }
 
-        [HttpGet("{GroupName}/{GroupPass}", Name = "SignIn")]
-        public IActionResult GetPerformers(string name, string pass)
+        [HttpGet("{groupName}/{groupPass}", Name = "SignIn")]
+        public IActionResult GetPerformers(string groupName, string groupPass)
         {
-            var performer = _performerRepo.GetPerformers().FirstOrDefault(x => x.GroupName == name && x.GroupName == pass);
+            var performer = _performerRepo.GetPerformers().FirstOrDefault(x => x.GroupName == groupName && x.GroupName == groupPass);
             if (performer != null)
                 return Ok(performer);
             else
@@ -55,7 +55,7 @@ namespace BAM_Web_App.Controllers
             return CreatedAtRoute("Get", new { Name = performer.GroupName }, performer);
         }
 
-        [HttpPut("{GroupName}")]
+        [HttpPut("{groupName}")]
         public IActionResult PutPerformers(string GroupName, [FromBody]Performers performer)
         {
             if (_performerRepo.GetPerformers().Any(x => x.GroupName == GroupName))
