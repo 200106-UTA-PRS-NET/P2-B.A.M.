@@ -51,4 +51,4 @@ steps:
     deployToSlotOrASE: true
     resourceGroupName: '200106-UTA-PRS-NET'
     slotName: 'production'
-    package: '$(System.ArtifactDirectory)/**/*.zip'
+    package: '$(System.ArtifactsDirectory)/**/*.zip'
