@@ -34,3 +34,13 @@ steps:
 - task: SonarCloudPublish@1
   inputs:
     pollingTimeoutSec: '300'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Azure subscription 1(cdfdc896-8bae-429f-9986-39e7c94cad84)'
+    appType: 'webAppLinux'
+    appName: 'P2EventService'
+    deployToSlotOrASE: true
+    resourceGroupName: '200106-UTA-PRS-NET'
+    slotName: 'production'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
