@@ -12,27 +12,27 @@ namespace BAM_Web_App.Controllers
     [Route("BAMAPI/[controller]")]
     public class BookingController : Controller
     {
-        private readonly IBookingRepo<DB_Data.Models.Bookings> _repository;
+        private readonly IBookingRepo<Bookings> _bookingrepo;
 
-        public BookingController(IBookingRepo<DB_Data.Models.Bookings> repository)
+        public BookingController(IBookingRepo<Bookings> bookingRepo)
         {
-            _repository = repository;
+            _bookingrepo = bookingRepo;
         }
 
         [HttpGet]
-        public IActionResult GetBookings()
+        public IEnumerable<Bookings> GetBookings()
         //public IActionResult Get()
         {
-            var getBookings = _repository.GetBookings();
-            return Ok(getBookings);
+
+            return _bookingrepo.GetBookings();
         }
 
-        [HttpGet("{id}", Name = "GetBookings")]
-        public IActionResult GetBookings(int id)
+        [HttpGet("{BookingId}", Name = "GetBookings")]
+        public IActionResult GetBookings(int BookingId)
         {
-            var getBookings = _repository.GetBookings();
-            var certainBooking = getBookings.FirstOrDefault<Bookings>(x => x.BookingId == id);
-            if (getBookings != null)
+            
+            var certainBooking = _bookingrepo.GetBookings().FirstOrDefault<Bookings>(x => x.BookingId == BookingId);
+            if (certainBooking != null)
              return Ok(certainBooking); 
                
             else
@@ -40,30 +40,20 @@ namespace BAM_Web_App.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostBookings([FromBody, Bind("GroupName,TimeFrame,BookingStatus,ClientName,Location,Review,Score")]Bookings bookings)
-        {          
+        public IActionResult PostBookings([FromBody, Bind("BookingId,GroupName,TimeFrame,BookingStatus,ClientName,Location,Review,Score")]Bookings bookings)
+        {
             // the client can't set the ID
-            var getBookings = _repository.GetBookings();
-
-            int newid = getBookings.Max(x => x.BookingId) + 1;
-            bookings.BookingId = newid;
-            _repository.AddBookings(bookings);
-            return CreatedAtRoute("GetBookings", new { Id = newid }, bookings);
+            _bookingrepo.AddBookings(bookings);
+            return CreatedAtRoute("GetBookings", new { BookingId = bookings.BookingId }, bookings);
         }
 
         [HttpPut("{id}")]
-        public IActionResult PutBookings(int id, [FromBody] Bookings bookings)
+        public IActionResult PutBookings(int BookingId, [FromBody] Bookings bookings)
         {
-            var getBookings = _repository.GetBookings();
-            if (getBookings.FirstOrDefault<Bookings>(x => x.BookingId == id) is Bookings oldBooking)
+            var getBookings = _bookingrepo.GetBookings();
+            if (_bookingrepo.GetBookings().Any(x => x.BookingId == BookingId))
             {
-                oldBooking.GroupName = bookings.GroupName;
-                oldBooking.TimeFrame = bookings.TimeFrame;
-                oldBooking.BookingStatus = bookings.BookingStatus;
-                oldBooking.ClientName = bookings.ClientName;
-                oldBooking.Location = bookings.Location;
-                oldBooking.Review = bookings.Review;
-                oldBooking.Score = bookings.Score;
+                _bookingrepo.ModifyBookings(bookings);
                 return NoContent();// 204 success, no body
             }
             // not found (404)
