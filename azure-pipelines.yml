@@ -48,7 +48,7 @@ steps:
   inputs:
     azureSubscription: 'Azure subscription 1(cdfdc896-8bae-429f-9986-39e7c94cad84)'
     appType: 'webAppLinux'
-    appName: 'P2EventService'
+    appName: 'P2BookingSite'
     deployToSlotOrASE: true
     resourceGroupName: '200106-UTA-PRS-NET'
     slotName: 'production'
