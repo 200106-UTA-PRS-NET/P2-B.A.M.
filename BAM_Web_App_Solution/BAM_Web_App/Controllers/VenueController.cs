@@ -38,20 +38,24 @@ namespace BAM_Web_App.Controllers
                 return NotFound();
         }
 
-        //TODO: Add an additional Get for logging in as a client.
-
-        [HttpPost]
-        public ActionResult PostVenues([FromBody, Bind("ClientName", "Location", "ClientPass")]Clients client)
+        //Obtains a specific client by logging in.
+        [HttpGet("{ClientName}/{ClientPass}", Name = "LogInVenues")]
+        public ActionResult LogInVenues(string ClientName, string ClientPass)
         {
             var getClients = _repository.GetClients();
-            var certainClient = getClients.FirstOrDefault<Clients>(x => x.ClientName == client.ClientName);
+            var certainClient = getClients.FirstOrDefault<Clients>(x => x.ClientName == ClientName && x.ClientPass == ClientPass);
             if (certainClient != null)
-                return BadRequest();
+                return Ok(certainClient);
             else
-            {
-                _repository.AddClients(client);
-                return CreatedAtRoute("GetVenues", new { ClientName = client.ClientName }, client);
-            }
+                return NotFound();
+        }
+
+        //TODO: Add an additional Get for logging in as a client.
+        [HttpPost]
+        public ActionResult PostVenues([FromBody, Bind("ClientName", "Location", "ClientPass")]Clients client)
+        { 
+            _repository.AddClients(client);
+            return CreatedAtRoute("GetVenues", new {Name = client.ClientName }, client);
         }
 
         //TODO: Check to see if this properly changes database.
@@ -59,11 +63,16 @@ namespace BAM_Web_App.Controllers
         public IActionResult PutVenues(string ClientName, [FromBody]Clients client)
         {
             var getClients = _repository.GetClients();
-            if (getClients.FirstOrDefault<Clients>(x => x.ClientName == client.ClientName) is Clients previousClient)
+            var certainClient = getClients.FirstOrDefault<Clients>(x => x.ClientName == ClientName);
+            if (certainClient != null)
             {
-                previousClient.ClientName = client.ClientName;
-                previousClient.ClientPass = client.ClientPass;
-                previousClient.Location = client.Location;
+                Clients oldC = new Clients()
+                {
+                    Location = client.Location
+                };
+                oldC.ClientName = certainClient.ClientName;
+                oldC.ClientPass = certainClient.ClientPass;
+                _repository.ModifyClients(oldC);
                 return NoContent();
             }
             return NotFound();
