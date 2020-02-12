@@ -15,20 +15,40 @@ variables:
   pathtoproject: 'BAM_Web_App_Solution/BAM_Web_App'
 
 steps:
-- task: NuGetToolInstaller@1
-
-- task: NuGetCommand@2
+- task: SonarCloudPrepare@1
   inputs:
-    restoreSolution: '$(solution)'
+    SonarCloud: 'p2connectionSonarCloud'
+    organization: 'p2sonarcloud'
+    scannerMode: 'MSBuild'
+    projectKey: 'p2keysonarcloud'
+    projectName: 'p2_event_planning'
 
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+- script: dotnet build 
+    --configuration $(buildConfiguration)
+  workingDirectory: $(pathtosolution)
+  displayName: 'dotnet build $(buildConfiguration)'
 
-- task: VSTest@2
+- task: SonarCloudAnalyze@1
+
+- task: SonarCloudPublish@1
   inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    pollingTimeoutSec: '300'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    arguments: --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
+    publishWebProjects: true
+    zipAfterPublish: true
+    workingDirectory: '$(pathtosolution)'
+  displayName: 'dotnet publish + zip'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Azure subscription 1(1)(cdfdc896-8bae-429f-9986-39e7c94cad84)'
+    appType: 'webAppLinux'
+    appName: 'P2BookingSite'
+    deployToSlotOrASE: true
+    resourceGroupName: '200106-UTA-PRS-NET'
+    slotName: 'production'
+    package: '$(System.ArtifactDirectory)/**/*.zip'
