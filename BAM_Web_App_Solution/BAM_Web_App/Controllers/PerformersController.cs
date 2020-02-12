@@ -38,9 +38,9 @@ namespace BAM_Web_App.Controllers
         }
 
         [HttpGet("{groupName}/{groupPass}", Name = "SignIn")]
-        public IActionResult GetPerformers(string groupName, string groupPass)
+        public IActionResult SignIn(string groupName, string groupPass)
         {
-            var performer = _performerRepo.GetPerformers().FirstOrDefault(x => x.GroupName == groupName && x.GroupName == groupPass);
+            var performer = _performerRepo.GetPerformers().FirstOrDefault(x => x.GroupName == groupName && x.GroupPass == groupPass);
             if (performer != null)
                 return Ok(performer);
             else
@@ -58,6 +58,7 @@ namespace BAM_Web_App.Controllers
         [HttpPut("{groupName}")]
         public IActionResult PutPerformers(string GroupName, [FromBody]Performers performer)
         {
+            performer.GroupName = GroupName;
             if (_performerRepo.GetPerformers().Any(x => x.GroupName == GroupName))
             {
                 _performerRepo.ModifyPerformers(performer);

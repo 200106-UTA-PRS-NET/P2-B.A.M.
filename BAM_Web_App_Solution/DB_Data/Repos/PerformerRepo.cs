@@ -46,12 +46,12 @@ namespace DB_Data.Repos
             if (bdb.Performers.Any(e => e.GroupName == performers.GroupName))
             {
                 var per = bdb.Performers.FirstOrDefault(e => e.GroupName == performers.GroupName);
-                per.GroupName = performers.GroupName;
-                per.GroupPass = performers.GroupPass;
-                per.PerformanceType = performers.PerformanceType;
-                per.HourlyRate = performers.HourlyRate;
-                per.Rating = performers.Rating;
-                per.Tags = performers.Tags;
+                //per.GroupName = performers.GroupName;
+                per.GroupPass = (performers.GroupPass != null) ?  performers.GroupPass : per.GroupPass;
+                per.PerformanceType =(performers.PerformanceType != null) ? performers.PerformanceType : per.PerformanceType;
+                per.HourlyRate = (performers.HourlyRate != 0) ? performers.HourlyRate : per.HourlyRate;
+                per.Rating = (performers.Rating != null) ? performers.Rating : per.Rating;
+                //per.Tags = performers.Tags;
                 bdb.Performers.Update(per);
                 bdb.SaveChanges();
             }
