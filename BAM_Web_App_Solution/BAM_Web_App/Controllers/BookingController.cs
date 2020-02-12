@@ -20,13 +20,11 @@ namespace BAM_Web_App.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Bookings> GetBookings()
+        public IActionResult GetBookings()
         //public IActionResult Get()
         {
-            
             var getBookings = _repository.GetBookings();
-            return getBookings;
-            
+            return Ok(getBookings);
         }
 
         [HttpGet("{id}", Name = "GetBookings")]
@@ -50,7 +48,7 @@ namespace BAM_Web_App.Controllers
             int newid = getBookings.Max(x => x.BookingId) + 1;
             bookings.BookingId = newid;
             _repository.AddBookings(bookings);
-            return CreatedAtRoute("Get", new { Id = newid }, bookings);
+            return CreatedAtRoute("GetBookings", new { Id = newid }, bookings);
         }
 
         [HttpPut("{id}")]
