@@ -47,14 +47,17 @@ namespace BAM_Web_App.Controllers
             return CreatedAtRoute("GetBookings", new { BookingId = bookings.BookingId }, bookings);
         }
 
-        [HttpPut("{id}")]
-        public IActionResult PutBookings(int BookingId, [FromBody] Bookings bookings)
+        [HttpPut("{BookingId}")]
+        public IActionResult PutBookings(int BookingId, [FromBody] Bookings bookings) 
         {
-            var getBookings = _bookingrepo.GetBookings();
-            if (_bookingrepo.GetBookings().Any(x => x.BookingId == BookingId))
+
+            bookings.BookingId = BookingId;
+            if (_bookingrepo.GetBookings().FirstOrDefault<Bookings>(x => x.BookingId == BookingId) is Bookings oldbooking)
             {
+
                 _bookingrepo.ModifyBookings(bookings);
-                return NoContent();// 204 success, no body
+                return NoContent();// 204 success and nothing is in the body
+              
             }
             // not found (404)
             return NotFound();

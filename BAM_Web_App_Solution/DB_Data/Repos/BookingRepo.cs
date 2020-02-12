@@ -47,14 +47,14 @@ namespace DB_Data.Repos
             if (bdb.Bookings.Any(e => e.BookingId == bookings.BookingId))
             {
                 var boo = bdb.Bookings.FirstOrDefault(e => e.BookingId == bookings.BookingId);
-                boo.BookingId = bookings.BookingId;
-                boo.GroupName = bookings.GroupName;
-                boo.TimeFrame = bookings.TimeFrame;
-                boo.BookingStatus = bookings.BookingStatus;
-                boo.ClientName = bookings.ClientName;
-                boo.Location = bookings.Location;
-                boo.Review = bookings.Review;
-                boo.Score = bookings.Score;
+                boo.BookingId = (bookings.BookingId != null) ? bookings.BookingId : boo.BookingId;
+                boo.GroupName = (bookings.GroupName != null) ? bookings.GroupName : boo.GroupName;
+                boo.TimeFrame = (bookings.TimeFrame != null) ? bookings.TimeFrame : boo.TimeFrame;
+                boo.BookingStatus = (bookings.BookingStatus != null) ? bookings.BookingStatus : boo.BookingStatus;
+                boo.ClientName = (bookings.ClientName != null) ? bookings.ClientName : boo.ClientName;
+                boo.Location = (bookings.Location != null) ? bookings.Location : boo.Location;
+                boo.Review = (bookings.Review != null) ? bookings.Review : boo.Review;
+                boo.Score = (bookings.Score != null) ? bookings.Score : boo.Score;
                 bdb.Bookings.Update(boo);
                 bdb.SaveChanges();
             }
