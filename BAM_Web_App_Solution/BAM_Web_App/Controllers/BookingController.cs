@@ -27,7 +27,7 @@ namespace BAM_Web_App.Controllers
             return _bookingrepo.GetBookings();
         }
 
-        [HttpGet("{BookingId}", Name = "GetBookings")]
+        [HttpGet("ById/{BookingId}", Name = "GetBookings")]
         public IActionResult GetBookings(int BookingId)
         {
             
@@ -35,6 +35,20 @@ namespace BAM_Web_App.Controllers
             if (certainBooking != null)
              return Ok(certainBooking); 
                
+            else
+                return NotFound();
+        }
+
+
+        [HttpGet("ByPerformer/{GroupName}", Name = "GetBookingsBy")]
+      //  [Route("Booking/GetBookingsBy")]
+        public IActionResult GetBookingsBy(string GroupName)
+        {
+
+            var certainBooking = _bookingrepo.GetBookings().FirstOrDefault<Bookings>(x => x.GroupName == GroupName);
+            if (certainBooking != null)
+                return Ok(certainBooking);
+
             else
                 return NotFound();
         }
