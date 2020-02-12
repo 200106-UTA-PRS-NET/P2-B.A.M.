@@ -11,8 +11,8 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  pathtosolution: 'EventPlanning'
-  pathtoproject: 'EventPlanning/EventPlanning.Web'
+  pathtosolution: 'BAM_Web_App_Solution'
+  pathtoproject: 'BAM_Web_App_Solution/BAM_Web_App'
 
 steps:
 
