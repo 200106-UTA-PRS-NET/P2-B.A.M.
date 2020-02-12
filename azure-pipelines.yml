@@ -35,6 +35,15 @@ steps:
   inputs:
     pollingTimeoutSec: '300'
 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    arguments: --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
+    publishWebProjects: true
+    zipAfterPublish: true
+    workingDirectory: '$(pathtosolution)'
+  displayName: 'dotnet publish + zip'
+  
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'Azure subscription 1(cdfdc896-8bae-429f-9986-39e7c94cad84)'
