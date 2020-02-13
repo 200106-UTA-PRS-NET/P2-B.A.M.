@@ -23,12 +23,12 @@ namespace DB_Data.Repos
 
         public void AddTags(Tags tags)
         {
-            if (bdb.Tags.Any(e => e.TagId == tags.TagId) || tags.TagId == null)
-            {
-                Console.WriteLine($"This tag {tags.TagId} is already in use");
-                return;
-            }
-            else
+            //if (bdb.Tags.Any(e => e.TagId == tags.TagId))// || tags.TagId == null)
+            //{
+            //    Console.WriteLine($"This tag {tags.TagId} is already in use");
+            //    return;
+            //}
+            //else
                 bdb.Tags.Add(tags);
             bdb.SaveChanges();
         }
@@ -46,7 +46,6 @@ namespace DB_Data.Repos
             if (bdb.Tags.Any(e => e.TagId == tags.TagId))
             {
                 var tag = bdb.Tags.FirstOrDefault(e => e.TagId == tags.TagId);
-                tag.TagId = tags.TagId;
                 tag.Tag = tags.Tag;
                 tag.GroupName = tags.GroupName;
 

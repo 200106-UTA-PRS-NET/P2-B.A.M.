@@ -14,14 +14,14 @@ namespace BAM_Web_App
         public static void Main(string[] args)
         {
             // log(starting log)
-            try 
-            { 
+            //try 
+            //{ 
                 CreateHostBuilder(args).Build().Run();
-            } 
-            catch (Exception e)
-            {
-                //log(e)
-            }
+           //} 
+            //catch (Exception e)
+            //{
+            //    //log(e)
+            //}
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

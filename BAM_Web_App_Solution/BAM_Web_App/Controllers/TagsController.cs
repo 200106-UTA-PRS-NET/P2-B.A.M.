@@ -41,18 +41,22 @@ namespace BAM_Web_App.Controllers
         [HttpPost]
         public IActionResult PostTags([FromBody, Bind("Tag, GroupName")] Tags tag)
         {
-            var getTags = _tags.GetTags();
+            //var getTags = _tags.GetTags();
 
-            int newid = getTags.Max(x => x.TagId) + 1;
-            tag.TagId = newid;
+            //int newid = getTags.Max(x => x.TagId) + 1;
+            //tag.TagId = newid;
             _tags.AddTags(tag);
-
-            return CreatedAtAction("GetTags", new { Id = newid }, tag);
+            var getTags = _tags.GetTags().FirstOrDefault(x => x.GroupName == tag.GroupName && x.Tag == tag.Tag);
+            if (getTags != null)
+                return CreatedAtAction("GetTags", new { Id = getTags.TagId }, tag);
+            else
+                return NotFound();
         }
 
         [HttpPut("{tagId}")]
         public IActionResult PutTags(int tagId, [FromBody] Tags tag)
         {
+            tag.TagId = tagId;
             if (_tags.GetTags().Any(x => x.TagId == tagId))
             {
                 _tags.ModifyTags(tag);
