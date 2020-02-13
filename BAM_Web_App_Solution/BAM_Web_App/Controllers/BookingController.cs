@@ -53,6 +53,19 @@ namespace BAM_Web_App.Controllers
                 return NotFound();
         }
 
+        [HttpGet("ByClient/{ClientName}", Name = "GetBookingsCli")]
+        //  [Route("Booking/GetBookingsCli")]
+        public IActionResult GetBookingsCli(string ClientName)
+        {
+
+            var certainBooking = _bookingrepo.GetBookings().FirstOrDefault<Bookings>(x => x.ClientName == ClientName);
+            if (certainBooking != null)
+                return Ok(certainBooking);
+
+            else
+                return NotFound();
+        }
+
         [HttpPost]
         public IActionResult PostBookings([FromBody, Bind("BookingId,GroupName,TimeFrame,BookingStatus,ClientName,Location,Review,Score")]Bookings bookings)
         {
