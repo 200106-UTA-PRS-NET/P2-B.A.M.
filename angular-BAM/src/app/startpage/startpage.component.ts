@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { login } from '../login';
+import { HttpClient } from '@angular/common/http';
+import {Observable} from 'rxjs/Rx';
+import {catchError} from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-startpage',
@@ -21,6 +25,8 @@ export class StartpageComponent implements OnInit {
     password: ''
   };
 
+
+
   choice(c:string): void {
     this.chosen = c;
   }
@@ -36,4 +42,8 @@ export class StartpageComponent implements OnInit {
     this.password = "b";
   }
 
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error); 
+    return Promise.reject(error.message || error);
+ }
 }
