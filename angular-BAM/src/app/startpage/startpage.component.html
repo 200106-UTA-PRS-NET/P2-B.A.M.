@@ -6,7 +6,7 @@
 <ul class="list-group">
     <li *ngFor='let logging of logins'
     class="list-group-item">
-        {{logging.clientName}}
+        {{logging.clientName}}, {{logging.location}}, {{logging.clientPass}}
     </li>
 </ul>
 </div>
@@ -16,11 +16,6 @@ No contacts Recieved
 
 <h2>Please choose to access our site as a Venue or as a Performer</h2>
 
-<div>
-    <span>
-        Password is
-    </span>{{Login.password}}
-</div>
 
 <ul>
     <li (click)="choice('Venue')">

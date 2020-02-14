@@ -17,9 +17,7 @@ export class StartpageComponent implements OnInit {
   username : string;
 
   password : string;
-
-  currentLogin : login;
-
+  
   logins:login[] = null;
 
   Login: login = {
@@ -41,7 +39,6 @@ export class StartpageComponent implements OnInit {
   findVenues(): void{
     this.startpageservice.getClient()
     .then(response => this.logins=response);
-    this.chosen =  '';
   }
   register(): void{
     this.startpageservice.addClient(this.Login);

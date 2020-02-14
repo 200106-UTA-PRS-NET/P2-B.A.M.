@@ -21,16 +21,16 @@ export class StartpageService
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
   /**GET: get venues */
-  getClient():Promise<login[]>{
+  getClient():Promise<login[]>
+  {
     return this.http.get<login[]>(this.clientsUrl).toPromise();
   }
 
  /** POST: add a new client to the database */
- addClient (client: login): Observable<login> {
+ addClient(client:login): Promise<login> 
+ {
   return this.http.post<login>(this.clientsUrl, client, this.httpOptions)
-    .pipe(
-      catchError(this.handleError('addClient', client))
-    );
+    .toPromise();
 }
 
 private handleError<T>(operation = 'operation', result?: T) {
