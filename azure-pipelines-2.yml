@@ -43,3 +43,11 @@ steps:
     zipAfterPublish: true
     workingDirectory: '$(pathtosolution)'
   displayName: 'dotnet publish + zip'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Azure subscription 1(1)(ab899267-9abf-46aa-9bb0-d56f170f9a41)'
+    appType: 'webAppLinux'
+    appName: 'BAMAPI'
+    package: '$(System.ArtifactsDirectory)/**/*.zip'
+
