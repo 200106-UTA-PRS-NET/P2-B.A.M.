@@ -3,6 +3,7 @@ import { login } from '../login';
 import { HttpClient } from '@angular/common/http';
 import {Observable} from 'rxjs/Rx';
 import {catchError} from 'rxjs/operators';
+import {StartpageService} from '../startpage.service';
 
 
 @Component({
@@ -31,11 +32,14 @@ export class StartpageComponent implements OnInit {
     this.chosen = c;
   }
 
-  register(): void{
+  
 
+  constructor(private startpageservice: StartpageService) { }
+
+   register(): void{
+    this.startpageservice.addClient(this.Login);
+    this.chosen =  '';
   }
-
-  constructor() { }
 
   ngOnInit(): void {
     this.username = "a";
