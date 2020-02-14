@@ -36,13 +36,13 @@ No contacts Recieved
     <br>
     <div>
         <label>nameu:
-          <input [(ngModel)]="Login.username" placeholder="name"/>
+          <input [(ngModel)]="Login.clientName" placeholder="name"/>
         </label>
     </div>
     <br>
     <div>
         <label>namep:
-          <input [(ngModel)]="Login.password" placeholder="name"/>
+          <input [(ngModel)]="Login.clientPass" placeholder="name"/>
         </label>
       </div>
 </div>
@@ -51,7 +51,7 @@ No contacts Recieved
     <span>
         Username is 
     </span>
-    {{Login.username}}
+    {{Login.clientName}}
 </div>
 <div>
     <span>
@@ -61,11 +61,11 @@ No contacts Recieved
 <div>
     <span>
         Password is
-    </span>{{Login.password}}
+    </span>{{Login.clientPass}}
 </div>
 <br>
-<div *ngIf="Login.username">
-    <div *ngIf="Login.password">
+<div *ngIf="Login.clientName">
+    <div *ngIf="Login.clientPass">
          <button (click) = "register()">REGISTER NOW</button>
             
         

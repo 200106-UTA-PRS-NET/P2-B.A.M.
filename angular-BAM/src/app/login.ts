@@ -1,5 +1,5 @@
 export interface login{
-    username:string;
+    clientName:string;
     location:string;
-    password:string;
+    clientPass:string;
 }

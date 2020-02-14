@@ -21,9 +21,9 @@ export class StartpageComponent implements OnInit {
   logins:login[] = null;
 
   Login: login = {
-    username: '',
+    clientName: '',
     location: 'Arlington',
-    password: ''
+    clientPass: ''
   };
 
 
