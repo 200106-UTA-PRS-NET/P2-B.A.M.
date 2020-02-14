@@ -1,0 +1,50 @@
+<h2>Welcome!</h2>
+<h2>Please choose to access our site as a Venue or as a Performer</h2>
+<div>
+    <span>
+        Username is 
+    </span>
+    {{username}}
+</div>
+<div>
+    <span>
+        Password is
+    </span>{{password}}
+</div>
+
+<ul>
+    <li (click)="choice('Venue')">
+        <span>
+            Choose Venue
+        </span>
+    </li>
+    <li (click)="choice('Performer')">
+        <span>
+            Choose Performer
+        </span>
+    </li>
+</ul>
+<br>
+<div *ngIf="chosen">
+    <span>WE HAVE CHOSEN...</span>{{chosen}}
+    <br>
+    <div>
+        <label>name:
+          <input [(ngModel)]="username" placeholder="name"/>
+        </label>
+      </div>
+    <br>
+    <div>
+        <label>name:
+          <input [(ngModel)]="password" placeholder="name"/>
+        </label>
+      </div>
+</div>
+
+<div *ngIf="currentLogin.username">
+    <div *ngIf="currentLogin.password">
+        <span (click) = "register">
+            REGISTER NOW
+        </span>
+    </div>
+</div>
