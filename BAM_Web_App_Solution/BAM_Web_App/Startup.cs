@@ -49,15 +49,20 @@ namespace BAM_Web_App
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "BAM API", Version = "v1" });
             });
 
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy(AllMyOrigins, builder =>
+            //    {
+            //        builder.WithOrigins("https://localhost:44327")
+            //        .AllowAnyMethod()
+            //        .AllowAnyHeader();
+            //    });
+            //});
             services.AddCors(options =>
             {
-                options.AddPolicy(AllMyOrigins, builder =>
-                {
-                    builder.WithOrigins("https://localhost:44327")
-                    .AllowAnyMethod()
-                    .AllowAnyHeader();
-                });
+                options.AddPolicy(AllMyOrigins, b => b.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             });
+
             services.AddControllers();
         }
 

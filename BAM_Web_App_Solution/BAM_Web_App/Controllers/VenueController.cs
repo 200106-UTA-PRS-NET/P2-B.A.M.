@@ -18,11 +18,11 @@ namespace BAM_Web_App.Controllers
         //TODO: Do we return action result every time with OK storing info.
         //Obtains a list of all Clients (Venues)
         [HttpGet]
-        public ActionResult Get()
-       // public IEnumerable<Clients> Get()
+        //public ActionResult Get()
+        public IEnumerable<Clients> Get()
         {
-            var getClients = _repository.GetClients();
-            return Ok(getClients);
+           return _repository.GetClients();
+            //return Ok(getClients);
      //       return getClients;
         }
 

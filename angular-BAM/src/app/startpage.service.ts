@@ -11,13 +11,20 @@ import { MessageService } from './message.service';
   providedIn: 'root'
 })
 
-export class StartpageService {
-  private clientsUrl = 'BAMAPI/Venue';  // URL to web api
+export class StartpageService 
+{
+  clientsUrl = 'https://localhost:44341/BAMAPI/Venue';  // URL to web api
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   constructor(private http: HttpClient, private messageService: MessageService) { }
+
+  /**GET: get venues */
+  getClient():Promise<login[]>{
+    return this.http.get<login[]>(this.clientsUrl).toPromise();
+  }
+
  /** POST: add a new client to the database */
  addClient (client: login): Observable<login> {
   return this.http.post<login>(this.clientsUrl, client, this.httpOptions)

@@ -20,6 +20,8 @@ export class StartpageComponent implements OnInit {
 
   currentLogin : login;
 
+  logins:login[] = null;
+
   Login: login = {
     username: '',
     location: 'Arlington',
@@ -36,7 +38,12 @@ export class StartpageComponent implements OnInit {
 
   constructor(private startpageservice: StartpageService) { }
 
-   register(): void{
+  findVenues(): void{
+    this.startpageservice.getClient()
+    .then(response => this.logins=response);
+    this.chosen =  '';
+  }
+  register(): void{
     this.startpageservice.addClient(this.Login);
     this.chosen =  '';
   }

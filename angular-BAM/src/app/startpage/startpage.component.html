@@ -1,4 +1,19 @@
 <h2>Welcome!</h2>
+
+<button (click)='findVenues()' class="btn btn-primary">Get Contacts</button>
+<div *ngIf='logins != null'>
+<h1>Contacts</h1>
+<ul class="list-group">
+    <li *ngFor='let logging of logins'
+    class="list-group-item">
+        {{logging.clientName}}
+    </li>
+</ul>
+</div>
+<div *ngIf='logins===null'>
+No contacts Recieved
+</div>
+
 <h2>Please choose to access our site as a Venue or as a Performer</h2>
 
 <div>
