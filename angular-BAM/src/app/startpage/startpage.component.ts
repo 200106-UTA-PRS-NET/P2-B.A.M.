@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { login } from '../login';
+
 @Component({
   selector: 'app-startpage',
   templateUrl: './startpage.component.html',
@@ -13,6 +14,12 @@ export class StartpageComponent implements OnInit {
   password : string;
 
   currentLogin : login;
+
+  Login: login = {
+    username: '',
+    location: 'Arlington',
+    password: ''
+  };
 
   choice(c:string): void {
     this.chosen = c;
