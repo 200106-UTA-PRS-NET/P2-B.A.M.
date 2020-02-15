@@ -7,12 +7,16 @@ import { AppComponent } from './app.component';
 import { StartpageComponent } from './startpage/startpage.component';
 import {Observable} from 'rxjs/Rx';
 import { MessagesComponent } from './messages/messages.component';
+import { CalculatorComponent } from './calculator/calculator.component';
+import { PerformersMenuComponent } from './performers-menu/performers-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StartpageComponent,
-    MessagesComponent
+    MessagesComponent,
+    CalculatorComponent,
+    PerformersMenuComponent
   ],
   imports: [
     BrowserModule,

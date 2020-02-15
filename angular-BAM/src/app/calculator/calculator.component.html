@@ -1,0 +1,22 @@
+<h3>Calculator</h3>
+
+<div>
+    <label>Operation:
+        <input [(ngModel)]="calc.operation">
+    </label>
+</div>
+<div>
+    <label>Expression:
+        <input [(ngModel)]="calc.expression">
+    </label>
+</div>
+
+<div *ngIf="calc.operation">
+    <div *ngIf="calc.expression">
+        <button (click) = "result()">Result</button>
+    </div>
+</div>
+
+<div *ngIf="calc.result">
+    <p>The result is: {{calc.result}}</p>
+</div>
