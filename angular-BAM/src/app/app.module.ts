@@ -9,6 +9,7 @@ import {Observable} from 'rxjs/Rx';
 import { MessagesComponent } from './messages/messages.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { PerformersMenuComponent } from './performers-menu/performers-menu.component';
+import { PerformersComponent } from './performers/performers.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PerformersMenuComponent } from './performers-menu/performers-menu.compo
     StartpageComponent,
     MessagesComponent,
     CalculatorComponent,
-    PerformersMenuComponent
+    PerformersMenuComponent,
+    PerformersComponent
   ],
   imports: [
     BrowserModule,
