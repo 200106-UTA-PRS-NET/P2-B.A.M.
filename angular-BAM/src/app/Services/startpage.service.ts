@@ -14,6 +14,7 @@ import { MessageService } from './message.service';
 export class StartpageService 
 {
   clientsUrl = 'https://bamapi.azurewebsites.net/BAMAPI/Venue';  // URL to web api
+  newUrl="";
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -23,13 +24,38 @@ export class StartpageService
   /**GET: get venues */
   getClient():Promise<login[]>
   {
-    return this.http.get<login[]>(this.clientsUrl).toPromise();
+    return this.http.get<login[]>(this.clientsUrl)
+    .toPromise();
+  }
+
+  /**GET: SPECIFIC venue(s) by Username only*/
+  getSpecificClient(cName:string):Promise<login>
+  {
+    this.newUrl = this.clientsUrl + "/" + cName;
+    return this.http.get<login>(this.newUrl)
+    .toPromise();
+  }
+
+  /**GET: SPECIFIC venue(s) by Username & Password only */
+  getPasswordClient(cName:string, pName:string):Promise<login>
+  {
+    this.newUrl = this.clientsUrl + "/" + cName + "/" + pName;
+    return this.http.get<login>(this.newUrl)
+    .toPromise();
   }
 
  /** POST: add a new client to the database */
  addClient(client:login): Promise<login> 
  {
   return this.http.post<login>(this.clientsUrl, client, this.httpOptions)
+    .toPromise();
+}
+
+ /** PUT: edit a client in the database */
+ editClient(client:login, cName:string): Promise<login> 
+ {
+  this.newUrl = this.clientsUrl + "/" + cName;
+  return this.http.put<login>(this.newUrl, client, this.httpOptions)
     .toPromise();
 }
 
