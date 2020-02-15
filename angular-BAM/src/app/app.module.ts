@@ -10,6 +10,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { PerformersMenuComponent } from './performers-menu/performers-menu.component';
 import { PerformersComponent } from './performers/performers.component';
+import { BookingComponent } from './booking/booking.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PerformersComponent } from './performers/performers.component';
     MessagesComponent,
     CalculatorComponent,
     PerformersMenuComponent,
-    PerformersComponent
+    PerformersComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,

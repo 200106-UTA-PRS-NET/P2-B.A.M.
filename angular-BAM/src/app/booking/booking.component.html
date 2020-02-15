@@ -1,0 +1,56 @@
+<h2>The Booking Section!</h2>
+
+<button (click)='findBookings()' class="btn btn-primary">Retrieve Bookings</button>
+<div *ngIf='books != null'>
+<p>Bookings:</p>
+<ul class="list-group">
+    <li *ngFor='let boo of books' 
+    class="list-group-item">
+        {{boo.groupname}}, {{boo.timeframe}}, {{boo.bookingstatus}}, {{boo.clientname}}, {{boo.location}}
+    </li>
+</ul>
+</div>
+<div *ngIf='books===null'>
+No bookings found
+</div> 
+<br>
+<br>
+<h3>Create new Booking</h3>
+<div>
+    <div>
+        <label>Group:
+            <br>
+          <input [(ngModel)]="Book.GroupName" placeholder="name"/>
+        </label>
+    </div>
+    <br>
+    <div>
+        <label>Hours reserved:
+            <br>
+          <input [(ngModel)]="Book.TimeFrame" placeholder="name"/>
+        </label>
+    </div>
+    <br>
+    <div>
+        <label>Status:
+            <br>
+          <input [(ngModel)]="Book.BookingStatus" placeholder="name"/>
+        </label>
+    </div>
+    <br>
+    <div>
+        <label>Venue name:
+            <br>
+          <input [(ngModel)]="Book.ClientName" placeholder="name"/>
+        </label>
+    </div>
+    <br>
+    <div>
+        <label>Location:
+            <br>
+          <input [(ngModel)]="Book.Location" placeholder="name"/>
+        </label>
+    </div>
+</div>
+<br>
+<button (click) = "addBookings()">Create Booking</button>
