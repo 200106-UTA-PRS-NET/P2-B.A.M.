@@ -3,7 +3,8 @@ import { login } from '../login';
 import { HttpClient } from '@angular/common/http';
 import {Observable} from 'rxjs/Rx';
 import {catchError} from 'rxjs/operators';
-import {StartpageService} from '../startpage.service';
+import {StartpageService} from '../Services/startpage.service';
+
 
 
 @Component({
