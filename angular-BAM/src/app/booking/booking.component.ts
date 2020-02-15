@@ -14,10 +14,10 @@ export class BookingComponent implements OnInit {
   books:book[] = null;
 
   Book: book = {
-    groupname: '',
-    timeframe: '',
-    bookingstatus: '',
-    clientname: '',
+    groupName: '',
+    timeFrame: '',
+    bookingStatus: '',
+    clientName: '',
     location: '',
     review: '',
     score: null

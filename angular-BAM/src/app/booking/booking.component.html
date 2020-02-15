@@ -6,7 +6,7 @@
 <ul class="list-group">
     <li *ngFor='let boo of books' 
     class="list-group-item">
-        {{boo.groupname}}, {{boo.timeframe}}, {{boo.bookingstatus}}, {{boo.clientname}}, {{boo.location}}
+        {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}}
     </li>
 </ul>
 </div>
@@ -20,35 +20,35 @@ No bookings found
     <div>
         <label>Group:
             <br>
-          <input [(ngModel)]="Book.GroupName" placeholder="name"/>
+          <input [(ngModel)]="Book.groupname" placeholder="name"/>
         </label>
     </div>
     <br>
     <div>
         <label>Hours reserved:
             <br>
-          <input [(ngModel)]="Book.TimeFrame" placeholder="name"/>
+          <input [(ngModel)]="Book.timeframe" placeholder="name"/>
         </label>
     </div>
     <br>
     <div>
         <label>Status:
             <br>
-          <input [(ngModel)]="Book.BookingStatus" placeholder="name"/>
+          <input [(ngModel)]="Book.bookingstatus" placeholder="name"/>
         </label>
     </div>
     <br>
     <div>
         <label>Venue name:
             <br>
-          <input [(ngModel)]="Book.ClientName" placeholder="name"/>
+          <input [(ngModel)]="Book.clientname" placeholder="name"/>
         </label>
     </div>
     <br>
     <div>
         <label>Location:
             <br>
-          <input [(ngModel)]="Book.Location" placeholder="name"/>
+          <input [(ngModel)]="Book.location" placeholder="name"/>
         </label>
     </div>
 </div>
