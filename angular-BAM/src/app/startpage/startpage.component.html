@@ -1,5 +1,6 @@
 <h2>Welcome!</h2>
 
+<h2>Testing the Get functionality:</h2>
 <button (click)='findVenues()' class="btn btn-primary">Get Contacts</button>
 <div *ngIf='logins != null'>
 <h1>Contacts</h1>
@@ -11,9 +12,38 @@
 </ul>
 </div>
 <div *ngIf='logins===null'>
-No contacts Recieved
+    No contacts Recieved
 </div>
 
+<br>
+<h2>Testing the Get functionality for specific venues:</h2>
+<div>
+    {{testingUsername}},{{testingPassword}}
+</div>
+<div>ENTER USERNAME TO REPLACE HERE</div>
+<div>
+<label>Find this username:
+    <input [(ngModel)]="testingUsername" placeholder="name"/>
+</label>
+</div>
+<div>
+<label>Find this password:
+    <input [(ngModel)]="testingPassword" placeholder="name"/>
+</label>
+</div>
+
+<button (click)='findSpecificVenues()' class="btn btn-primary">Get Username Venues</button>
+<button (click)='findPasswordVenues()' class="btn btn-primary">Get Password Venues</button>
+
+<div *ngIf='testLogin.clientName != null'>
+    {{testLogin.clientName}}, {{testLogin.location}}, {{testLogin.clientPass}}
+</div>
+<div *ngIf='testLogin.clientName == null'>
+    No contacts Recieved
+</div>
+
+<br>
+<br>
 <h2>Please choose to access our site as a Venue or as a Performer</h2>
 
 
@@ -31,43 +61,104 @@ No contacts Recieved
 </ul>
 <br>
 
+<div>ENTER THE DETAILS OF THE REPLACING VENUE HERE.</div>
 <div *ngIf="chosen">
     <span>WE HAVE CHOSEN...</span>{{chosen}}
     <br>
-    <div>
-        <label>nameu:
-          <input [(ngModel)]="Login.clientName" placeholder="name"/>
+    <ul>
+        <li (click)="secondChoice('Up')">
+            <span>
+                Choose Sign up on new account
+            </span>
+        </li>
+        <li (click)="secondChoice('In')">
+            <span>
+                Choose Sign in on existing account
+            </span>
+        </li>
+    </ul>
+    <br>
+</div>
+
+<br>
+<div *ngIf="chosen=='Performer'">
+    <div *ngIf="chosen2=='In'">
+        Signing In as a Performer
+        <br>
+        <label>username:
+            <input [(ngModel)]="Login.clientName" placeholder="name"/>
+        </label>
+        <br>
+        <label>password:
+         <input [(ngModel)]="Login.clientPass" placeholder="name"/>
         </label>
     </div>
-    <br>
-    <div>
-        <label>namep:
-          <input [(ngModel)]="Login.clientPass" placeholder="name"/>
+
+    <div *ngIf="chosen2=='Up'">
+        Signing up as a performer
+        <br>
+        <label>username:
+            <input [(ngModel)]="Login.clientName" placeholder="name"/>
         </label>
-      </div>
+        <br>
+        <label>password:
+            <input [(ngModel)]="Login.clientPass" placeholder="name"/>
+        </label>
+    </div>
+</div>
+
+<div *ngIf="chosen=='Venue'">
+
+    <div *ngIf="chosen2=='In'">
+        Signing In as a Venue:
+        <br>
+        <label>username:
+            <input [(ngModel)]="Login.clientName" placeholder="name"/>
+        </label>
+        <br>
+        <label>password:
+            <input [(ngModel)]="Login.clientPass" placeholder="name"/>
+        </label>
+    </div>
+
+    <div *ngIf="chosen2=='Up'">
+        Signing Up as a Venue:
+        <br>
+        <label>username:
+        <input [(ngModel)]="Login.clientName" placeholder="name"/>
+        </label>
+        <br>
+        <label>location:
+            <input [(ngModel)]="Login.location" placeholder="name"/>
+        </label>
+        <br>
+        <label>password:
+            <input [(ngModel)]="Login.clientPass" placeholder="name"/>
+        </label>
+    </div>
 </div>
 <br>
-<div>
-    <span>
-        Username is 
-    </span>
-    {{Login.clientName}}
+<div *ngIf="chosen2">
+    <div>
+        <span>
+            Username is 
+        </span>
+        {{Login.clientName}}
+    </div>
+    <div>
+        <span>
+            Password is
+        </span>
+        {{Login.clientPass}}
+    </div>
 </div>
-<div>
-    <span>
-        Location is
-    </span>{{Login.location}}
-</div>
-<div>
-    <span>
-        Password is
-    </span>{{Login.clientPass}}
-</div>
+<br>
 <br>
 <div *ngIf="Login.clientName">
     <div *ngIf="Login.clientPass">
          <button (click) = "register()">REGISTER NOW</button>
-            
-        
     </div>
+</div>
+<div>
+    <button (click)='editVenue()' class="btn btn-primary">Edit Venue with Username</button>
 </div>
