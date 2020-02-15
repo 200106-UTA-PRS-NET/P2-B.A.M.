@@ -1,0 +1,14 @@
+<h2>Performers</h2>
+
+<h2>Welcome!</h2>
+
+<button (click)='getPerformers()' class="btn btn-primary">Get Performers</button>
+<div *ngIf='performersList != null'>
+<h1>Contacts</h1>
+<ul class="list-group">
+    <li *ngFor='let per of performersList'
+    class="list-group-item">
+        {{per.groupName}}, {{per.performanceType}}, {{per.hourlyRate}}, {{per.rating}}
+    </li>
+</ul>
+</div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PerformersService } from '../Services/performers.service';
+import { Performer } from '../performer';
 
 @Component({
   selector: 'app-performers-menu',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerformersMenuComponent implements OnInit {
 
-  constructor() { }
+ 
+  
+  constructor(public performersService:PerformersService) { }
 
   ngOnInit(): void {
   }

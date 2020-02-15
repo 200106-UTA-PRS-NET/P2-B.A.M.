@@ -13,7 +13,7 @@ import { MessageService } from './message.service';
 
 export class StartpageService 
 {
-  clientsUrl = 'https://localhost:44341/BAMAPI/Venue';  // URL to web api
+  clientsUrl = 'https://bamapi.azurewebsites.net/BAMAPI/Venue';  // URL to web api
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
