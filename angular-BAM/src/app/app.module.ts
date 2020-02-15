@@ -11,6 +11,7 @@ import { CalculatorComponent } from './calculator/calculator.component';
 import { PerformersMenuComponent } from './performers-menu/performers-menu.component';
 import { PerformersComponent } from './performers/performers.component';
 import { BookingComponent } from './booking/booking.component';
+import { TagsComponent } from './tags/tags.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BookingComponent } from './booking/booking.component';
     CalculatorComponent,
     PerformersMenuComponent,
     PerformersComponent,
-    BookingComponent
+    BookingComponent,
+    TagsComponent
   ],
   imports: [
     BrowserModule,

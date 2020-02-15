@@ -1,0 +1,14 @@
+<h2>Tags</h2>
+
+<h2>Welcome!</h2>
+
+<button (click)='getTags()' class="btn btn-primary">Get Tags</button>
+<div *ngIf='tagsList != null'>
+<h1>Tags</h1>
+<ul class="list-group">
+    <li *ngFor='let t of tagsList'
+    class="list-group-item">
+        {{t.tag}} {{t.groupName}}
+    </li>
+</ul>
+</div>

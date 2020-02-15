@@ -20,7 +20,7 @@ export class TagsService {
   constructor(private http: HttpClient) { }
 
   //get all tags
-  getTag(): Promise<Tag[]>{
+  getTags(): Promise<Tag[]>{
     return this.http.get<Tag[]>(this.url).toPromise();
   }
 
