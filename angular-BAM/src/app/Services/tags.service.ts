@@ -12,7 +12,7 @@ import { MessageService } from './message.service';
 })
 export class TagsService {
 
-
+  //url = 'https://localhost:44341/BAMAPI/Tags';
   url = 'https://bamapi.azurewebsites.net/BAMAPI/Tags';  // URL to web api
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }) //send the object as JSON

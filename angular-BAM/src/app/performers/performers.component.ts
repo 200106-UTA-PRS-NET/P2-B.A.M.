@@ -11,14 +11,7 @@ export class PerformersComponent implements OnInit {
  
   performersList: Performer[] = null;
 
-  currPerformer: Performer = {
-    groupName: null,
-    performanceType: null,
-    hourlyRate: null,
-    groupPass: null,
-    rating: null,
-    totalCost: null
-  };
+  currPerformer: Performer = null;
 
   tempPerformer: Performer = {
     groupName: null,
