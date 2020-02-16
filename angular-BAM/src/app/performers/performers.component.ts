@@ -8,20 +8,21 @@ import { PerformersService } from '../Services/performers.service';
   styleUrls: ['./performers.component.css']
 })
 export class PerformersComponent implements OnInit {
-
+ 
   performersList: Performer[] = null;
   currPerformer: Performer = {
-    groupName:'',
-    perfomanceType: '',
-    hourlyRate: 0,
-    rating:'',
-    groupPass:'',
+    groupName: null,
+    performanceType: null,
+    hourlyRate: null,
+    groupPass: null,
+    rating: null,
     totalCost: null
   };
-
+  choice: string = '';
+  clearForm: boolean = false; 
   //currently there is no performer signed in
-  username:string = null;
-  password:string = null;
+  username:string = '';
+  password:string = '';
   constructor(private perfomersService: PerformersService) { }
 
   ngOnInit(): void {
@@ -31,7 +32,24 @@ export class PerformersComponent implements OnInit {
     this.perfomersService.getPerformers()
     .then(response => this.performersList = response);
   }
+  getPerformerByName(): void{
+    this.perfomersService.getPerformerByName(this.username)
+    .then(response => this.currPerformer = response);
+   
+  } 
+  signIn(): void {
+    this.perfomersService.signIn(this.username, this.password)
+    .then(response => this.currPerformer = response);
+  }
 
+  signUp(): void {
+    this.perfomersService.postPerformer(this.currPerformer);
+    
+  }
 
+  selectOption(choice:string): void {
+    this.choice = choice;
+  }
   
+
 }

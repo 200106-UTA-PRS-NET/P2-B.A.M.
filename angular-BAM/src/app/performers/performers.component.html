@@ -1,6 +1,5 @@
 <h2>Performers</h2>
 
-<h2>Welcome!</h2>
 
 <button (click)='getPerformers()' class="btn btn-primary">Get Performers</button>
 <div *ngIf='performersList != null'>
@@ -11,4 +10,34 @@
         {{per.groupName}}, {{per.performanceType}}, {{per.hourlyRate}}, {{per.rating}}
     </li>
 </ul>
+</div>
+
+<div>
+    Get Perfomer by Name <input type="text" [(ngModel)]="username"><br>
+    <button (click)="getPerformerByName()">hey</button>
+    <div *ngIf="currPerformer != null">
+        {{currPerformer.groupName}}<br>
+        {{currPerformer.performanceType}}<br>
+    </div>
+</div>
+
+<button (click)="selectOption('signin')" class="btn btn-primary">Sign In</button>
+<button (click)="selectOption('signup')"class="btn btn-primary">Sign Up</button>
+
+<div *ngIf="choice == 'signin'">
+    Username<input type="text" [(ngModel)]="username"><br>
+    Password<input type="text" [(ngModel)]="password"><br>
+    <button (click)="signIn()" class="btn btn-primary">Sign In</button>
+    <div *ngIf="currPerformer != null">
+        Signed in successfully
+        
+    </div>
+</div>
+<div *ngIf="choice == 'signup'">
+   Group Name<input type="text"[(ngModel)]="currPerformer.groupName"><br>
+    Password<input type="text" [(ngModel)]="currPerformer.groupPass"><br>
+    Perfomance Type<input type="text" [(ngModel)]="currPerformer.performanceType"><br>
+    Hourly Rate<input type="number" [(ngModel)]="currPerformer.hourlyRate"><br>
+    Rating<input type="text" [(ngModel)]="currPerformer.rating"><br>
+    <button (click)="signUp()" class="btn btn-primary">Sign Up</button>
 </div>

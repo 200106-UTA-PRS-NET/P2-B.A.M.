@@ -12,3 +12,27 @@
     </li>
 </ul>
 </div>
+
+
+<div>
+    Get Tag by Id <input type="number" [(ngModel)]="tagId"><br>
+    <button (click)="getTagById()">hey</button>
+    <div *ngIf="currTag != null">
+        {{currTag.tag}}<br>
+        {{currTag.groupName}}<br>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div>
+    <h3>create a tag</h3>
+    Tag <input type="text" [(ngModel)]="currTag.tag"><br>
+    groupName <input type="text" [(ngModel)]="currTag.groupName"><br>
+    <button (click)="createTag()">dick cheese</button>
+</div>

@@ -31,9 +31,10 @@ export class TagsService {
 
 
   //create a tag
-  postPerformer(tag:Tag): Promise<Tag>{
+  postTag(tag:Tag): Promise<Tag>{
     return this.http.post<Tag>(this.url, tag, this.httpOptions).toPromise();
   }
+
 
    
 }

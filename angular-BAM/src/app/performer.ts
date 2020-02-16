@@ -1,8 +1,6 @@
-import { DecimalPipe } from '@angular/common';
-
 export interface Performer{
     groupName:string;
-    perfomanceType:string;
+    performanceType:string;
     hourlyRate:number;
     rating:string;
     groupPass:string;

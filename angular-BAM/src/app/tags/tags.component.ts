@@ -9,7 +9,7 @@ import { TagsService } from '../Services/tags.service';
   styleUrls: ['./tags.component.css']
 })
 export class TagsComponent implements OnInit {
-
+  tagId: number;
   tagsList: Tag[] = null;
   currTag: Tag = {
     tag: '',
@@ -25,5 +25,14 @@ export class TagsComponent implements OnInit {
   getTags(): void{
     this.tagsServices.getTags()
     .then(response => this.tagsList = response);
+  }
+
+  getTagById(): void {
+    this.tagsServices.getTagById(this.tagId)
+    .then(response => this.currTag = response);
+  }
+
+  createTag(): void {
+    this.tagsServices.postTag(this.currTag);
   }
 }
