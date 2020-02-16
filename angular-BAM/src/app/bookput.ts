@@ -6,5 +6,5 @@ export interface bookput {
   clientName?: string;
   location?: string;
   review?: string;
-//  score?: number;
+  score?: number;
 }

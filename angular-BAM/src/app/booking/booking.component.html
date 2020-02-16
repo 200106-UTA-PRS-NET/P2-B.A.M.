@@ -111,7 +111,7 @@
   <br />
 
   <h3>Edit existing booking: </h3>
-  <h3>-{{putbookingId}}-</h3>
+  
   <div>
     <label>
       Enter the ID of booking to be edited:<br>
@@ -128,6 +128,7 @@
     </label>
   </div>
   <br>
+  
   <div>
     <label>
       Review info (limit 255 char):<br>
@@ -135,10 +136,11 @@
     </label>
   </div>
   <br>
+  
   <div>
     <label>
       Rating 1-5:<br>
-      <input [(ngModel)]="putScore" placeholder="name" />
+      <input type=number [(ngModel)]="putBook.score" placeholder="name" />
     </label>
     <!-- <input [(ngModel)]="putBook.score" placeholder="name" /> -->
   <!-- </label> -->

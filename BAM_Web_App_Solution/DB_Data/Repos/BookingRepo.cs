@@ -53,7 +53,7 @@ namespace DB_Data.Repos
                 boo.BookingStatus = (bookings.BookingStatus != null) ? bookings.BookingStatus : boo.BookingStatus;
                 boo.ClientName = (bookings.ClientName != null) ? bookings.ClientName : boo.ClientName;
                 boo.Location = (bookings.Location != null) ? bookings.Location : boo.Location;
-                boo.Review = (bookings.Review != null) ? bookings.Review : boo.Review;
+                boo.Review = (bookings.Review != "") ? bookings.Review : boo.Review;
                 boo.Score = (bookings.Score != null) ? bookings.Score : boo.Score;
                 bdb.Bookings.Update(boo);
                 bdb.SaveChanges();

@@ -49,7 +49,7 @@ export class BookingComponent implements OnInit {
     clientName: null,
     location: null,
     review: null,
-    //score: 0
+    score: null
   }
 
   practiceBook: bookput = {
@@ -60,7 +60,7 @@ export class BookingComponent implements OnInit {
     clientName: null,
     location: null,
     review:null,
-    //score: 3
+    score: null,
   }
   constructor(private bookingservice: BookingService) { }
 
@@ -115,13 +115,13 @@ export class BookingComponent implements OnInit {
   changeBooking(): void {
     this.practiceBook.review = this.putBook.review;
     this.practiceBook.bookingStatus = this.putBook.bookingStatus;
-//    this.practiceBook.score= this.putBook.score;
-    this.bookingservice.putBooking(this.practiceBook, this.putbookingId, this.putScore);//this.putBook.bookingId);
+    this.practiceBook.score = this.putBook.score;
+    this.bookingservice.putBooking(this.practiceBook, this.putbookingId/*, this.putScore*/);//this.putBook.bookingId);
   }
 
   ngOnInit(): void {
     this.putbookingId = null;
-    this.putScore = null;
+    //this.putScore = null;
   }
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); 

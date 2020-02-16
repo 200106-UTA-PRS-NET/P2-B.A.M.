@@ -56,8 +56,8 @@ export class BookingService {
  }
 
   /** PUT: edit a booking in the database */
-  putBooking(booking: bookput, bookingId: number, score: number): Promise<bookput> {
-    this.newUrl = this.BookUrl + "/" + bookingId + "/" + score;
+  putBooking(booking: bookput, bookingId: number/*, score: number*/): Promise<bookput> {
+    this.newUrl = this.BookUrl + "/" + bookingId //+ "/" + score;//
     return this.http.put<bookput>(this.newUrl, booking, this.httpOptions).toPromise();
   }
 
