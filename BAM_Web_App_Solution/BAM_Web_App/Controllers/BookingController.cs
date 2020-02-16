@@ -73,12 +73,13 @@ namespace BAM_Web_App.Controllers
             _bookingrepo.AddBookings(bookings);
             return CreatedAtRoute("GetBookings", new { BookingId = bookings.BookingId }, bookings);
         }
-
-        [HttpPut("{BookingId}")]
-        public IActionResult PutBookings(int BookingId, [FromBody] Bookings bookings) 
+ 
+        [HttpPut("{BookingId}/{Score}")]
+        public IActionResult PutBookings(int BookingId, int Score, [FromBody] Bookings bookings) 
         {
-
+            //CHECK IF NULL/0 from here
             bookings.BookingId = BookingId;
+            bookings.Score = Score;
             if (_bookingrepo.GetBookings().FirstOrDefault<Bookings>(x => x.BookingId == BookingId) is Bookings oldbooking)
             {
 

@@ -19,6 +19,8 @@ export class BookingComponent implements OnInit {
   groupSelector: string;
   idSelector: number;
   clientSelector: string;
+  putbookingId: number;
+  putScore: number;
 
   Book: bookpost = {
     groupName: '',
@@ -40,14 +42,25 @@ export class BookingComponent implements OnInit {
   };
 
   putBook: bookput = {
-    bookingId: null,
+    //bookingId: null,
     groupName: null,
     timeFrame: null,
     bookingStatus: null,
     clientName: null,
     location: null,
     review: null,
-    score: null,
+    //score: 0
+  }
+
+  practiceBook: bookput = {
+    //bookingId: null,
+    groupName: null,
+    timeFrame: null,
+    bookingStatus: null,
+    clientName: null,
+    location: null,
+    review:null,
+    //score: 3
   }
   constructor(private bookingservice: BookingService) { }
 
@@ -100,11 +113,15 @@ export class BookingComponent implements OnInit {
   }
 
   changeBooking(): void {
-    this.bookingservice.putBooking(this.otherBook, this.putBook.bookingId);
+    this.practiceBook.review = this.putBook.review;
+    this.practiceBook.bookingStatus = this.putBook.bookingStatus;
+//    this.practiceBook.score= this.putBook.score;
+    this.bookingservice.putBooking(this.practiceBook, this.putbookingId, this.putScore);//this.putBook.bookingId);
   }
 
   ngOnInit(): void {
-    
+    this.putbookingId = null;
+    this.putScore = null;
   }
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); 

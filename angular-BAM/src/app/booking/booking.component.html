@@ -111,11 +111,13 @@
   <br />
 
   <h3>Edit existing booking: </h3>
-  <h3>-{{putBook.bookingId}}-</h3>
+  <h3>-{{putbookingId}}-</h3>
   <div>
     <label>
       Enter the ID of booking to be edited:<br>
-      <input [(ngModel)]="putBook.bookingId" placeholder="name"/>
+      <!-- <input [(ngModel)]="putBook.bookingId" placeholder="name"/>
+    </label> -->
+      <input [(ngModel)]="putbookingId" placeholder="name"/>
     </label>
   </div>
   <br />
@@ -136,8 +138,10 @@
   <div>
     <label>
       Rating 1-5:<br>
-      <input [(ngModel)]="putBook.score" placeholder="name" />
+      <input [(ngModel)]="putScore" placeholder="name" />
     </label>
+    <!-- <input [(ngModel)]="putBook.score" placeholder="name" /> -->
+  <!-- </label> -->
   </div>
 
   <br>
