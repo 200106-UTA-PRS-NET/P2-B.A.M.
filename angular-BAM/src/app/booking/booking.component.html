@@ -39,7 +39,9 @@
 
 <div *ngIf="idSelector">
   <button (click)='findIdBookings()' class="btn btn-primary">Search for this ID</button>
+
   <div *ngIf='otherBook.bookingId != null'>
+
     Booking no.{{otherBook.bookingId}}, {{otherBook.groupName}}, scheduled for: {{otherBook.timeFrame}}, status: {{otherBook.bookingStatus}}, at: {{otherBook.clientName}}, in: {{otherBook.location}}, review: {{otherBook.review}}, score: {{otherBook.score}}
   </div>
 </div>

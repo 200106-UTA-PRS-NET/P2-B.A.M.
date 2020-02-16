@@ -53,17 +53,28 @@ namespace BAM_Web_App.Controllers
                 return NotFound();
         }
 
-        [HttpPut("{tagId}")]
-        public IActionResult PutTags(int tagId, [FromBody] Tags tag)
+        //[HttpPut("{tagId}")]
+        //public IActionResult PutTags(int tagId, [FromBody] Tags tag)
+        //{
+        //    tag.TagId = tagId;
+        //    if (_tags.GetTags().Any(x => x.TagId == tagId))
+        //    {
+        //        _tags.ModifyTags(tag);
+        //        return NoContent();
+        //    }
+        //    return NotFound();
+        //}
+
+        [HttpDelete("{tagId}")]
+        public IActionResult Delete(int tagId)
         {
-            tag.TagId = tagId;
-            if (_tags.GetTags().Any(x => x.TagId == tagId))
+            if (_tags.GetTags().FirstOrDefault(x => x.TagId == tagId))
             {
-                _tags.ModifyTags(tag);
+                _tags.RemoveTags(tagId);
                 return NoContent();
             }
+            // not found (404)
             return NotFound();
         }
-
     }
 }

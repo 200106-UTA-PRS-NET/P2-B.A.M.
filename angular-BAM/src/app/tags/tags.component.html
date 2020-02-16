@@ -8,7 +8,7 @@
 <ul class="list-group">
     <li *ngFor='let t of tagsList'
     class="list-group-item">
-        {{t.tag}} {{t.groupName}}
+        {{t.tagId}} {{t.tag}} {{t.groupName}}
     </li>
 </ul>
 </div>
@@ -17,9 +17,10 @@
 <div>
     Get Tag by Id <input type="number" [(ngModel)]="tagId"><br>
     <button (click)="getTagById()">hey</button>
-    <div *ngIf="currTag != null">
-        {{currTag.tag}}<br>
-        {{currTag.groupName}}<br>
+    <div *ngIf="tagById != null">
+        {{tagById.tagId}}<br>
+        {{tagById.tag}}<br>
+        {{tagById.groupName}}<br>
     </div>
 </div>
 
