@@ -24,16 +24,15 @@
     </div>
 </div>
 
-
-
-
-
-
-
-
 <div>
     <h3>create a tag</h3>
     Tag <input type="text" [(ngModel)]="currTag.tag"><br>
     groupName <input type="text" [(ngModel)]="currTag.groupName"><br>
     <button (click)="createTag()">create</button>
+</div>
+
+<div>
+    <h3>remove a tag</h3>
+    Tag Id <input type="number" [(ngModel)]="tagId"><br>
+    <button (click)="removeTag()">Delete Tag</button>
 </div>
