@@ -12,7 +12,7 @@ import { MessageService } from '../Services/message.service';
   providedIn: 'root'
 })
 export class BookingService {
-  //BookUrl = 'https://localhost:44341/BAMAPI/Booking'
+ // BookUrl = 'https://localhost:44341/BAMAPI/Booking'
   BookUrl = 'https://bamapi.azurewebsites.net/BAMAPI/Booking';  // URL to web api
   newUrl = '';
   httpOptions = {
@@ -56,9 +56,9 @@ export class BookingService {
  }
 
   /** PUT: edit a booking in the database */
-  putBooking(booking: book, bookingId: number): Promise<book> {
+  putBooking(booking: bookput, bookingId: number): Promise<bookput> {
     this.newUrl = this.BookUrl + "/" + bookingId;
-    return this.http.put<book>(this.newUrl, booking, this.httpOptions).toPromise();
+    return this.http.put<bookput>(this.newUrl, booking, this.httpOptions).toPromise();
   }
 
  private handleError<T>(operation = 'operation', result?: T) {

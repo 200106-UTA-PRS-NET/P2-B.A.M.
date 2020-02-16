@@ -1,5 +1,10 @@
 export interface bookput {
-  bookingStatus: string;
+  bookingId: number;
+  groupName?: string;
+  timeFrame?: string;
+  bookingStatus?: string;
+  clientName?: string;
+  location?: string;
   review?: string;
   score?: number;
 }
