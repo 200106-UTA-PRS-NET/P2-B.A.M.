@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { book } from '../booking';
+import { bookput } from '../bookput';
 import { bookpost } from '../bookpost';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from '../Services/message.service';
@@ -57,7 +58,7 @@ export class BookingService {
   /** PUT: edit a booking in the database */
   putBooking(booking: book, bookingId: number): Promise<book> {
     this.newUrl = this.BookUrl + "/" + bookingId;
-    return this.http.put<book>(this.BookUrl, booking, this.httpOptions).toPromise();
+    return this.http.put<book>(this.newUrl, booking, this.httpOptions).toPromise();
   }
 
  private handleError<T>(operation = 'operation', result?: T) {

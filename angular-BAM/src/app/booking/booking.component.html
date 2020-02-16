@@ -111,10 +111,11 @@
   <br />
 
   <h3>Edit existing booking: </h3>
+  <h3>-{{otherBook.bookingId}}-</h3>
   <div>
     <label>
       Enter the ID of booking to be edited:<br>
-      <input type="number" id="otherbookSelector" name="bookSelector" />
+      <input [(ngModel)]="otherBook.bookingId" placeholder="name"/>
     </label>
   </div>
   <br />
