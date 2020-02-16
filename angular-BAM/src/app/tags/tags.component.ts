@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Tag } from '../tag';
+import { TagWithId } from '../tag';
 import { TagsService } from '../Services/tags.service';
 
 
@@ -10,12 +11,12 @@ import { TagsService } from '../Services/tags.service';
 })
 export class TagsComponent implements OnInit {
   tagId: number;
-  tagsList: Tag[] = null;
+  tagsList: TagWithId[] = null;
   currTag: Tag = {
     tag: '',
     groupName: ''
   }
-
+  tagById: TagWithId;
   constructor(public tagsServices: TagsService) { }
 
   ngOnInit(): void {
@@ -29,7 +30,7 @@ export class TagsComponent implements OnInit {
 
   getTagById(): void {
     this.tagsServices.getTagById(this.tagId)
-    .then(response => this.currTag = response);
+    .then(response => this.tagById = response);
   }
 
   createTag(): void {

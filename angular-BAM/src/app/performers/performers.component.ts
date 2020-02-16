@@ -10,6 +10,7 @@ import { PerformersService } from '../Services/performers.service';
 export class PerformersComponent implements OnInit {
  
   performersList: Performer[] = null;
+
   currPerformer: Performer = {
     groupName: null,
     performanceType: null,
@@ -18,6 +19,7 @@ export class PerformersComponent implements OnInit {
     rating: null,
     totalCost: null
   };
+  
   choice: string = '';
   clearForm: boolean = false; 
   //currently there is no performer signed in
