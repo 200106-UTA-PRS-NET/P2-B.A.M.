@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { book } from '../booking';
 import { bookpost } from '../bookpost';
+import { bookput } from '../bookput';
 import { HttpClient } from '@angular/common/http';
 import {Observable} from 'rxjs/Rx';
 import {catchError} from 'rxjs/operators';
@@ -37,6 +38,12 @@ export class BookingComponent implements OnInit {
     review: '',
     score: null
   };
+
+  putBook: bookput = {
+    bookingStatus: '',
+    review: '',
+    score: null
+  }
   constructor(private bookingservice: BookingService) { }
 
   findBookings(): void{
@@ -88,7 +95,7 @@ export class BookingComponent implements OnInit {
   }
 
   changeBooking(): void {
-    this.bookingservice.putBooking(this.otherBook, this.bookSelector);
+    this.bookingservice.putBooking(this.otherBook, this.otherBook.bookingId);
   }
 
   ngOnInit(): void {
