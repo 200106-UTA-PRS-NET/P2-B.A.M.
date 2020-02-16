@@ -40,9 +40,14 @@ export class BookingComponent implements OnInit {
   };
 
   putBook: bookput = {
-    bookingStatus: '',
-    review: '',
-    score: null
+    bookingId: null,
+    groupName: null,
+    timeFrame: null,
+    bookingStatus: null,
+    clientName: null,
+    location: null,
+    review: null,
+    score: null,
   }
   constructor(private bookingservice: BookingService) { }
 
@@ -95,7 +100,7 @@ export class BookingComponent implements OnInit {
   }
 
   changeBooking(): void {
-    this.bookingservice.putBooking(this.otherBook, this.otherBook.bookingId);
+    this.bookingservice.putBooking(this.otherBook, this.putBook.bookingId);
   }
 
   ngOnInit(): void {
