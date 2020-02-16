@@ -36,8 +36,8 @@ export class TagsService {
     return this.http.post<Tag>(this.url, tag, this.httpOptions).toPromise();
   }
 
-  removeTag(tagId: number): void {
-    this.http.delete(`${this.url}/${tagId}`, this.httpOptions);
+  removeTag(tagId: number): Promise<TagWithId> {
+    return this.http.delete<TagWithId>(`${this.url}/${tagId}`).toPromise();
   }
    
 }

@@ -31,9 +31,15 @@ export class TagsComponent implements OnInit {
   getTagById(): void {
     this.tagsServices.getTagById(this.tagId)
     .then(response => this.tagById = response);
+    this.tagId = null;
   }
 
   createTag(): void {
     this.tagsServices.postTag(this.currTag);
+  }
+
+  removeTag(): void {
+    this.tagsServices.removeTag(this.tagId);
+    this.tagId = null;
   }
 }

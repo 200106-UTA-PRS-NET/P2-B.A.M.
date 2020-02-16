@@ -68,7 +68,7 @@ namespace BAM_Web_App.Controllers
         [HttpDelete("{tagId}")]
         public IActionResult Delete(int tagId)
         {
-            if (_tags.GetTags().FirstOrDefault(x => x.TagId == tagId))
+            if (_tags.GetTags().Any(x => x.TagId == tagId))
             {
                 _tags.RemoveTags(tagId);
                 return NoContent();

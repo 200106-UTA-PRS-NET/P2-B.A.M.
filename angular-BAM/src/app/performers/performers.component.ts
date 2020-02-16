@@ -19,6 +19,15 @@ export class PerformersComponent implements OnInit {
     rating: null,
     totalCost: null
   };
+
+  tempPerformer: Performer = {
+    groupName: null,
+    performanceType: null,
+    hourlyRate: null,
+    groupPass: null,
+    rating: null,
+    totalCost: null
+  };
   
   choice: string = '';
   clearForm: boolean = false; 
@@ -36,7 +45,7 @@ export class PerformersComponent implements OnInit {
   }
   getPerformerByName(): void{
     this.perfomersService.getPerformerByName(this.username)
-    .then(response => this.currPerformer = response);
+    .then(response => this.tempPerformer = response);
    
   } 
   signIn(): void {
@@ -44,10 +53,15 @@ export class PerformersComponent implements OnInit {
     .then(response => this.currPerformer = response);
   }
 
-  signUp(): void {
-    this.perfomersService.postPerformer(this.currPerformer);
+  signUp(): void { //post a performer
+    this.perfomersService.postPerformer(this.tempPerformer);
     
   }
+
+  updatePerformer(): void{
+    this.perfomersService.putPerformer(this.currPerformer.groupName, this.currPerformer);
+  }
+
 
   selectOption(choice:string): void {
     this.choice = choice;

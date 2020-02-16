@@ -39,7 +39,7 @@ export class PerformersService {
   }
 
   //update a performer
-  putPerformer(performer:Performer): Promise<Performer>{
-    return this.http.put<Performer>(this.url, performer, this.httpOptions).toPromise();
+  putPerformer(groupName: string, performer:Performer): Promise<Performer>{
+    return this.http.put<Performer>(`${this.url}/${groupName}`, performer, this.httpOptions).toPromise();
   }  
 }
