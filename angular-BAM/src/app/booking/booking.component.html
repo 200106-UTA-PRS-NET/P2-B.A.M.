@@ -39,7 +39,7 @@
 
 <div *ngIf="idSelector">
   <button (click)='findIdBookings()' class="btn btn-primary">Search for this ID</button>
-  <div *ngIf='otherBook.bookingId != null && otherBook.bookingId != ""'>
+  <div *ngIf='otherBook.bookingId != null'>
     Booking no.{{otherBook.bookingId}}, {{otherBook.groupName}}, scheduled for: {{otherBook.timeFrame}}, status: {{otherBook.bookingStatus}}, at: {{otherBook.clientName}}, in: {{otherBook.location}}, review: {{otherBook.review}}, score: {{otherBook.score}}
   </div>
 </div>
@@ -60,7 +60,7 @@
 
 
 <br />
-
+<h3>-{{Book.groupName}}-</h3>
   <h3>Create new Booking</h3>
   <div>
     <div>
@@ -112,28 +112,28 @@
   <div>
     <label>
       Enter the ID of booking to be edited:<br>
-      <input type="number" id="bookSelector" name="bookSelector" />
+      <input type="number" id="otherbookSelector" name="bookSelector" />
     </label>
   </div>
   <br />
   <div>
     <label>
       Status:<br>
-      <input [(ngModel)]="Book.bookingStatus" placeholder="name" />
+      <input [(ngModel)]="otherBook.bookingStatus" placeholder="name" />
     </label>
   </div>
   <br>
   <div>
     <label>
       Review info (limit 255 char):<br>
-      <input [(ngModel)]="Book.review" placeholder="name" />
+      <input [(ngModel)]="otherBook.review" placeholder="name" />
     </label>
   </div>
   <br>
   <div>
     <label>
       Rating 1-5:<br>
-      <input [(ngModel)]="Book.score" placeholder="name" />
+      <input [(ngModel)]="otherBook.score" placeholder="name" />
     </label>
   </div>
 

@@ -1,12 +1,7 @@
-export interface book{
-  bookingId: number;
+export interface bookpost {
   groupName: string;
   timeFrame: string;
   bookingStatus: string;
   clientName: string;
   location: string;
-  review?: string;
-  score?: number;
 }
-
-

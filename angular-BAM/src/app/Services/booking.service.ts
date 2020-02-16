@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import {book} from '../booking';
+import { book } from '../booking';
+import { bookpost } from '../bookpost';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from '../Services/message.service';
 
@@ -10,6 +11,7 @@ import { MessageService } from '../Services/message.service';
   providedIn: 'root'
 })
 export class BookingService {
+  //BookUrl = 'https://localhost:44341/BAMAPI/Booking'
   BookUrl = 'https://bamapi.azurewebsites.net/BAMAPI/Booking';  // URL to web api
   newUrl = '';
   httpOptions = {
@@ -46,9 +48,9 @@ export class BookingService {
   }
 
    /** POST: add a new booking to the database */
- postBooking(booking:book): Promise<book> 
+ postBooking(booking:bookpost): Promise<bookpost> 
  {
-  return this.http.post<book>(this.BookUrl, booking, this.httpOptions)
+  return this.http.post<bookpost>(this.BookUrl, booking, this.httpOptions)
     .toPromise();
  }
 
