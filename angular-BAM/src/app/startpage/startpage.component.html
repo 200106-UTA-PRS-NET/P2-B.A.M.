@@ -54,7 +54,7 @@
 <br>
 <br>
 <div *ngIf="chosen">
-    <span>WE HAVE CHOSEN </span>{{chosen}}
+    <span>We are working with </span>{{chosen}}
     <br>
     <button (click)="secondChoice('Up')" class="btn btn-primary">Choose Sign up with a new account</button>
     <br>
@@ -69,7 +69,7 @@
         <br>
         <label>username:
             <input [(ngModel)]="testingUsername" placeholder="name"/>
-        </label>"
+        </label>
         <br>
         <label>password:
          <input [(ngModel)]="testingPassword" placeholder="name"/>
@@ -104,11 +104,11 @@
         </label>
         <br>
         <div *ngIf="PLogin.groupName">
-            <div *ngIf="PLogin.clientPass">
+            <div *ngIf="PLogin.performanceType">
                 <div *ngIf="PLogin.hourlyRate">
                     <div *ngIf="PLogin.rating">
-                        <div *ngIf="PLogin.clientPass">
-                            <button (click) = "registerp()">SIGN UP NOW</button>
+                        <div *ngIf="PLogin.groupPass">
+                            <button (click) = "registerP()">SIGN UP NOW</button>
                          </div>
                     </div>
                 </div>
@@ -175,16 +175,27 @@
 <!-- <div>
     <button (click)='editVenue()' class="btn btn-primary">Edit Venue with Username</button>
 </div> -->
-<br>
+<!-- <br>
 <div *ngIf='testLogin.clientName != ""'>
     {{testLogin.clientName}}, {{testLogin.location}}, {{testLogin.clientPass}}
-</div>
+</div> -->
 <br>
-<div *ngIf='testPLogin.groupName != ""'>
-    {{testPLogin.groupName}}, {{testPLogin.hourlyRate}}
+<div *ngIf='CurrentVenue.clientName != ""'>
+    {{CurrentVenue.clientName}}
+    <app-venue></app-venue>
+    <app-booking></app-booking>
+    <app-tags></app-tags>
+</div>
+<div *ngIf='CurrentPerformer.groupName != ""'>
+    {{CurrentPerformer.groupName}}, {{CurrentPerformer.hourlyRate}}
+    <app-performers></app-performers>
+    <app-booking></app-booking>
+    <app-tags></app-tags>
 </div>
 
+<div *ngIf='CurrentPerformer.groupName != ""'>
+</div>
 
-<app-performers></app-performers>
-<app-booking></app-booking>
-<app-tags></app-tags>
+<!-- <app-performers></app-performers>
+<app-booking></app-booking> -->
+<!-- <app-tags></app-tags> -->
