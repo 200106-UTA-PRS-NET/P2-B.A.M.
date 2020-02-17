@@ -34,11 +34,21 @@
     </div>
 </div>
 <div *ngIf="choice == 'signup'">
-   Group Name<input type="text"[(ngModel)]="tempPerformer.groupName"><br>
-    Password<input type="text" [(ngModel)]="tempPerformer.groupPass"><br>
-    Perfomance Type<input type="text" [(ngModel)]="tempPerformer.performanceType"><br>
-    Hourly Rate<input type="number" [(ngModel)]="tempPerformer.hourlyRate"><br>
-    Rating<input type="text" [(ngModel)]="tempPerformer.rating"><br>
+    <label for="groupName">Group Name</label><br>
+    <input id="groupName" type="text"[(ngModel)]="tempPerformer.groupName" required ><br><br>
+
+    <label for="groupPass">Password</label><br>
+    <input id="groupPass"  type="password" [(ngModel)]="tempPerformer.groupPass" minlength="6" required><br><br>
+
+    <label for="performanceType">Perfomance Type</label><br>
+    <input id="performanceType"type="text" [(ngModel)]="tempPerformer.performanceType" required><br><br>
+
+    <label for="hourlyRate">Hourly Rate</label><br>
+    <input id="hourlyRate" type="number" [(ngModel)]="tempPerformer.hourlyRate" required><br><br>
+
+    <label for="rating">Rating</label><br>
+    <input type="text" [(ngModel)]="tempPerformer.rating" required><br><br>
+
     <button (click)="signUp()" class="btn btn-primary">Sign Up</button>
 </div>
 
