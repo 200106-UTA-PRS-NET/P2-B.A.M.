@@ -1,6 +1,6 @@
 <h2>Welcome!</h2>
 
-<h2>Testing the Get functionality:</h2>
+<!-- <h2>Testing the Get functionality:</h2>
 <button (click)='findVenues()' class="btn btn-primary">Get Contacts</button>
 <div *ngIf='logins != null'>
 <h1>Contacts</h1>
@@ -13,8 +13,8 @@
 </div>
 <div *ngIf='logins===null'>
     No contacts Recieved
-</div>
-
+</div> -->
+<!-- 
 <br>
 <h2>Testing the Get functionality for specific venues:</h2>
 <div>
@@ -41,7 +41,7 @@
 </div>
 <div *ngIf='testLogin.clientName == null'>
     No contacts Recieved
-</div>
+</div> -->
 
 <br>
 <br>
@@ -68,24 +68,42 @@
         Signing In as a Performer
         <br>
         <label>username:
-            <input [(ngModel)]="Login.clientName" placeholder="name"/>
-        </label>
+            <input [(ngModel)]="testingUsername" placeholder="name"/>
+        </label>"
         <br>
         <label>password:
-         <input [(ngModel)]="Login.clientPass" placeholder="name"/>
+         <input [(ngModel)]="testingPassword" placeholder="name"/>
         </label>
+        <div *ngIf="testingUsername">
+            <div *ngIf="testingPassword">
+                 <button (click) = "findPasswordPerformer()">REGISTER NOW</button>
+            </div>
+        </div>
     </div>
 
     <div *ngIf="chosen2=='Up'">
         Signing up as a performer
         <br>
         <label>username:
-            <input [(ngModel)]="Login.clientName" placeholder="name"/>
+            <input [(ngModel)]="PLogin.clientName" placeholder="name"/>
+        </label>
+        <br>
+        <label>performanceType:
+            <input [(ngModel)]="PLogin.performanceType" placeholder="name"/>
+        </label>
+        <br>
+        <label>hourlyRate:
+            <input [(ngModel)]="PLogin.hourlyRate" placeholder="name"/>
         </label>
         <br>
         <label>password:
-            <input [(ngModel)]="Login.clientPass" placeholder="name"/>
+            <input [(ngModel)]="PLogin.clientPass" placeholder="name"/>
         </label>
+        <div *ngIf="PLogin.clientName">
+            <div *ngIf="PLogin.clientPass">
+                 <button (click) = "registerp()">SIGN UP NOW</button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -95,15 +113,15 @@
         Signing In as a Venue:
         <br>
         <label>username:
-            <input [(ngModel)]="Login.clientName" placeholder="name"/>
+            <input [(ngModel)]="testingUsername" placeholder="name"/>
         </label>
         <br>
         <label>password:
-            <input [(ngModel)]="Login.clientPass" placeholder="name"/>
+            <input [(ngModel)]="testingPassword" placeholder="name"/>
         </label>
-        <div *ngIf="Login.clientName">
-            <div *ngIf="Login.clientPass">
-                 <button (click) = "findPasswordVenues()">REGISTER NOW</button>
+        <div *ngIf="testingUsername">
+            <div *ngIf="testingPassword">
+                 <button (click) = "findPasswordVenues()">SIGN IN NOW</button>
             </div>
         </div>
     </div>
@@ -113,51 +131,47 @@
         Signing Up as a Venue:
         <br>
         <label>username:
-        <input [(ngModel)]="Login.clientName" placeholder="name"/>
+        <input [(ngModel)]="VLogin.clientName" placeholder="name"/>
         </label>
         <br>
         <label>location:
-            <input [(ngModel)]="Login.location" placeholder="name"/>
+            <input [(ngModel)]="VLogin.location" placeholder="name"/>
         </label>
         <br>
         <label>password:
-            <input [(ngModel)]="Login.clientPass" placeholder="name"/>
+            <input [(ngModel)]="VLogin.clientPass" placeholder="name"/>
         </label>
-        <div *ngIf="Login.clientName">
-            <div *ngIf="Login.clientPass">
-                 <button (click) = "register()">REGISTER NOW</button>
-                 <br>
-                 <button (click)='editVenue()' class="btn btn-primary">Edit Venue with Username</button>
+        <div *ngIf="VLogin.clientName">
+            <div *ngIf="VLogin.clientPass">
+                 <button (click) = "register()">SIGN UP NOW</button>
             </div>
         </div>
     </div>
 </div>
 <br>
-<div *ngIf="chosen2">
-    <div>
-        <span>
-            Username is 
-        </span>
-        {{Login.clientName}}
-    </div>
-    <div>
-        <span>
-            Password is
-        </span>
-        {{Login.clientPass}}
+
+<div *ngIf="VLogin.clientName">
+    <div *ngIf="VLogin.clientPass">
+        <div *ngIf="VLogin.location">
+            <button (click) = "register()">REGISTER NOW</button>
+        </div>
+        <div *ngIf="VLogin.clientPass == ''">
+            <button (click) = "signUp()">REGISTER NOW</button>
+        </div>
     </div>
 </div>
-<br>
-<br>
-<!-- <div *ngIf="Login.clientName">
-    <div *ngIf="Login.clientPass">
-         <button (click) = "register()">REGISTER NOW</button>
-    </div>
-</div> -->
-<div>
+<!-- <div>
     <button (click)='editVenue()' class="btn btn-primary">Edit Venue with Username</button>
+</div> -->
+<br>
+<div *ngIf='testLogin.clientName != ""'>
+    {{testLogin.clientName}}, {{testLogin.location}}, {{testLogin.clientPass}}
 </div>
 <br>
+<div *ngIf='testPLogin.groupName != ""'>
+    {{testPLogin.groupName}}, {{testPLogin.hourlyRate}}
+</div>
+
 <app-calculator></app-calculator>
 <app-performers></app-performers>
 <app-booking></app-booking>
