@@ -23,6 +23,7 @@ export class BookingComponent implements OnInit {
   clientSelector: string;
   putbookingId: number;
   putScore: number;
+  editval: number;
 
   Book: bookpost = {
     groupName: '',
@@ -119,6 +120,10 @@ export class BookingComponent implements OnInit {
     this.practiceBook.bookingStatus = this.putBook.bookingStatus;
     this.practiceBook.score = this.putBook.score;
     this.bookingservice.putBooking(this.practiceBook, this.putbookingId/*, this.putScore*/);//this.putBook.bookingId);
+  }
+
+  editor(): void {
+    this.putbookingId = this.editval;
   }
 
   ngOnInit(): void {
