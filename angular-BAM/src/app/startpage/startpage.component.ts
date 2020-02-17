@@ -39,13 +39,13 @@ export class StartpageComponent implements OnInit {
     totalCost: 0
   };
 
-  testLogin: login = {
+  CurrentVenue: login = {
     clientName: '',
     location: '',
     clientPass: ''
   };
 
-  testPLogin: Performer = {
+  CurrentPerformer: Performer = {
     groupName: '',
     performanceType: '',
     hourlyRate: 0,
@@ -53,6 +53,9 @@ export class StartpageComponent implements OnInit {
     groupPass:'',
     totalCost: 0
   };
+
+  
+
 
   clearV():void
   {
@@ -93,39 +96,39 @@ export class StartpageComponent implements OnInit {
   }
 
   findSpecificVenues(): void{
-    this.testLogin.clientName = '';
-    this.testLogin.location = '';
-    this.testLogin.clientPass = '';
+    this.CurrentVenue.clientName = '';
+    this.CurrentVenue.location = '';
+    this.CurrentVenue.clientPass = '';
     this.startpageservice.getSpecificClient(this.testingUsername)
-    .then(response => this.testLogin=response);
+    .then(response => this.CurrentVenue=response);
     // this.startpageservice.getSpecificClient(this.testingUsername)
     // .then(response => this.testLogin=response);
-    this.testLogin.clientPass = "";//REDACTED: OBTAINED WITHOUT USING PASSWORD";
+    this.CurrentVenue.clientPass = "";//REDACTED: OBTAINED WITHOUT USING PASSWORD";
   }
 
   findPasswordVenues(): void{
-    this.testLogin.clientName = '';
-    this.testLogin.location = '';
-    this.testLogin.clientPass = '';
+    this.CurrentVenue.clientName = '';
+    this.CurrentVenue.location = '';
+    this.CurrentVenue.clientPass = '';
     if(this.testingPassword != "")
     {
       this.startpageservice.getPasswordClient(this.testingUsername, this.testingPassword)
-      .then(response => this.testLogin=response);
+      .then(response => this.CurrentVenue=response);
     }
     // this.startpageservice.getPasswordClient(this.testingUsername, this.testingPassword)
     // .then(response => this.testLogin=response);
   }
     findPasswordPerformer(): void{
-      this.testPLogin.groupName = '';
-      this.testPLogin.performanceType = '';
-      this.testPLogin.hourlyRate = 0;
-      this.testPLogin.rating = '';
-      this.testPLogin.groupPass = '';
-      this.testPLogin.totalCost = 0;
+      this.CurrentPerformer.groupName = '';
+      this.CurrentPerformer.performanceType = '';
+      this.CurrentPerformer.hourlyRate = 0;
+      this.CurrentPerformer.rating = '';
+      this.CurrentPerformer.groupPass = '';
+      this.CurrentPerformer.totalCost = 0;
       if(this.testingPassword != "")
       {
         this.performersservice.signIn(this.testingUsername, this.testingPassword)
-        .then(response => this.testPLogin=response);
+        .then(response => this.CurrentPerformer=response);
       }
     // this.startpageservice.getPasswordClient(this.testingUsername, this.testingPassword)
     // .then(response => this.testLogin=response);
@@ -147,8 +150,7 @@ export class StartpageComponent implements OnInit {
   signUp(): void{
     if(this.testingPassword != "")
     {
-      this.startpageservice.getPasswordClient(this.testingUsername, this.testingPassword)
-      .then(response => this.testLogin=response);
+      this.startpageservice.getPasswordClient(this.testingUsername, this.testingPassword);
     }
   }
 
