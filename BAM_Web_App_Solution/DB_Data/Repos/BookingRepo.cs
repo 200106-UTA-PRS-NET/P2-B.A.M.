@@ -42,6 +42,18 @@ namespace DB_Data.Repos
             return query;
         }
 
+        public IEnumerable<Bookings> GetGroupBookings(string groupname)
+        {
+            var query = from e in bdb.Bookings where e.GroupName == groupname select e;
+            return query;
+        }
+
+        public IEnumerable<Bookings> GetClientBookings(string clientname)
+        {
+            var query = from e in bdb.Bookings where e.ClientName == clientname select e;
+            return query;
+        }
+
         public void ModifyBookings(Bookings bookings)
         {
             if (bdb.Bookings.Any(e => e.BookingId == bookings.BookingId))

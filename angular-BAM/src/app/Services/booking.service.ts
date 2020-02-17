@@ -12,8 +12,8 @@ import { MessageService } from '../Services/message.service';
   providedIn: 'root'
 })
 export class BookingService {
-  //BookUrl = 'https://localhost:44341/BAMAPI/Booking'
-  BookUrl = 'https://bamapi.azurewebsites.net/BAMAPI/Booking';  // URL to web api
+  BookUrl = 'https://localhost:44341/BAMAPI/Booking'
+  //BookUrl = 'https://bamapi.azurewebsites.net/BAMAPI/Booking';  // URL to web api
   newUrl = '';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -35,16 +35,16 @@ export class BookingService {
   }
 
   /**GET: SPECIFIC booking(s) by performer name only*/
-  getGroupBooking(group: string): Promise<book> {
+  getGroupBooking(group: string): Promise<book[]> {
     this.newUrl = this.BookUrl + "/ByPerformer/" + group;
-    return this.http.get<book>(this.newUrl)
+    return this.http.get<book[]>(this.newUrl)
       .toPromise();
   }
 
   /**GET: SPECIFIC booking(s) by venue name only*/
-  getVenueBooking(client: string): Promise<book> {
+  getVenueBooking(client: string): Promise<book[]> {
     this.newUrl = this.BookUrl + "/ByClient/" + client;
-    return this.http.get<book>(this.newUrl)
+    return this.http.get<book[]>(this.newUrl)
       .toPromise();
   }
 

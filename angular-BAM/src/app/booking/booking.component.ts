@@ -13,7 +13,9 @@ import {BookingService} from '../Services/Booking.service';
 })
 export class BookingComponent implements OnInit {
 
-  books:book[] = null;
+  books: book[] = null;
+  clibooks: book[] = null;
+  grobooks: book[] = null;
 
   bookSelector: number;
   groupSelector: string;
@@ -83,29 +85,29 @@ export class BookingComponent implements OnInit {
   }
 
   findGroupBookings(): void {
-    this.otherBook.bookingId = null;
-    this.otherBook.groupName = '';
-    this.otherBook.timeFrame = '';
-    this.otherBook.bookingStatus = '';
-    this.otherBook.clientName = '';
-    this.otherBook.location = '';
-    this.otherBook.review = '';
-    this.otherBook.score = null;
+    //this.otherBook.bookingId = null;
+    //this.otherBook.groupName = '';
+    //this.otherBook.timeFrame = '';
+    //this.otherBook.bookingStatus = '';
+    //this.otherBook.clientName = '';
+    //this.otherBook.location = '';
+    //this.otherBook.review = '';
+    //this.otherBook.score = null;
     this.bookingservice.getGroupBooking(this.groupSelector)
-      .then(response => this.otherBook = response);
+      .then(response => this.grobooks = response);
   }
 
   findClientBookings(): void {
-    this.otherBook.bookingId = null;
-    this.otherBook.groupName = '';
-    this.otherBook.timeFrame = '';
-    this.otherBook.bookingStatus = '';
-    this.otherBook.clientName = '';
-    this.otherBook.location = '';
-    this.otherBook.review = '';
-    this.otherBook.score = null;
+    //this.otherBook.bookingId = null;
+    //this.otherBook.groupName = '';
+    //this.otherBook.timeFrame = '';
+    //this.otherBook.bookingStatus = '';
+   // this.otherBook.clientName = '';
+   // this.otherBook.location = '';
+   // this.otherBook.review = '';
+   // this.otherBook.score = null;
     this.bookingservice.getVenueBooking(this.clientSelector)
-      .then(response => this.otherBook = response);
+      .then(response => this.clibooks = response);
   }
 
   addBookings(): void{

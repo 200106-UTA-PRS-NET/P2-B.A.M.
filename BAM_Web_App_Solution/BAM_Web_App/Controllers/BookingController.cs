@@ -42,28 +42,17 @@ namespace BAM_Web_App.Controllers
 
         [HttpGet("ByPerformer/{GroupName}", Name = "GetBookingsBy")]
       //  [Route("Booking/GetBookingsBy")]
-        public IActionResult GetBookingsBy(string GroupName)
+        public IEnumerable<Bookings> GetBookingsBy(string GroupName)
         {
-
-            var certainBooking = _bookingrepo.GetBookings().FirstOrDefault<Bookings>(x => x.GroupName == GroupName);
-            if (certainBooking != null)
-                return Ok(certainBooking);
-
-            else
-                return NotFound();
+            return _bookingrepo.GetGroupBookings(GroupName);
         }
 
         [HttpGet("ByClient/{ClientName}", Name = "GetBookingsCli")]
         //  [Route("Booking/GetBookingsCli")]
-        public IActionResult GetBookingsCli(string ClientName)
+        public IEnumerable<Bookings> GetBookingsCli(string ClientName)
         {
 
-            var certainBooking = _bookingrepo.GetBookings().FirstOrDefault<Bookings>(x => x.ClientName == ClientName);
-            if (certainBooking != null)
-                return Ok(certainBooking);
-
-            else
-                return NotFound();
+            return _bookingrepo.GetClientBookings(ClientName);
         }
 
         [HttpPost]
