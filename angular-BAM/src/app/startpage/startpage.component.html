@@ -85,7 +85,7 @@
         Signing up as a performer
         <br>
         <label>username:
-            <input [(ngModel)]="PLogin.clientName" placeholder="name"/>
+            <input [(ngModel)]="PLogin.groupName" placeholder="name"/>
         </label>
         <br>
         <label>performanceType:
@@ -97,11 +97,11 @@
         </label>
         <br>
         <label>password:
-            <input [(ngModel)]="PLogin.clientPass" placeholder="name"/>
+            <input [(ngModel)]="PLogin.groupPass" placeholder="name"/>
         </label>
-        <div *ngIf="PLogin.clientName">
-            <div *ngIf="PLogin.clientPass">
-                 <button (click) = "registerp()">SIGN UP NOW</button>
+        <div *ngIf="PLogin.groupName">
+            <div *ngIf="PLogin.groupPass">
+                 <button (click) = "registerP()">SIGN UP NOW</button>
             </div>
         </div>
     </div>
@@ -172,7 +172,7 @@
     {{testPLogin.groupName}}, {{testPLogin.hourlyRate}}
 </div>
 
-<app-calculator></app-calculator>
+
 <app-performers></app-performers>
 <app-booking></app-booking>
 <app-tags></app-tags>
