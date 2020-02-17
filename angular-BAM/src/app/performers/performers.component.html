@@ -30,7 +30,7 @@
     <button (click)="signIn()" class="btn btn-primary">Sign In</button>
     <div *ngIf="currPerformer != null">
         Signed in successfully
-        
+        <app-tags [performerName]="currPerformer.groupName"></app-tags>
     </div>
 </div>
 <div *ngIf="choice == 'signup'">
@@ -50,6 +50,8 @@
     <input type="text" [(ngModel)]="tempPerformer.rating" required><br><br>
 
     <button (click)="signUp()" class="btn btn-primary">Sign Up</button>
+
+    
 </div>
 
 <div *ngIf="currPerformer != null">
@@ -60,5 +62,7 @@
     Rating<input type="text" [(ngModel)]="currPerformer.rating"><br>
     <button (click)="updatePerformer()" class="btn btn-primary">Update</button>
 </div>
+
+
 
 

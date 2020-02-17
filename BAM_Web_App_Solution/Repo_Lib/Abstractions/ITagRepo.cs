@@ -11,6 +11,8 @@ namespace Repo_Lib.Abstractions
             void AddTags(T tags);
             void ModifyTags(T tags);
             void RemoveTags(int id);
+
+            IEnumerable<T> GetGroupTags(string groupName);
         }
     
 }
