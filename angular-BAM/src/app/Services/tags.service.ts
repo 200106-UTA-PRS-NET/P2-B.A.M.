@@ -30,6 +30,9 @@ export class TagsService {
     return this.http.get<TagWithId>(`${this.url}/${tagId}`).toPromise();
   }
 
+  getTagsByGroupName(groupName: string): Promise<TagWithId[]>{
+    return this.http.get<TagWithId[]>(`${this.url}/ByName/${groupName}`).toPromise();
+  }
 
   //create a tag
   postTag(tag:Tag): Promise<Tag>{

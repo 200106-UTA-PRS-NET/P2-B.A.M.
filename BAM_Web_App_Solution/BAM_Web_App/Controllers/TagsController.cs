@@ -38,6 +38,12 @@ namespace BAM_Web_App.Controllers
             return NotFound();
         }
 
+        [HttpGet("ByName/{groupName}", Name ="GetGroupTags")]
+        public IEnumerable<Tags> GetGroupTags(string groupName)
+        {
+            return _tags.GetGroupTags(groupName);
+        }
+
         [HttpPost]
         public IActionResult PostTags([FromBody, Bind("Tag, GroupName")] Tags tag)
         {

@@ -72,5 +72,14 @@ namespace DB_Data.Repos
                 return;
             }
         }
+
+        public IEnumerable<Tags> GetGroupTags(string groupName)
+        {
+            var query = from e in bdb.Tags
+                        where e.GroupName == groupName
+                        select e;
+
+            return query;
+        }
     }
 }

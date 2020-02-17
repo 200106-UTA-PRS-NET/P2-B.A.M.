@@ -1,5 +1,3 @@
-<h2>Tags</h2>
-
 <h2>Welcome!</h2>
 
 <button (click)='getTags()' class="btn btn-primary">Get Tags</button>
@@ -35,4 +33,15 @@
     <h3>remove a tag</h3>
     Tag Id <input type="number" [(ngModel)]="tagId"><br>
     <button (click)="removeTag()">Delete Tag</button>
+</div>
+
+
+<div *ngIf="performerTagsList != null">
+    <h1>Your Tags</h1>
+    <ul class="list-group">
+        <li *ngFor='let t of performerTagsList' class="list-group-item">
+            {{t.tagId}} {{t.tag}} {{t.groupName}}
+        </li>
+    </ul>
+    <button (click)="back()">Back</button>
 </div>
