@@ -12,6 +12,7 @@ import { PerformersMenuComponent } from './performers-menu/performers-menu.compo
 import { PerformersComponent } from './performers/performers.component';
 import { BookingComponent } from './booking/booking.component';
 import { TagsComponent } from './tags/tags.component';
+import { VenueComponent } from './venue/venue.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TagsComponent } from './tags/tags.component';
     PerformersMenuComponent,
     PerformersComponent,
     BookingComponent,
-    TagsComponent
+    TagsComponent,
+    VenueComponent
   ],
   imports: [
     BrowserModule,
