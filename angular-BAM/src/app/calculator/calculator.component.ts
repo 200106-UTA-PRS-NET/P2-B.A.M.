@@ -10,7 +10,7 @@ import { CalculatorServiceService } from '../Services/calculator-service.service
 export class CalculatorComponent implements OnInit {
 
   calc: Calc ={
-    operation: null,
+    operation: "simplify",
     expression: null,
     result: null
   }
