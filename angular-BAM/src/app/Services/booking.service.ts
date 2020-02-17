@@ -12,8 +12,8 @@ import { MessageService } from '../Services/message.service';
   providedIn: 'root'
 })
 export class BookingService {
-  BookUrl = 'https://localhost:44341/BAMAPI/Booking'
-  //BookUrl = 'https://bamapi.azurewebsites.net/BAMAPI/Booking';  // URL to web api
+  //BookUrl = 'https://localhost:44341/BAMAPI/Booking'
+  BookUrl = 'https://bamapi.azurewebsites.net/BAMAPI/Booking';  // URL to web api
   newUrl = '';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
