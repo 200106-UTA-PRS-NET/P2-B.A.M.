@@ -37,41 +37,113 @@
    </div>
 
    <div *ngIf="viewBookings == true">
+       <div *ngIf="performerBookings.length == 0">You do not have any current bookings</div>
+       <div *ngIf="performerBookings.length > 0">
         <h4>Your Current Bookings</h4>
-        <ul class="list-group">
-            <li *ngFor='let boo of performerBookings' class="list-group-item">
-                
-                {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}}
-               
-            </li>
-        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Time Frame</th>
+                    <th>Booking Status</th>
+                    <th>Client Name</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor='let boo of performerBookings'>
+                    <td>{{boo.bookingId}}</td>
+                    <td>{{boo.timeFrame}}</td>
+                    <td>{{boo.bookingStatus}}</td>
+                    <td>{{boo.clientName}}</td>
+                    <td>{{boo.location}}</td>
+                </tr>
+            </tbody>
+        </table>
+       </div>
         <button (click)="back()">Back</button>
    </div>
 
    <div *ngIf="viewCompletedBookings == true">
-    <h4>Your Completed Bookings</h4>
-    <ul class="list-group">
-        <li *ngFor='let boo of performerBookings' class="list-group-item">
-            
-            {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}}
-            
-        </li>
-    </ul>
+    <div *ngIf="performerBookings.length == 0">You do not have any completed bookings</div>
+       <div *ngIf="performerBookings.length > 0">
+        <h4>Your Completed Bookings</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Time Frame</th>
+                    <th>Booking Status</th>
+                    <th>Client Name</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor='let boo of performerBookings'>
+                    <td>{{boo.bookingId}}</td>
+                    <td>{{boo.timeFrame}}</td>
+                    <td>{{boo.bookingStatus}}</td>
+                    <td>{{boo.clientName}}</td>
+                    <td>{{boo.location}}</td>
+                </tr>
+            </tbody>
+        </table>
+       </div>
     <button (click)="back()">Back</button>
     </div>
 
     <div *ngIf="bookingHistory == true">
+        <div *ngIf="performerBookings.length == 0">You do not have any bookings</div>
+       <div *ngIf="performerBookings.length > 0">
         <h4>Your Booking History</h4>
-        <ul class="list-group">
-            <li *ngFor='let boo of performerBookings' class="list-group-item">
-                {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}}
-            </li>
-        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Time Frame</th>
+                    <th>Booking Status</th>
+                    <th>Client Name</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor='let boo of performerBookings'>
+                    <td>{{boo.bookingId}}</td>
+                    <td>{{boo.timeFrame}}</td>
+                    <td>{{boo.bookingStatus}}</td>
+                    <td>{{boo.clientName}}</td>
+                    <td>{{boo.location}}</td>
+                </tr>
+            </tbody>
+        </table>
+       </div>
         <button (click)="back()">Back</button>
-        </div>
+    </div>
 
     <div *ngIf="yourInfo == true">
-        {{currPerformer.groupName}}, {{currPerformer.performanceType}}, {{currPerformer.hourlyRate}}, {{currPerformer.rating}}<br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Group Name</th>
+                    <th>Performance Type</th>
+                    <th>Hourly Rate</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>{{currPerformer.groupName}}</td>
+                    <td>{{currPerformer.performanceType}}</td>
+                    <td>{{currPerformer.hourlyRate}}</td>
+                    <td>{{currPerformer.rating}}</td>
+                </tr>
+            </tbody>
+        </table>
+        
         <button (click)="back()">Back</button>
     </div>
 
@@ -86,14 +158,36 @@
     </div>
 
     <div *ngIf="cancelBooking == true">
-        <li *ngFor='let boo of performerBookings' class="list-group-item">
-            {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}}
-        </li>
-        Select booking by Id
-        <select id="cancel" [(ngModel)]="selectedBooking">
-            <option *ngFor='let boo of performerBookings' [ngValue]="boo">{{boo.bookingId}}</option>
-        </select><br>
-        <button (click)="ConfirmCancel()">Confirm Cancel</button><br><br>
+        <div *ngIf="performerBookings.length == 0">You do not have any current bookings</div>
+        <div *ngIf="performerBookings.length > 0">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Time Frame</th>
+                        <th>Booking Status</th>
+                        <th>Client Name</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <tr *ngFor='let boo of performerBookings'>
+                        <td>{{boo.bookingId}}</td>
+                        <td>{{boo.timeFrame}}</td>
+                        <td>{{boo.bookingStatus}}</td>
+                        <td>{{boo.clientName}}</td>
+                        <td>{{boo.location}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            Select booking by Id:
+            <select id="cancel" [(ngModel)]="selectedBooking">
+                <option *ngFor='let boo of performerBookings' [ngValue]="boo">{{boo.bookingId}}</option>
+            </select><br>
+            <button (click)="ConfirmCancel()">Confirm Cancel</button><br><br>
+        </div>
+        
         <button (click)="back()">Back</button>
     </div>
 
