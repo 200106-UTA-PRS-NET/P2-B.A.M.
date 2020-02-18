@@ -1,50 +1,67 @@
 <h2>VENUE</h2>
 <div>
-    Logged in as the Venue "{{currentVenue.clientName}}", located at {{currentVenue.location}}
+  Logged in as the Venue "{{currentVenue.clientName}}", located at {{currentVenue.location}}
 </div>
 <br>
 <div>
-    <button (click)='findPerformers()' class = "btn btn-primary">Schedule a Booking</button>
+  <button (click)='findPerformers()' class="btn btn-primary">Schedule a Booking</button>
 </div>
+
 <div *ngIf='listPerformers != null'>
-    <ul class="list-group">
-        <li *ngFor = 'let p of listPerformers' class = "list-group-item"> <div>
+  <div *ngIf='genreSelector =="" '>
+  <ul class="list-group">
+    <li *ngFor='let p of listPerformers' class="list-group-item">
+      <div>
         {{p.groupName}}, Performance Type:{{p.performanceType}}, Rating:{{p.rating}}, Hourly Rate:{{p.hourlyRate}}
+      </div>
+      <button (click)="choosePerformer(p)" class="btn btn-primary">Edit</button>
+    </li>
+  </ul>
+  </div>
+  <br />Filter by genre<br />
+  <input [(ngModel)]="genreSelector" placeholder="name" />
+  <button (click)='findPerformers()' class="btn btn-primary">Filter</button>
+  <div *ngIf="genreSelector">
+    <ul class="list-group">
+      <li *ngFor='let p of listPerformers' class="list-group-item">
+        <div *ngIf="p.performanceType == genreSelector">
+          {{p.groupName}}, Performance Type:{{p.performanceType}}, Rating:{{p.rating}}, Hourly Rate:{{p.hourlyRate}} <button (click)="choosePerformer(p)" class="btn btn-primary">Edit</button>
         </div>
-        <button (click)="choosePerformer(p)" class="btn btn-primary">Edit</button>
-        <br>
-        </li>
+        
+      </li>
     </ul>
+  </div>
 </div>
 
-<div *ngIf = 'CurrentPerformer != null'>
-    <div>
+<div *ngIf='CurrentPerformer != null'>
+  <div>
     Performer {{CurrentPerformer.groupName}} is being scheduled for a show at {{currentVenue.clientName}}.
-    </div>
-    <div>
-        Please provide instructions detailing the date, time, and duration of the performer's event.
-    </div>
-    <div>
-        <label>Input here:
-            <input type="text" [(ngModel)]="currentBook.timeFrame" placeholder="name"/>
-        </label>
-    </div>
-    <div *ngIf = 'currentBook.timeFrame != ""'>
-        <button (click)='sendBook()' class="btn btn-primary">Book the upcoming event</button>
-    </div>
+  </div>
+  <div>
+    Please provide instructions detailing the date, time, and duration of the performer's event.
+  </div>
+  <div>
+    <label>
+      Input here:
+      <input type="text" [(ngModel)]="currentBook.timeFrame" placeholder="name" />
+    </label>
+  </div>
+  <div *ngIf='currentBook.timeFrame != ""'>
+    <button (click)='sendBook()' class="btn btn-primary">Book the upcoming event</button>
+  </div>
 </div>
 <br>
 <div>
-    <button (click) = 'viewHistory()' class = "btn btn-primary">View and Edit {{currentVenue.clientName}} bookings</button>
+  <button (click)='viewHistory()' class="btn btn-primary">View and Edit {{currentVenue.clientName}} bookings</button>
 </div>
 
-<div *ngIf = 'bookingPage == true'>
-    <app-booking [clientSelector] = "currentVenue.clientName"></app-booking>
+<div *ngIf='bookingPage == true'>
+  <app-booking [clientSelector]="currentVenue.clientName"></app-booking>
 </div>
 
-<div *ngIf = 'sendBookingPage == true'>
-    <app-booking [currentBook] = "currentBook"></app-booking>
-</div> 
+<div *ngIf='sendBookingPage == true'>
+  <app-booking [currentBook]="currentBook"></app-booking>
+</div>
 
 <!-- <h2>Testing the Get functionality:</h2>
     <button (click)='findVenues()' class="btn btn-primary">Get Contacts</button>
@@ -60,35 +77,34 @@
     <div *ngIf='logins===null'>
         No contacts Recieved
     </div> -->
-    <!-- 
-    <br>
-    <h2>Testing the Get functionality for specific venues:</h2>
-    <div>
-        {{testingUsername}},{{testingPassword}}
-    </div>
-    <div>ENTER USERNAME TO REPLACE HERE</div>
-    <div>
-    <label>Find this username:
-        <input [(ngModel)]="testingUsername" placeholder="name"/>
-    </label>
-    </div>
-    <div>
-    <label>Find this password:
-        <input [(ngModel)]="testingPassword" placeholder="name"/>
-    </label>
-    </div>
-    
-    <button (click)='findSpecificVenues()' class="btn btn-primary">Get Username Venues</button>
-    <br>
-    <button (click)='findPasswordVenues()' class="btn btn-primary">Get Password Venues</button>
-    
-    <div *ngIf='testLogin.clientName != null'>
-        {{testLogin.clientName}}, {{testLogin.location}}, {{testLogin.clientPass}}
-    </div>
-    <div *ngIf='testLogin.clientName == null'>
-        No contacts Recieved
-    </div> -->
-    
+<!--
+<br>
+<h2>Testing the Get functionality for specific venues:</h2>
+<div>
+    {{testingUsername}},{{testingPassword}}
+</div>
+<div>ENTER USERNAME TO REPLACE HERE</div>
+<div>
+<label>Find this username:
+    <input [(ngModel)]="testingUsername" placeholder="name"/>
+</label>
+</div>
+<div>
+<label>Find this password:
+    <input [(ngModel)]="testingPassword" placeholder="name"/>
+</label>
+</div>
+
+<button (click)='findSpecificVenues()' class="btn btn-primary">Get Username Venues</button>
+<br>
+<button (click)='findPasswordVenues()' class="btn btn-primary">Get Password Venues</button>
+
+<div *ngIf='testLogin.clientName != null'>
+    {{testLogin.clientName}}, {{testLogin.location}}, {{testLogin.clientPass}}
+</div>
+<div *ngIf='testLogin.clientName == null'>
+    No contacts Recieved
+</div> -->
 <!-- <h2>Testing the Get functionality:</h2>
 <button (click)='findVenues()' class="btn btn-primary">Get Contacts</button>
 <div *ngIf='logins != null'>
@@ -103,10 +119,7 @@
 <div *ngIf='logins===null'>
     No contacts Recieved
 </div> -->
-
-
-
-<!-- 
+<!--
 <br>
 <h2>Testing the Get functionality for specific venues:</h2>
 <div>

@@ -22,7 +22,8 @@ export class VenueComponent implements OnInit {
 
   bookingPage : boolean;
 
-  sendBookingPage : boolean;
+  sendBookingPage: boolean;
+  genreSelector: string;
 
   currentBook :bookpost = {    
     groupName: '',
@@ -56,6 +57,10 @@ export class VenueComponent implements OnInit {
   sendBook(): void{
     this.bookingPage = false;
     this.sendBookingPage = true;
+  }
+
+  genreFilter(): void {
+    
   }
 
   ngOnInit(): void {
