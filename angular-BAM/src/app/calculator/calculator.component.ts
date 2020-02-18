@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Calc } from '../calc';
-import { CalculatorServiceService } from '../services/calculatorservice.service';
+import { CalculatorServiceService } from '../Services/calculatorservice.service';
 import { Performer} from '../performer';
 import { PerformersService } from '../Services/performers.service';
 
