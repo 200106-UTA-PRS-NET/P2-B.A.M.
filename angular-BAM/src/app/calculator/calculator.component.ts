@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Calc } from '../calc';
-import { CalculatorServiceService } from '../Services/calculatorservice.service';
+import { CalculatorServiceService } from '../services/calculatorservice.service';
 
 @Component({
   selector: 'app-calculator',

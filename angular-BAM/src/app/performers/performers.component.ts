@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Performer} from '../performer';
-import { PerformersService } from '../Services/performers.service';
+import { PerformersService } from '../services/performers.service';
 
 @Component({
   selector: 'app-performers',

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Tag } from '../tag';
 import { TagWithId } from '../tag';
-import { TagsService } from '../Services/tags.service';
+import { TagsService } from '../services/tags.service';
 
 
 
