@@ -7,6 +7,8 @@ import {Observable} from 'rxjs/Rx';
 import {catchError} from 'rxjs/operators';
 import {StartpageService} from '../Services/startpage.service';
 import {PerformersService} from '../Services/performers.service';
+import { Tag, TagWithId } from '../tag';
+import { TagsService } from '../Services/tags.service';
 
 @Component({
   selector: 'app-venue',
@@ -19,6 +21,8 @@ export class VenueComponent implements OnInit {
   CurrentPerformer: Performer = null;
 
   listPerformers : Performer[] = null;
+
+  performerTags : TagWithId[] = null;
 
   bookingPage : boolean;
 
@@ -33,7 +37,8 @@ export class VenueComponent implements OnInit {
     location: '',
   };
 
-  constructor(private performerservice: PerformersService) { }
+  constructor(private performerservice: PerformersService, private tagsServices: TagsService) { }
+
 
   findPerformers(): void{
     this.genreSelector = "";
@@ -51,6 +56,8 @@ export class VenueComponent implements OnInit {
       this.currentBook.location = this.currentVenue.location;
       this.currentBook.groupName = this.CurrentPerformer.groupName;
       this.currentBook.bookingStatus = "Upcoming";
+      this.tagsServices.getTagsByGroupName(this.CurrentPerformer.groupName)
+      .then(response => this.performerTags = response); 
   }
 
   viewHistory(): void{

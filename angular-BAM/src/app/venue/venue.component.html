@@ -37,6 +37,13 @@
   <div>
     Performer {{CurrentPerformer.groupName}} is being scheduled for a show at {{currentVenue.clientName}}.
   </div>
+  <div>Tags:
+    <ul class="list-group">
+      <li *ngFor='let t of performerTags' class="list-group-item">
+          {{t.tag}}
+      </li>
+  </ul>
+  </div>
   <div>
     Please provide instructions detailing the date, time, and duration of the performer's event.
   </div>
