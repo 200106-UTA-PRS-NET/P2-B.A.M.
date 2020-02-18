@@ -47,6 +47,15 @@ namespace BAM_Web_App.Controllers
             return _bookingrepo.GetGroupBookings(GroupName);
         }
 
+
+        [HttpGet("ByStatus/{GroupName}/{BookingStatus}", Name = "GetBookingsByStatus")]
+        //  [Route("Booking/GetBookingsBy")]
+        public IEnumerable<Bookings> GetBookingsByStatus(string GroupName, string BookingStatus)
+        {
+            return _bookingrepo.GetGroupBookingsByStatus(GroupName, BookingStatus);
+        }
+
+
         [HttpGet("ByClient/{ClientName}", Name = "GetBookingsCli")]
         //  [Route("Booking/GetBookingsCli")]
         public IEnumerable<Bookings> GetBookingsCli(string ClientName)

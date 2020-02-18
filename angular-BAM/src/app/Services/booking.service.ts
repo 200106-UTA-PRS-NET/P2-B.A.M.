@@ -42,6 +42,12 @@ export class BookingService {
       .toPromise();
   }
 
+  getGroupBookingByStatus(group: string, status: string): Promise<book[]> {
+    this.newUrl = this.BookUrl + "/ByStatus/" + group + "/" + status;
+    return this.http.get<book[]>(this.newUrl)
+      .toPromise();
+  }
+
   /**GET: SPECIFIC booking(s) by venue name only*/
   getVenueBooking(client: string): Promise<book[]> {
     this.newUrl = this.BookUrl + "/ByClient/" + client;

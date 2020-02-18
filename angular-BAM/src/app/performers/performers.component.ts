@@ -6,7 +6,6 @@ import { Tag, TagWithId } from '../tag';
 import { BookingService } from '../Services/Booking.service';
 import { book } from '../booking';
 import { bookput } from '../bookput'
-import { bookpost } from '../bookpost';
 
 @Component({
   selector: 'app-performers',
@@ -94,20 +93,9 @@ export class PerformersComponent implements OnInit {
   }
 
   ViewBooking(): void {
-    this.bookingservice.getGroupBooking(this.currPerformer.groupName)
+    this.bookingservice.getGroupBookingByStatus(this.currPerformer.groupName, "Upcoming")
     .then(response => this.performerBookings = response);
-    var tempArray: book[] = new Array();
-    for (let i = 0; i < this.performerBookings.length; i++){
-        if (this.performerBookings[i].bookingStatus == 'Upcoming'){
-          tempArray.push(this.performerBookings[i])
-        }
-    }
-    if (tempArray.length == 0){
-      this.performerBookings = null;
-    }
-    else {
-      this.performerBookings = tempArray;
-    }
+    
     
     this.editYourTags = false;
     this.viewBookings = true;
@@ -120,20 +108,10 @@ export class PerformersComponent implements OnInit {
   }
 
   ViewCompletedBookings(): void {
-    this.bookingservice.getGroupBooking(this.currPerformer.groupName)
+    this.bookingservice.getGroupBookingByStatus(this.currPerformer.groupName, "Completed")
     .then(response => this.performerBookings = response);
-    var tempArray: book[] = new Array();
-    for (let i = 0; i < this.performerBookings.length; i++){
-        if (this.performerBookings[i].bookingStatus == 'Completed'){
-          tempArray.push(this.performerBookings[i])
-        }
-    }
-    if (tempArray.length == 0){
-      this.performerBookings = null;
-    }
-    else {
-      this.performerBookings = tempArray;
-    }
+   
+   
     
 
     this.editYourTags = false;
