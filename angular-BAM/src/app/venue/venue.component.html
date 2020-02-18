@@ -1,6 +1,6 @@
 <h2>VENUE</h2>
 <div>
-    Logged in as Venue {{CurrentVenue.clientName}}, located at {{CurrentVenue.location}}
+    Logged in as Venue {{currentVenue.clientName}}, located at {{currentVenue.location}}
 </div>
 <div>
     <button (click)='findPerformers()' class = "btn btn-primary">Schedule a Booking</button>
@@ -18,23 +18,32 @@
 
 <div *ngIf = 'CurrentPerformer != null'>
     <div>
-    Performer {{CurrentPerformer.groupName}} is being scheduled for a show at {{CurrentVenue.clientName}}.
+    Performer {{CurrentPerformer.groupName}} is being scheduled for a show at {{currentVenue.clientName}}.
     </div>
     <div>
-        Please place a time in which to start and a duration in which to perform...
+        Please provide instructions detailing the date, time, and duration of the performer's event.
     </div>
     <div>
-        NOT IMPLEMENTED YET.
+        <label>Input here:
+            <input type="text" [(ngModel)]="currentBook.timeFrame" placeholder="name"/>
+        </label>
+    </div>
+    <div *ngIf = 'currentBook.timeFrame != ""'>
+        <button (click)='sendBook()' class="btn btn-primary">Book the upcoming event</button>
     </div>
 </div>
-
+<br>
 <div>
-    <button (click) = 'viewHistory()' class = "btn btn-primary">View and Edit the Booking History of {{CurrentVenue.clientName}}</button>'
+    <button (click) = 'viewHistory()' class = "btn btn-primary">View and Edit {{currentVenue.clientName}} bookings</button>
 </div>
 
 <div *ngIf = 'bookingPage == true'>
     <app-booking></app-booking>
 </div>
+
+<div *ngIf = 'sendBookingPage == true'>
+    <app-booking [currentBook] = "currentBook"></app-booking>
+</div> 
 
 <!-- <h2>Testing the Get functionality:</h2>
     <button (click)='findVenues()' class="btn btn-primary">Get Contacts</button>
