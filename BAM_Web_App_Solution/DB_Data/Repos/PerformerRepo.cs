@@ -51,6 +51,7 @@ namespace DB_Data.Repos
                 per.PerformanceType =(performers.PerformanceType != null) ? performers.PerformanceType : per.PerformanceType;
                 per.HourlyRate = (performers.HourlyRate != 0) ? performers.HourlyRate : per.HourlyRate;
                 per.Rating = (performers.Rating != null) ? performers.Rating : per.Rating;
+                per.TotalCost = (performers.TotalCost != 0) ? performers.TotalCost : per.TotalCost;
                 //per.Tags = performers.Tags;
                 bdb.Performers.Update(per);
                 bdb.SaveChanges();
