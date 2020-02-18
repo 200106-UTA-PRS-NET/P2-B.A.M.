@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Repo_Lib.Abstractions;
 using DB_Data.Models;
-using DB_Data.Repos;
 
 namespace BAM_Web_App.Controllers
 {
@@ -75,9 +73,7 @@ namespace BAM_Web_App.Controllers
         [HttpPut("{BookingId}")]
         public IActionResult PutBookings(int BookingId, int Score, [FromBody] Bookings bookings) 
         {
-            //CHECK IF NULL/0 from here
             bookings.BookingId = BookingId;
-          //  bookings.Score = Score;
             if (_bookingrepo.GetBookings().FirstOrDefault<Bookings>(x => x.BookingId == BookingId) is Bookings oldbooking)
             {
 

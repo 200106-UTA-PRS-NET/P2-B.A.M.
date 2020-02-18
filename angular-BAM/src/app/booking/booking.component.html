@@ -30,9 +30,17 @@
       No bookings found
     </div>
   </div>
+<br>
+<br>
+  <div>
+    <label>
+      Search by Performer Name:<br />
+      <input [(ngModel)]="groupSelector" placeholder="name" />
+    </label>
+  </div>
 
   <div *ngIf = 'groupSelector != null'>
-    <button (click) = 'findGroupBookings()' class = "btn btn-primary">Retrieve Bookings from {{groupSelector}}</button>
+    <button (click) = 'findGroupBookings()' class = "btn btn-primary">Retrieve Bookings with {{groupSelector}}</button>
     <div *ngIf='grobooks != null'>
       <p>Bookings:</p>
       <ul class="list-group">
@@ -93,36 +101,6 @@
   </div>
   <div *ngIf='this.calculator'>
     <app-calculator [pName] = "storedPerformer"></app-calculator>
-  </div>
-
-  <h3>Search by Parameter</h3>
-
-  <div>
-    <label>
-      ID to query:<br />
-      <input [(ngModel)]="idSelector" placeholder="name" />
-    </label>
-  </div>
-  <div>
-    <label>
-      Group to query:<br />
-      <input [(ngModel)]="groupSelector" placeholder="name" />
-    </label>
-  </div>
-  <!-- <div>
-    <label>
-      Client to query:<br />
-      <input [(ngModel)]="clientSelector" placeholder="name" />
-    </label>
-  </div> -->
-
-  <div *ngIf="idSelector">
-    <button (click)='findIdBookings()' class="btn btn-primary">Search for this ID</button>
-
-    <div *ngIf='otherBook.bookingId != null'>
-
-      Booking no.{{otherBook.bookingId}}, {{otherBook.groupName}}, scheduled for: {{otherBook.timeFrame}}, status: {{otherBook.bookingStatus}}, at: {{otherBook.clientName}}, in: {{otherBook.location}}, review: {{otherBook.review}}, score: {{otherBook.score}}
-    </div>
   </div>
 
 <!-- 
