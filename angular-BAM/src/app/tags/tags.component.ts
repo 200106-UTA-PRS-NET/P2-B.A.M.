@@ -39,6 +39,7 @@ export class TagsComponent implements OnInit {
     this.tagId = null;
   }
 
+
   createTag(): void {
     this.currTag.groupName = this.performerName;
     this.tagsServices.postTag(this.currTag);

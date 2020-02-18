@@ -1,12 +1,12 @@
 <h2>TAGS</h2>
 <div>
     <h4>Create a tag</h4>
-    Tag <input type="text" [(ngModel)]="currTag.tag"><br>
-    <button (click)="createTag()">Create</button>
+    Tag <br><input type="text" [(ngModel)]="currTag.tag"><br>
+    <button (click)="createTag()" id="success">Create</button>
 </div>
 
 <div>
     <h4>remove a tag</h4>
     Tag Id <input type="number" [(ngModel)]="tagId"><br>
-    <button (click)="removeTag()">Delete Tag</button>
+    <button (click)="removeTag()" id="cancel">Delete Tag</button>
 </div>

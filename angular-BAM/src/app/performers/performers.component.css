@@ -1,0 +1,18 @@
+.menuButton {
+    width: 200px;
+    color: wheat;
+    background-color: #3535fd;
+}
+
+.menuButton:hover {
+    color: purple
+}
+
+.cancel {
+    color: wheat;
+    background-color: rgb(255, 13, 13);
+}
+
+.cancel:hover{
+    color: purple
+}
