@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import {Observable} from 'rxjs/Rx';
 import {catchError} from 'rxjs/operators';
 import {BookingService} from '../services/booking.service';
+
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
@@ -13,14 +14,17 @@ import {BookingService} from '../services/booking.service';
 })
 export class BookingComponent implements OnInit {
 @Input() currentBook : book;
-@Input()   clientSelector: string;
+@Input() clientSelector: string;
 @Input() groupSelector: string;
 
   books: book[] = null;
   clibooks: book[] = null;
   grobooks: book[] = null;
+  
+  calculator:boolean = false;
 
   bookSelector: number;
+  //groupSelector: string
   idSelector: number;
   //clientSelector: string;
   putbookingId: number;
@@ -69,7 +73,19 @@ export class BookingComponent implements OnInit {
     review:null,
     score: null,
   }
+
+  storedPerformer: string;
+
   constructor(private bookingservice: BookingService) { }
+
+  calculateWage(): void{
+    this.calculator = true;
+  }
+
+  storePerformer(s: string, i:number): void{
+    this.storedPerformer = s;
+    this.putbookingId = i;
+  }
 
   findBookings(): void{
     this.bookingservice.getBooking()
@@ -98,6 +114,7 @@ export class BookingComponent implements OnInit {
     //this.otherBook.location = '';
     //this.otherBook.review = '';
     //this.otherBook.score = null;
+    this.calculator = false;
     this.bookingservice.getGroupBooking(this.groupSelector)
       .then(response => this.grobooks = response);
   }
@@ -111,6 +128,7 @@ export class BookingComponent implements OnInit {
    // this.otherBook.location = '';
    // this.otherBook.review = '';
    // this.otherBook.score = null;
+   this.calculator = false;
     this.bookingservice.getVenueBooking(this.clientSelector)
       .then(response => this.clibooks = response);
   }
@@ -124,6 +142,7 @@ export class BookingComponent implements OnInit {
     this.bookingservice.postBooking(b);
   }
   changeBooking(): void {
+    this.calculator = false;
     this.practiceBook.review = this.putBook.review;
     this.practiceBook.bookingStatus = this.putBook.bookingStatus;
     this.practiceBook.score = this.putBook.score;

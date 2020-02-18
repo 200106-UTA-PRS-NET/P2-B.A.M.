@@ -16,7 +16,7 @@
       <ul class="list-group">
         <li *ngFor='let boo of clibooks'
             class="list-group-item">
-          {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}} <button (click)="putbookingId = boo.bookingId" class="btn btn-primary">Edit</button>
+          {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}} <button (click)="storePerformer(boo.groupName,boo.bookingId)" class="btn btn-primary">Edit</button>
         </li>
       </ul>
     </div>
@@ -32,7 +32,7 @@
       <ul class="list-group">
         <li *ngFor='let boo of grobooks'
             class="list-group-item">
-          {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}} <button (click)="putbookingId = boo.bookingId" class="btn btn-primary">Edit</button>
+          {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}} <button (click)="storePerformer(boo.groupName,boo.bookingId)" class="btn btn-primary">Edit</button>
         </li>
       </ul>
     </div>
@@ -57,7 +57,7 @@
   </div>
   <br> -->
 
-  <div *ngIf='putbookingId && putbookingId != null'></div>
+  <div *ngIf='putbookingId && putbookingId != null'>
   <h3>Edit existing booking </h3>
   <div>
       ID of the booking to be edited: {{putbookingId}}
@@ -90,6 +90,11 @@
 
     <br>
     <button (click)='changeBooking()' class="btn btn-primary">Edit selected booking info</button>
+    <br>
+    <button (click)='calculateWage()' class="btn btn-primary">Calculate payment for this booking</button>
+  </div>
+  <div *ngIf='this.calculator'>
+    <app-calculator [pName] = "storedPerformer"></app-calculator>
   </div>
 
   <h3>Search by Parameter</h3>
