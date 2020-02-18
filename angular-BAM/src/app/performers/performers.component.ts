@@ -89,6 +89,7 @@ export class PerformersComponent implements OnInit {
     this.yourInfo = false;
     this.updateInfo = false;
     this.cancelBooking = false;
+    this.performerTagsList = null;
    
   }
 
@@ -101,7 +102,12 @@ export class PerformersComponent implements OnInit {
           tempArray.push(this.performerBookings[i])
         }
     }
-    this.performerBookings = tempArray;
+    if (tempArray.length == 0){
+      this.performerBookings = null;
+    }
+    else {
+      this.performerBookings = tempArray;
+    }
     
     this.editYourTags = false;
     this.viewBookings = true;
@@ -110,6 +116,7 @@ export class PerformersComponent implements OnInit {
     this.yourInfo = false;
     this.updateInfo = false;
     this.cancelBooking = false;
+    
   }
 
   ViewCompletedBookings(): void {
@@ -121,7 +128,14 @@ export class PerformersComponent implements OnInit {
           tempArray.push(this.performerBookings[i])
         }
     }
-    this.performerBookings = tempArray;
+    if (tempArray.length == 0){
+      this.performerBookings = null;
+    }
+    else {
+      this.performerBookings = tempArray;
+    }
+    
+
     this.editYourTags = false;
     this.viewBookings = false;
     this.viewCompletedBookings = true;
@@ -129,6 +143,7 @@ export class PerformersComponent implements OnInit {
     this.yourInfo = false;
     this.updateInfo = false;
     this.cancelBooking = false;
+   
   }
 
   BookingHistory(): void {
@@ -141,6 +156,7 @@ export class PerformersComponent implements OnInit {
     this.yourInfo = false;
     this.updateInfo = false;
     this.cancelBooking = false;
+    
   }
 
   YourInfo(): void {
@@ -151,6 +167,7 @@ export class PerformersComponent implements OnInit {
     this.yourInfo = true;
     this.updateInfo = false;
     this.cancelBooking = false;
+    this.performerTagsList = null;
   }
 
   UpdateInfo(): void {
@@ -161,18 +178,13 @@ export class PerformersComponent implements OnInit {
     this.yourInfo = false;
     this.updateInfo = true;
     this.cancelBooking = false;
+    this.performerTagsList = null;
   }
 
   CancelBooking(): void {
-    this.tagsServices.getTagsByGroupName(this.currPerformer.groupName)
-    .then(response => this.performerTagsList = response);
-    var tempArray: book[] = new Array();
-    for (let i = 0; i < this.performerBookings.length; i++){
-        if (this.performerBookings[i].bookingStatus == 'Upcoming'){
-          tempArray.push(this.performerBookings[i])
-        }
-    }
-    this.performerBookings = tempArray;
+    this.bookingservice.getGroupBooking(this.currPerformer.groupName)
+    .then(response => this.performerBookings = response);
+   
     this.editYourTags = false;
     this.viewBookings = false;
     this.viewCompletedBookings = false;
@@ -180,6 +192,7 @@ export class PerformersComponent implements OnInit {
     this.yourInfo = false;
     this.updateInfo = false;
     this.cancelBooking = true;
+
   }
 
 
@@ -191,6 +204,6 @@ export class PerformersComponent implements OnInit {
     this.yourInfo = false;
     this.updateInfo = false;
     this.cancelBooking = false;
-    this.selectedBooking = null;
+    this.performerBookings = null;
   }
 }
