@@ -3,6 +3,8 @@ import { Performer} from '../performer';
 import { PerformersService } from '../Services/performers.service';
 import { TagsService } from '../Services/tags.service';
 import { Tag, TagWithId } from '../tag';
+import { BookingService } from '../Services/Booking.service';
+import { book } from '../booking';
 
 @Component({
   selector: 'app-performers',
@@ -20,8 +22,9 @@ export class PerformersComponent implements OnInit {
   cancelBooking: boolean = false;
 
   performerTagsList: TagWithId[] = null;
-
   performersList: Performer[] = null;
+  performerBookings: book[] = null;
+
 
   tempPerformer: Performer = {
     groupName: null,
@@ -32,7 +35,7 @@ export class PerformersComponent implements OnInit {
     totalCost: null
   };
   
-  constructor(private perfomersService: PerformersService, public tagsServices: TagsService) { }
+  constructor(private perfomersService: PerformersService, public tagsServices: TagsService, private bookingservice: BookingService) { }
 
   ngOnInit(): void {
   }
@@ -52,6 +55,9 @@ export class PerformersComponent implements OnInit {
     this.perfomersService.putPerformer(this.currPerformer.groupName, this.currPerformer);
   }
 
+ 
+
+
   //////////
   editTags(): void{
     this.tagsServices.getTagsByGroupName(this.currPerformer.groupName)
@@ -61,10 +67,26 @@ export class PerformersComponent implements OnInit {
   }
 
   ViewBooking(): void {
-    
+    this.bookingservice.getGroupBooking(this.currPerformer.groupName)
+    .then(response => this.performerBookings = response);
+    this.viewBookings = true;
   }
 
+  BookingHistory(): void {
+    this.bookingHistory = true;
+  }
 
+  YourInfo(): void {
+    this.yourInfo = true;
+  }
+
+  UpdateInfo(): void {
+    this.updateInfo = true;
+  }
+
+  CancelBooking(): void {
+    this.cancelBooking = true;
+  }
 
   back(): void {
     this.editYourTags = false;

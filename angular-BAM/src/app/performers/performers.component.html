@@ -4,7 +4,7 @@
            <button (click)="editTags()">Configure Tags</button>
         </li>
         <li>
-            <span>View Current Bookings</span>
+            <button (click)="ViewBooking()">View Current Bookings</button>
         </li>
         <li>
             <span>Performance Booking History</span>
@@ -32,6 +32,18 @@
             </li>
         </ul>
         <app-tags [performerName]="currPerformer.groupName"></app-tags>
+        <button (click)="back()">Back</button>
+   </div>
+
+   <div *ngIf="viewBookings == true">
+        <h4>Your Current Bookings</h4>
+        <ul class="list-group">
+            <li *ngFor='let boo of performerBookings' class="list-group-item">
+                <div *ngIf="boo.bookingStatus == 'Upcoming'">
+                    {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}}
+                </div>
+            </li>
+        </ul>
         <button (click)="back()">Back</button>
    </div>
 </div>
