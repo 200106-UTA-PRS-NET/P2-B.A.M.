@@ -1,47 +1,11 @@
-<h2>Welcome!</h2>
-
-<button (click)='getTags()' class="btn btn-primary">Get Tags</button>
-<div *ngIf='tagsList != null'>
-<h1>Tags</h1>
-<ul class="list-group">
-    <li *ngFor='let t of tagsList'
-    class="list-group-item">
-        {{t.tagId}} {{t.tag}} {{t.groupName}}
-    </li>
-</ul>
-</div>
-
-
 <div>
-    Get Tag by Id <input type="number" [(ngModel)]="tagId"><br>
-    <button (click)="getTagById()">hey</button>
-    <div *ngIf="tagById != null">
-        {{tagById.tagId}}<br>
-        {{tagById.tag}}<br>
-        {{tagById.groupName}}<br>
-    </div>
-</div>
-
-<div>
-    <h3>create a tag</h3>
+    <h4>Create a tag</h4>
     Tag <input type="text" [(ngModel)]="currTag.tag"><br>
-    groupName <input type="text" [(ngModel)]="currTag.groupName"><br>
-    <button (click)="createTag()">create</button>
+    <button (click)="createTag()">Create</button>
 </div>
 
 <div>
-    <h3>remove a tag</h3>
+    <h4>remove a tag</h4>
     Tag Id <input type="number" [(ngModel)]="tagId"><br>
     <button (click)="removeTag()">Delete Tag</button>
-</div>
-
-
-<div *ngIf="performerTagsList != null">
-    <h1>Your Tags</h1>
-    <ul class="list-group">
-        <li *ngFor='let t of performerTagsList' class="list-group-item">
-            {{t.tagId}} {{t.tag}} {{t.groupName}}
-        </li>
-    </ul>
-    <button (click)="back()">Back</button>
 </div>

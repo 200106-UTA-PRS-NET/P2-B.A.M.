@@ -124,6 +124,6 @@
 </div>
 <div *ngIf='CurrentPerformer.groupName != ""'>
     {{CurrentPerformer.groupName}}, {{CurrentPerformer.hourlyRate}}
-    <app-performers></app-performers>
+    <app-performers [currPerformer] = "CurrentPerformer"></app-performers>
     <app-booking></app-booking>
 </div>
