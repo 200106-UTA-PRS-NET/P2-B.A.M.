@@ -1,16 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HttpClientModule } from '@angular/common/http';
-import { TagsService } from './tags.service';
+import { CalculatorServiceService } from './calculatorservice.service';
 
-describe('TagsService', () => {
-  let service: TagsService;
+describe('CalculatorServiceService', () => {
+  let service: CalculatorServiceService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [TagsService]});
-    service = TestBed.inject(TagsService);
+      imports: [HttpClientTestingModule, HttpClientModule],
+
+      providers: [CalculatorServiceService]});
+    service = TestBed.inject(CalculatorServiceService);
   });
 
   it('should be created', () => {

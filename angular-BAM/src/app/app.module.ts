@@ -13,6 +13,7 @@ import { PerformersComponent } from './performers/performers.component';
 import { BookingComponent } from './booking/booking.component';
 import { TagsComponent } from './tags/tags.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
