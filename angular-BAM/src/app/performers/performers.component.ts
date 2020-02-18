@@ -3,7 +3,7 @@ import { Performer} from '../performer';
 import { PerformersService } from '../Services/performers.service';
 import { TagsService } from '../Services/tags.service';
 import { Tag, TagWithId } from '../tag';
-import { BookingService } from '../Services/Booking.service';
+import { BookingService } from '../Services/booking.service';
 import { book } from '../booking';
 import { bookput } from '../bookput'
 

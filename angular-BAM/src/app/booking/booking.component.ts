@@ -5,7 +5,7 @@ import { bookput } from '../bookput';
 import { HttpClient } from '@angular/common/http';
 import {Observable} from 'rxjs/Rx';
 import {catchError} from 'rxjs/operators';
-import {BookingService} from '../services/booking.service';
+import {BookingService} from '../Services/booking.service';
 
 @Component({
   selector: 'app-booking',
