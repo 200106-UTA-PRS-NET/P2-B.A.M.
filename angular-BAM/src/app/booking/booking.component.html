@@ -46,22 +46,6 @@
       No bookings found
     </div>
   </div>
-  
-
- <!-- <button (click)='findBookings()' class="btn btn-primary">Retrieve Bookings</button>
-  <div *ngIf='books != null'>
-    <p>Bookings:</p>
-    <ul class="list-group">
-      <li *ngFor='let boo of books'
-          class="list-group-item">
-        {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}} <button (click)="putbookingId = boo.bookingId" class="btn btn-primary">Edit</button>
-      </li>
-    </ul>
-  </div>
-  <div *ngIf='books===null'>
-    No bookings found
-  </div>
-  <br> -->
 
   <div *ngIf='putbookingId && putbookingId != null'>
   <h3>Edit existing booking </h3>
