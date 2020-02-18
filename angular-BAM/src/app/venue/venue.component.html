@@ -39,7 +39,7 @@
 </div>
 
 <div *ngIf = 'bookingPage == true'>
-    <app-booking></app-booking>
+    <app-booking [clientSelector] = "currentVenue.clientName"></app-booking>
 </div>
 
 <div *ngIf = 'sendBookingPage == true'>

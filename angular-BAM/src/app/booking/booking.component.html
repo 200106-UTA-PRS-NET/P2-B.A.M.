@@ -6,123 +6,138 @@
   </p>
   
   <button (click)="addThisBooking(currentBook)">Create Booking</button>
+
 </div>
 <div *ngIf = 'currentBook == null'>
+  <div *ngIf = 'clientSelector != null'>
+    <button (click) = 'findClientBookings()' class = "btn btn-primary">Retrieve Bookings from {{clientSelector}}</button>
+    <div *ngIf='clibooks != null'>
+      <p>Bookings:</p>
+      <ul class="list-group">
+        <li *ngFor='let boo of clibooks'
+            class="list-group-item">
+          {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}} <button (click)="putbookingId = boo.bookingId" class="btn btn-primary">Edit</button>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf='clibooks===null'>
+      No bookings found
+    </div>
+  </div>
+  
 
-<button (click)='findBookings()' class="btn btn-primary">Retrieve Bookings</button>
-<div *ngIf='books != null'>
-  <p>Bookings:</p>
-  <ul class="list-group">
-    <li *ngFor='let boo of books'
-        class="list-group-item">
-      {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}} <button (click)="putbookingId = boo.bookingId" class="btn btn-primary">Edit</button>
-    </li>
-  </ul>
-</div>
-<div *ngIf='books===null'>
-  No bookings found
-</div>
-<br>
+ <!-- <button (click)='findBookings()' class="btn btn-primary">Retrieve Bookings</button>
+  <div *ngIf='books != null'>
+    <p>Bookings:</p>
+    <ul class="list-group">
+      <li *ngFor='let boo of books'
+          class="list-group-item">
+        {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}} <button (click)="putbookingId = boo.bookingId" class="btn btn-primary">Edit</button>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf='books===null'>
+    No bookings found
+  </div>
+  <br> -->
 
 
-<h3>Edit existing booking </h3>
-<div>
-  <label>
-    Begin by entering the ID of the booking to be edited:<br>
-    <input [(ngModel)]="putbookingId" placeholder="name" />
-  </label>
-</div>
-<div *ngIf='putbookingId && putbookingId != null'>
+  <h3>Edit existing booking </h3>
+  <div>
+      ID of the booking to be edited: {{putbookingId}}
+  </div>
+  <div *ngIf='putbookingId && putbookingId != null'>
+    <br />
+    <div>
+      <label>
+        Status:<br>
+        <input [(ngModel)]="putBook.bookingStatus" placeholder="name" />
+      </label>
+    </div>
+    <br>
+
+    <div>
+      <label>
+        Review info (limit 255 char):<br>
+        <input [(ngModel)]="putBook.review" placeholder="name" />
+      </label>
+    </div>
+    <br>
+
+    <div>
+      <label>
+        Rating 1-5:<br>
+        <input type=number [(ngModel)]="putBook.score" placeholder="name" />
+      </label>
+      <!-- <input [(ngModel)]="putBook.score" placeholder="name" /> -->
+      <!-- </label> -->
+    </div>
+
+    <br>
+    <button (click)='changeBooking()' class="btn btn-primary">Edit selected booking info</button>
+  </div>
+
+
+  <h3>Search by Parameter</h3>
+
+  <div>
+    <label>
+      ID to query:<br />
+      <input [(ngModel)]="idSelector" placeholder="name" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Group to query:<br />
+      <input [(ngModel)]="groupSelector" placeholder="name" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Client to query:<br />
+      <input [(ngModel)]="clientSelector" placeholder="name" />
+    </label>
+  </div>
+
+  <div *ngIf="idSelector">
+    <button (click)='findIdBookings()' class="btn btn-primary">Search for this ID</button>
+
+    <div *ngIf='otherBook.bookingId != null'>
+
+      Booking no.{{otherBook.bookingId}}, {{otherBook.groupName}}, scheduled for: {{otherBook.timeFrame}}, status: {{otherBook.bookingStatus}}, at: {{otherBook.clientName}}, in: {{otherBook.location}}, review: {{otherBook.review}}, score: {{otherBook.score}}
+    </div>
+  </div>
+<!-- 
+  <div *ngIf="groupSelector">
+    <button (click)='findGroupBookings()' class="btn btn-primary">Search for this Group</button>
+    <div *ngIf='grobooks != null'>
+      <p>Bookings:</p>
+      <ul class="list-group">
+        <li *ngFor='let boo of grobooks'
+            class="list-group-item">
+          {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div *ngIf="clientSelector">
+    <button (click)='findClientBookings()' class="btn btn-primary">Search for this Client</button>
+    <div *ngIf='clibooks != null'>
+      <p>Bookings:</p>
+      <ul class="list-group">
+        <li *ngFor='let boo of clibooks'
+            class="list-group-item">
+          {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}}
+        </li>
+      </ul>
+    </div>
+  </div> -->
   <br />
-  <div>
-    <label>
-      Status:<br>
-      <input [(ngModel)]="putBook.bookingStatus" placeholder="name" />
-    </label>
-  </div>
-  <br>
+  <app-calculator></app-calculator>
+  <br />
 
-  <div>
-    <label>
-      Review info (limit 255 char):<br>
-      <input [(ngModel)]="putBook.review" placeholder="name" />
-    </label>
-  </div>
-  <br>
-
-  <div>
-    <label>
-      Rating 1-5:<br>
-      <input type=number [(ngModel)]="putBook.score" placeholder="name" />
-    </label>
-    <!-- <input [(ngModel)]="putBook.score" placeholder="name" /> -->
-    <!-- </label> -->
-  </div>
-
-  <br>
-  <button (click)='changeBooking()' class="btn btn-primary">Edit selected booking info</button>
-</div>
-
-
-<h3>Search by Parameter</h3>
-
-<div>
-  <label>
-    ID to query:<br />
-    <input [(ngModel)]="idSelector" placeholder="name" />
-  </label>
-</div>
-<div>
-  <label>
-    Group to query:<br />
-    <input [(ngModel)]="groupSelector" placeholder="name" />
-  </label>
-</div>
-<div>
-  <label>
-    Client to query:<br />
-    <input [(ngModel)]="clientSelector" placeholder="name" />
-  </label>
-</div>
-
-<div *ngIf="idSelector">
-  <button (click)='findIdBookings()' class="btn btn-primary">Search for this ID</button>
-
-  <div *ngIf='otherBook.bookingId != null'>
-
-    Booking no.{{otherBook.bookingId}}, {{otherBook.groupName}}, scheduled for: {{otherBook.timeFrame}}, status: {{otherBook.bookingStatus}}, at: {{otherBook.clientName}}, in: {{otherBook.location}}, review: {{otherBook.review}}, score: {{otherBook.score}}
-  </div>
-</div>
-
-<div *ngIf="groupSelector">
-  <button (click)='findGroupBookings()' class="btn btn-primary">Search for this Group</button>
-  <div *ngIf='grobooks != null'>
-    <p>Bookings:</p>
-    <ul class="list-group">
-      <li *ngFor='let boo of grobooks'
-          class="list-group-item">
-        {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}}
-      </li>
-    </ul>
-  </div>
-</div>
-
-<div *ngIf="clientSelector">
-  <button (click)='findClientBookings()' class="btn btn-primary">Search for this Client</button>
-  <div *ngIf='clibooks != null'>
-    <p>Bookings:</p>
-    <ul class="list-group">
-      <li *ngFor='let boo of clibooks'
-          class="list-group-item">
-        {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}}
-      </li>
-    </ul>
-  </div>
-</div>
-<br />
-<app-calculator></app-calculator>
-<br />
-<h3>Create new Booking</h3>
+<!-- <h3>Create new Booking</h3>
 <div>
   <div>
     <label>
@@ -168,5 +183,5 @@
     <br />
     <button (click)="addBookings()">Create Booking</button>
   </div>
-</div>
+</div> -->
 </div>

@@ -13,6 +13,8 @@ import {BookingService} from '../Services/Booking.service';
 })
 export class BookingComponent implements OnInit {
 @Input() currentBook : book;
+@Input()   clientSelector: string;
+
   books: book[] = null;
   clibooks: book[] = null;
   grobooks: book[] = null;
@@ -20,7 +22,7 @@ export class BookingComponent implements OnInit {
   bookSelector: number;
   groupSelector: string;
   idSelector: number;
-  clientSelector: string;
+  //clientSelector: string;
   putbookingId: number;
   putScore: number;
   editval: number;
@@ -118,7 +120,6 @@ export class BookingComponent implements OnInit {
 
   addThisBooking(b:bookpost): void{
     this.bookingservice.postBooking(b);
-    this.currentBook = null;
   }
   changeBooking(): void {
     this.practiceBook.review = this.putBook.review;
