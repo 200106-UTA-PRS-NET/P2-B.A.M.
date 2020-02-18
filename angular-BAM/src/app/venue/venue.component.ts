@@ -36,6 +36,7 @@ export class VenueComponent implements OnInit {
   constructor(private performerservice: PerformersService) { }
 
   findPerformers(): void{
+    this.genreSelector = "";
     this.sendBookingPage = false;
     this.performerservice.getPerformers()
     .then(response => this.listPerformers = response);
@@ -69,6 +70,7 @@ export class VenueComponent implements OnInit {
   ngOnInit(): void {
     this.bookingPage = false;
     this.sendBookingPage = false;
+    this.genreSelector = null;
   }
 
 }
