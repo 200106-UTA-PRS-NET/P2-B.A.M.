@@ -1,129 +1,135 @@
-<h2>Welcome!</h2>
+<h2>BOOKING BOOGIE</h2>
+<div *ngIf="CurrentVenue.clientName == '' && CurrentPerformer.groupName == ''">
+    <h2>Please choose to access our site as a Venue or as a Performer</h2>
 
-<br>
-<h2>Please choose to access our site as a Venue or as a Performer</h2>
+    <button (click)="choice('Venue')" class="btn btn-primary">Choose Venues</button>
+    <br>
+    <button (click)="choice('Performer')" class="btn btn-primary">Choose Performers</button>
 
-<button (click)="choice('Venue')" class="btn btn-primary">Choose Venues</button>
-<br>
-<button (click)="choice('Performer')" class="btn btn-primary">Choose Performers</button>
-
-<br>
-<br>
-<div *ngIf="chosen">
-    <span>We are working with </span>{{chosen}}
     <br>
-    <button (click)="secondChoice('Up')" class="btn btn-primary">Choose Sign up with a new account</button>
     <br>
-    <button (click)="secondChoice('In')" class="btn btn-primary">Choose Sign in with an existing account</button>
-    <br>
-</div>
-<br>
-<br>
-<div *ngIf="chosen=='Performer'">
-    <div *ngIf="chosen2=='In'">
-        Signing In as a Performer
+    <div *ngIf="chosen">
+        <span>We are working with </span>{{chosen}}
         <br>
-        <label>username:
-            <input [(ngModel)]="testingUsername" placeholder="name"/>
-        </label>
+        <button (click)="secondChoice('Up')" class="btn btn-primary">Choose Sign up with a new account</button>
         <br>
-        <label>password:
-         <input [(ngModel)]="testingPassword" placeholder="name"/>
-        </label>
-        <div *ngIf="testingUsername">
-            <div *ngIf="testingPassword">
-                 <button (click) = "findPasswordPerformer()">SIGN IN NOW</button>
+        <button (click)="secondChoice('In')" class="btn btn-primary">Choose Sign in with an existing account</button>
+        <br>
+    </div>
+    <br>
+    <br>
+    <div *ngIf="chosen=='Performer'">
+        <div *ngIf="chosen2=='In'">
+            Signing In as a Performer
+            <br>
+            <label>username:
+                <input [(ngModel)]="testingUsername" placeholder="name"/>
+            </label>
+            <br>
+            <label>password:
+            <input [(ngModel)]="testingPassword" placeholder="name"/>
+            </label>
+            <div *ngIf="testingUsername">
+                <div *ngIf="testingPassword">
+                    <button (click) = "findPasswordPerformer()">SIGN IN NOW</button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div *ngIf="chosen2=='Up'">
-        Signing up as a performer
-        <label>username:
-            <input type="text" [(ngModel)]="PLogin.groupName" placeholder="name"/>
-        </label>
-        <br>
-        <label>performanceType:
-            <input type="text" [(ngModel)]="PLogin.performanceType" placeholder="name"/>
-        </label>
-        <br>
-        <label>hourlyRate:
-            <input type = "number" [(ngModel)]="PLogin.hourlyRate" placeholder="name"/>
-        </label>
-        <br>
-        <label>rating:
-            <input type = "text" [(ngModel)]="PLogin.rating" placeholder="name"/>
-        </label>
-        <br>
-        <label>password:
-        <input type = "password" [(ngModel)]="PLogin.groupPass" placeholder="name"/>
-        </label>
-        <br>
-        <div *ngIf="PLogin.groupName">
-            <div *ngIf="PLogin.performanceType">
-                <div *ngIf="PLogin.hourlyRate">
-                    <div *ngIf="PLogin.rating">
-                        <div *ngIf="PLogin.groupPass">
-                            <button (click) = "registerP()">SIGN UP NOW</button>
-                         </div>
+        <div *ngIf="chosen2=='Up'">
+            Signing up as a performer
+            <label>username:
+                <input type="text" [(ngModel)]="PLogin.groupName" placeholder="name"/>
+            </label>
+            <br>
+            <label>performanceType:
+                <input type="text" [(ngModel)]="PLogin.performanceType" placeholder="name"/>
+            </label>
+            <br>
+            <label>hourlyRate:
+                <input type = "number" [(ngModel)]="PLogin.hourlyRate" placeholder="name"/>
+            </label>
+            <br>
+            <label>rating:
+                <input type = "text" [(ngModel)]="PLogin.rating" placeholder="name"/>
+            </label>
+            <br>
+            <label>password:
+            <input type = "password" [(ngModel)]="PLogin.groupPass" placeholder="name"/>
+            </label>
+            <br>
+            <div *ngIf="PLogin.groupName">
+                <div *ngIf="PLogin.performanceType">
+                    <div *ngIf="PLogin.hourlyRate">
+                        <div *ngIf="PLogin.rating">
+                            <div *ngIf="PLogin.groupPass">
+                                <button (click) = "registerP()">SIGN UP NOW</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div *ngIf="chosen=='Venue'">
+    <div *ngIf="chosen=='Venue'">
 
-    <div *ngIf="chosen2=='In'">
-        Signing In as a Venue:
-        <br>
-        <label>username:
-            <input [(ngModel)]="testingUsername" placeholder="name"/>
-        </label>
-        <br>
-        <label>password:
-            <input [(ngModel)]="testingPassword" placeholder="name"/>
-        </label>
-        <div *ngIf="testingUsername">
-            <div *ngIf="testingPassword">
-                 <button (click) = "findPasswordVenues()">SIGN IN NOW</button>
+        <div *ngIf="chosen2=='In'">
+            Signing In as a Venue:
+            <br>
+            <label>username:
+                <input [(ngModel)]="testingUsername" placeholder="name"/>
+            </label>
+            <br>
+            <label>password:
+                <input [(ngModel)]="testingPassword" placeholder="name"/>
+            </label>
+            <div *ngIf="testingUsername">
+                <div *ngIf="testingPassword">
+                    <button (click) = "findPasswordVenues()">SIGN IN NOW</button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div *ngIf="chosen2=='Up'">
-        <div>ENTER THE DETAILS OF THE REPLACING VENUE HERE.</div>
-        Signing Up as a Venue:
-        <br>
-        <label>username:
-        <input [(ngModel)]="VLogin.clientName" placeholder="name"/>
-        </label>
-        <br>
-        <label>location:
-            <input [(ngModel)]="VLogin.location" placeholder="name"/>
-        </label>
-        <br>
-        <label>password:
-            <input [(ngModel)]="VLogin.clientPass" placeholder="name"/>
-        </label>
-        <div *ngIf="VLogin.clientName">
-            <div *ngIf="VLogin.clientPass">
-                <div *ngIf="VLogin.location">
-                 <button (click) = "register()">SIGN UP NOW</button>
+        <div *ngIf="chosen2=='Up'">
+            <div>ENTER THE DETAILS OF THE REPLACING VENUE HERE.</div>
+            Signing Up as a Venue:
+            <br>
+            <label>username:
+            <input [(ngModel)]="VLogin.clientName" placeholder="name"/>
+            </label>
+            <br>
+            <label>location:
+                <input [(ngModel)]="VLogin.location" placeholder="name"/>
+            </label>
+            <br>
+            <label>password:
+                <input [(ngModel)]="VLogin.clientPass" placeholder="name"/>
+            </label>
+            <div *ngIf="VLogin.clientName">
+                <div *ngIf="VLogin.clientPass">
+                    <div *ngIf="VLogin.location">
+                    <button (click) = "register()">SIGN UP NOW</button>
+                </div>
             </div>
-        </div>
+            </div>
         </div>
     </div>
 </div>
   
 <br>
 <div *ngIf='CurrentVenue.clientName != ""'>
-    {{CurrentVenue.clientName}}
+    <button (click) = "BackToStart()">Return To Start</button>
     <app-venue [currentVenue] = "CurrentVenue"></app-venue>
+    <br>
+    <button (click) = "BackToStart()">Return to Start</button>
 </div>
 <div *ngIf='CurrentPerformer.groupName != ""'>
-    {{CurrentPerformer.groupName}}, {{CurrentPerformer.hourlyRate}}
+        <button (click) = "BackToStart()">Return To Start</button>
     <app-performers [currPerformer] = "CurrentPerformer"></app-performers>
-    <app-booking></app-booking>
+    <br>
+    <button (click) = "BackToStart()">Return To Start</button>
+    <app-booking></app-booking> 
+    <br>
+    <button (click) = "BackToStart()">Return To Start</button>
 </div>

@@ -159,6 +159,22 @@ export class StartpageComponent implements OnInit {
     this.chosen2 = '';
   }
 
+  BackToStart(): void{
+    this.CurrentVenue.clientName = '';
+    this.CurrentVenue.location = '';
+    this.CurrentVenue.clientPass = ''
+    this.CurrentPerformer.groupName = '';
+    this.CurrentPerformer.performanceType = '';
+    this.CurrentPerformer.hourlyRate = 0;
+    this.CurrentPerformer.rating = '';
+    this.CurrentPerformer.groupPass = '';
+    this.CurrentPerformer.totalCost = 0;
+    this.chosen = "";
+    this.chosen2 = "";
+    this.clearP();
+    this.clearV();
+  }
+
   ngOnInit(): void {
     this.testingUsername = '';
     this.testingPassword = '';
