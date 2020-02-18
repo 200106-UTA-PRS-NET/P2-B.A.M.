@@ -1,1 +1,126 @@
-<p>venue works!</p>
+<h2>VENUE</h2>
+<div>
+    Logged in as Venue {{CurrentVenue.clientName}}, located at {{CurrentVenue.location}}
+</div>
+<div>
+    <button (click)='findPerformers()' class = "btn btn-primary">Schedule a Booking</button>
+</div>
+<div *ngIf='listPerformers != null'>
+    <ul class="list-group">
+        <li *ngFor = 'let p of listPerformers' class = "list-group-item"> <div>
+        {{p.groupName}}, Performance Type:{{p.performanceType}}, Rating:{{p.rating}}, Hourly Rate:{{p.hourlyRate}}
+        </div>
+        <button (click)="choosePerformer(p)" class="btn btn-primary">Edit</button>
+        <br>
+        </li>
+    </ul>
+</div>
+
+<div *ngIf = 'CurrentPerformer != null'>
+    <div>
+    Performer {{CurrentPerformer.groupName}} is being scheduled for a show at {{CurrentVenue.clientName}}.
+    </div>
+    <div>
+        Please place a time in which to start and a duration in which to perform...
+    </div>
+    <div>
+        NOT IMPLEMENTED YET.
+    </div>
+</div>
+
+<div>
+    <button (click) = 'viewHistory()' class = "btn btn-primary">View and Edit the Booking History of {{CurrentVenue.clientName}}</button>'
+</div>
+
+<div *ngIf = 'bookingPage == true'>
+    <app-booking></app-booking>
+</div>
+
+<!-- <h2>Testing the Get functionality:</h2>
+    <button (click)='findVenues()' class="btn btn-primary">Get Contacts</button>
+    <div *ngIf='logins != null'>
+    <h1>Contacts</h1>
+    <ul class="list-group">
+        <li *ngFor='let logging of logins'
+        class="list-group-item">
+            {{logging.clientName}}, {{logging.location}}, {{logging.clientPass}}
+        </li>
+    </ul>
+    </div>
+    <div *ngIf='logins===null'>
+        No contacts Recieved
+    </div> -->
+    <!-- 
+    <br>
+    <h2>Testing the Get functionality for specific venues:</h2>
+    <div>
+        {{testingUsername}},{{testingPassword}}
+    </div>
+    <div>ENTER USERNAME TO REPLACE HERE</div>
+    <div>
+    <label>Find this username:
+        <input [(ngModel)]="testingUsername" placeholder="name"/>
+    </label>
+    </div>
+    <div>
+    <label>Find this password:
+        <input [(ngModel)]="testingPassword" placeholder="name"/>
+    </label>
+    </div>
+    
+    <button (click)='findSpecificVenues()' class="btn btn-primary">Get Username Venues</button>
+    <br>
+    <button (click)='findPasswordVenues()' class="btn btn-primary">Get Password Venues</button>
+    
+    <div *ngIf='testLogin.clientName != null'>
+        {{testLogin.clientName}}, {{testLogin.location}}, {{testLogin.clientPass}}
+    </div>
+    <div *ngIf='testLogin.clientName == null'>
+        No contacts Recieved
+    </div> -->
+    
+<!-- <h2>Testing the Get functionality:</h2>
+<button (click)='findVenues()' class="btn btn-primary">Get Contacts</button>
+<div *ngIf='logins != null'>
+<h1>Contacts</h1>
+<ul class="list-group">
+    <li *ngFor='let logging of logins'
+    class="list-group-item">
+        {{logging.clientName}}, {{logging.location}}, {{logging.clientPass}}
+    </li>
+</ul>
+</div>
+<div *ngIf='logins===null'>
+    No contacts Recieved
+</div> -->
+
+
+
+<!-- 
+<br>
+<h2>Testing the Get functionality for specific venues:</h2>
+<div>
+    {{testingUsername}},{{testingPassword}}
+</div>
+<div>ENTER USERNAME TO REPLACE HERE</div>
+<div>
+<label>Find this username:
+    <input [(ngModel)]="testingUsername" placeholder="name"/>
+</label>
+</div>
+<div>
+<label>Find this password:
+    <input [(ngModel)]="testingPassword" placeholder="name"/>
+</label>
+</div>
+
+<button (click)='findSpecificVenues()' class="btn btn-primary">Get Username Venues</button>
+<br>
+<button (click)='findPasswordVenues()' class="btn btn-primary">Get Password Venues</button>
+
+<div *ngIf='testLogin.clientName != null'>
+    {{testLogin.clientName}}, {{testLogin.location}}, {{testLogin.clientPass}}
+</div>
+<div *ngIf='testLogin.clientName == null'>
+    No contacts Recieved
+</div> -->
