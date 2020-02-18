@@ -16,7 +16,13 @@
       <ul class="list-group">
         <li *ngFor='let boo of clibooks'
             class="list-group-item">
-          {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}} <button (click)="storePerformer(boo.groupName,boo.bookingId)" class="btn btn-primary">Edit</button>
+            <button (click)="storePerformer(boo.groupName,boo.bookingId)" class="btn btn-primary">Edit</button> {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}}
+            <br>
+            <div *ngIf='boo.score != 0 && boo.score != null'>
+              This performer's score is {{boo.score}}
+              <br>
+              {{boo.review}}
+            </div>
         </li>
       </ul>
     </div>
@@ -32,7 +38,7 @@
       <ul class="list-group">
         <li *ngFor='let boo of grobooks'
             class="list-group-item">
-          {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}} <button (click)="storePerformer(boo.groupName,boo.bookingId)" class="btn btn-primary">Edit</button>
+            <button (click)="storePerformer(boo.groupName,boo.bookingId)" class="btn btn-primary">Edit</button> {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}}
         </li>
       </ul>
     </div>
