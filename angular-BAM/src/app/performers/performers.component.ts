@@ -5,6 +5,8 @@ import { TagsService } from '../Services/tags.service';
 import { Tag, TagWithId } from '../tag';
 import { BookingService } from '../Services/Booking.service';
 import { book } from '../booking';
+import { bookput } from '../bookput'
+import { bookpost } from '../bookpost';
 
 @Component({
   selector: 'app-performers',
@@ -16,10 +18,16 @@ export class PerformersComponent implements OnInit {
   @Input() currPerformer: Performer;
   editYourTags: boolean = false;
   viewBookings: boolean = false;
+  viewCompletedBookings: boolean = false;
   bookingHistory: boolean = false;
   yourInfo: boolean = false;
   updateInfo: boolean = false;
   cancelBooking: boolean = false;
+
+  //this is for cancelling a booking
+  selectedBookingId: number;
+  selectedBooking: book = null;
+  /////
 
   performerTagsList: TagWithId[] = null;
   performersList: Performer[] = null;
@@ -55,7 +63,19 @@ export class PerformersComponent implements OnInit {
     this.perfomersService.putPerformer(this.currPerformer.groupName, this.currPerformer);
   }
 
- 
+  ConfirmCancel(): void {
+    this.selectedBookingId = this.selectedBooking.bookingId;
+    var bookPut: bookput = {
+      groupName: null,
+      timeFrame: null,
+      bookingStatus: 'Cancelled',
+      clientName: null,
+      location: null,
+      review: null,
+      score: null
+    };
+    this.bookingservice.putBooking(bookPut, this.selectedBookingId);
+  }
 
 
   //////////
@@ -63,37 +83,114 @@ export class PerformersComponent implements OnInit {
     this.tagsServices.getTagsByGroupName(this.currPerformer.groupName)
     .then(response => this.performerTagsList = response);
     this.editYourTags = true;
+    this.viewBookings = false;
+    this.viewCompletedBookings = false;
+    this.bookingHistory = false;
+    this.yourInfo = false;
+    this.updateInfo = false;
+    this.cancelBooking = false;
    
   }
 
   ViewBooking(): void {
     this.bookingservice.getGroupBooking(this.currPerformer.groupName)
     .then(response => this.performerBookings = response);
-    this.viewBookings = true;
-  }
-
-  BookingHistory(): void {
-    this.bookingHistory = true;
-  }
-
-  YourInfo(): void {
-    this.yourInfo = true;
-  }
-
-  UpdateInfo(): void {
-    this.updateInfo = true;
-  }
-
-  CancelBooking(): void {
-    this.cancelBooking = true;
-  }
-
-  back(): void {
+    var tempArray: book[] = new Array();
+    for (let i = 0; i < this.performerBookings.length; i++){
+        if (this.performerBookings[i].bookingStatus == 'Upcoming'){
+          tempArray.push(this.performerBookings[i])
+        }
+    }
+    this.performerBookings = tempArray;
+    
     this.editYourTags = false;
-    this.viewBookings = false;
+    this.viewBookings = true;
+    this.viewCompletedBookings = false;
     this.bookingHistory = false;
     this.yourInfo = false;
     this.updateInfo = false;
     this.cancelBooking = false;
+  }
+
+  ViewCompletedBookings(): void {
+    this.bookingservice.getGroupBooking(this.currPerformer.groupName)
+    .then(response => this.performerBookings = response);
+    var tempArray: book[] = new Array();
+    for (let i = 0; i < this.performerBookings.length; i++){
+        if (this.performerBookings[i].bookingStatus == 'Completed'){
+          tempArray.push(this.performerBookings[i])
+        }
+    }
+    this.performerBookings = tempArray;
+    this.editYourTags = false;
+    this.viewBookings = false;
+    this.viewCompletedBookings = true;
+    this.bookingHistory = false;
+    this.yourInfo = false;
+    this.updateInfo = false;
+    this.cancelBooking = false;
+  }
+
+  BookingHistory(): void {
+    this.bookingservice.getGroupBooking(this.currPerformer.groupName)
+    .then(response => this.performerBookings = response);
+    this.editYourTags = false;
+    this.viewBookings = false;
+    this.viewCompletedBookings = false;
+    this.bookingHistory = true;
+    this.yourInfo = false;
+    this.updateInfo = false;
+    this.cancelBooking = false;
+  }
+
+  YourInfo(): void {
+    this.editYourTags = false;
+    this.viewBookings = false;
+    this.viewCompletedBookings = false;
+    this.bookingHistory = false;
+    this.yourInfo = true;
+    this.updateInfo = false;
+    this.cancelBooking = false;
+  }
+
+  UpdateInfo(): void {
+    this.editYourTags = false;
+    this.viewBookings = false;
+    this.viewCompletedBookings = false;
+    this.bookingHistory = false;
+    this.yourInfo = false;
+    this.updateInfo = true;
+    this.cancelBooking = false;
+  }
+
+  CancelBooking(): void {
+    this.tagsServices.getTagsByGroupName(this.currPerformer.groupName)
+    .then(response => this.performerTagsList = response);
+    var tempArray: book[] = new Array();
+    for (let i = 0; i < this.performerBookings.length; i++){
+        if (this.performerBookings[i].bookingStatus == 'Upcoming'){
+          tempArray.push(this.performerBookings[i])
+        }
+    }
+    this.performerBookings = tempArray;
+    this.editYourTags = false;
+    this.viewBookings = false;
+    this.viewCompletedBookings = false;
+    this.bookingHistory = false;
+    this.yourInfo = false;
+    this.updateInfo = false;
+    this.cancelBooking = true;
+  }
+
+
+  back(): void {
+    this.editYourTags = false;
+    this.viewBookings = false;
+    this.viewCompletedBookings = false;
+    this.bookingHistory = false;
+    this.yourInfo = false;
+    this.updateInfo = false;
+    this.cancelBooking = false;
+    this.selectedBooking = null;
   }
 }
