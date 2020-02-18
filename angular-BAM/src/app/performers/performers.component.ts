@@ -89,6 +89,7 @@ export class PerformersComponent implements OnInit {
     this.updateInfo = false;
     this.cancelBooking = false;
     this.performerTagsList = null;
+    this.performerBookings = null;
    
   }
 
@@ -104,6 +105,8 @@ export class PerformersComponent implements OnInit {
     this.yourInfo = false;
     this.updateInfo = false;
     this.cancelBooking = false;
+    this.performerTagsList = null;
+    
     
   }
 
@@ -121,6 +124,8 @@ export class PerformersComponent implements OnInit {
     this.yourInfo = false;
     this.updateInfo = false;
     this.cancelBooking = false;
+    this.performerTagsList = null;
+    
    
   }
 
@@ -134,6 +139,7 @@ export class PerformersComponent implements OnInit {
     this.yourInfo = false;
     this.updateInfo = false;
     this.cancelBooking = false;
+    this.performerTagsList = null;
     
   }
 
@@ -146,6 +152,7 @@ export class PerformersComponent implements OnInit {
     this.updateInfo = false;
     this.cancelBooking = false;
     this.performerTagsList = null;
+    this.performerBookings = null;
   }
 
   UpdateInfo(): void {
@@ -157,10 +164,11 @@ export class PerformersComponent implements OnInit {
     this.updateInfo = true;
     this.cancelBooking = false;
     this.performerTagsList = null;
+    this.performerBookings = null;
   }
 
   CancelBooking(): void {
-    this.bookingservice.getGroupBooking(this.currPerformer.groupName)
+    this.bookingservice.getGroupBookingByStatus(this.currPerformer.groupName, "Upcoming")
     .then(response => this.performerBookings = response);
    
     this.editYourTags = false;
@@ -170,6 +178,8 @@ export class PerformersComponent implements OnInit {
     this.yourInfo = false;
     this.updateInfo = false;
     this.cancelBooking = true;
+    this.performerTagsList = null;
+    this.performerBookings = null;
 
   }
 
