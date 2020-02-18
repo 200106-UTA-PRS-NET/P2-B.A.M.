@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using Repo_Lib.Abstractions;
 using DB_Data.Models;
 using System.Linq;
@@ -64,7 +63,6 @@ namespace DB_Data.Repos
             if (bdb.Bookings.Any(e => e.BookingId == bookings.BookingId))
             {
                 var boo = bdb.Bookings.FirstOrDefault(e => e.BookingId == bookings.BookingId);
-                boo.BookingId = (bookings.BookingId != null) ? bookings.BookingId : boo.BookingId;
                 boo.GroupName = (bookings.GroupName != null) ? bookings.GroupName : boo.GroupName;
                 boo.TimeFrame = (bookings.TimeFrame != null) ? bookings.TimeFrame : boo.TimeFrame;
                 boo.BookingStatus = (bookings.BookingStatus != null) ? bookings.BookingStatus : boo.BookingStatus;

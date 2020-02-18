@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace BAM_Web_App
+﻿namespace BAM_Web_App
 {
     public class SwaggerOptions
     {

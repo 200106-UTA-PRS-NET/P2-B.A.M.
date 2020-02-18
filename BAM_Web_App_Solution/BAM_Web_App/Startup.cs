@@ -1,4 +1,3 @@
-using System;
 using DB_Data.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -40,15 +39,6 @@ namespace BAM_Web_App
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "BAM API", Version = "v1" });
             });
 
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy(AllMyOrigins, builder =>
-            //    {
-            //        builder.WithOrigins("https://localhost:44327")
-            //        .AllowAnyMethod()
-            //        .AllowAnyHeader();
-            //    });
-            //});
             services.AddCors(options =>
             {
                 options.AddPolicy(AllMyOrigins, b => b.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());

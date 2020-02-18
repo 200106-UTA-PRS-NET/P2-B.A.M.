@@ -14,16 +14,13 @@ namespace BAM_Web_App.Controllers
         {
             _repository = repo;
         }
-        //TODO: add exception handler.
-        //TODO: Do we return action result every time with OK storing info.
+
         //Obtains a list of all Clients (Venues)
         [HttpGet]
         //public ActionResult Get()
         public IEnumerable<Clients> Get()
         {
            return _repository.GetClients();
-            //return Ok(getClients);
-     //       return getClients;
         }
 
         //Obtains a specific client. Not used for logging in.
@@ -50,7 +47,6 @@ namespace BAM_Web_App.Controllers
                 return NotFound();
         }
 
-        //TODO: Add an additional Get for logging in as a client.
         [HttpPost]
         public ActionResult PostVenues([FromBody, Bind("ClientName", "Location", "ClientPass")]Clients client)
         { 
@@ -58,7 +54,6 @@ namespace BAM_Web_App.Controllers
             return CreatedAtRoute("GetVenues", new {Name = client.ClientName }, client);
         }
 
-        //TODO: Check to see if this properly changes database.
         [HttpPut("{ClientName}")]
         public IActionResult PutVenues(string ClientName, [FromBody]Clients client)
         {

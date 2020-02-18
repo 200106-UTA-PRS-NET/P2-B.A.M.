@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DB_Data.Models
+﻿namespace DB_Data.Models
 {
     public partial class Bookings
     {
