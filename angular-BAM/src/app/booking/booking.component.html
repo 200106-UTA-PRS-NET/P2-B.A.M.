@@ -24,6 +24,22 @@
       No bookings found
     </div>
   </div>
+
+  <div *ngIf = 'groupSelector != null'>
+    <button (click) = 'findGroupBookings()' class = "btn btn-primary">Retrieve Bookings from {{groupSelector}}</button>
+    <div *ngIf='grobooks != null'>
+      <p>Bookings:</p>
+      <ul class="list-group">
+        <li *ngFor='let boo of grobooks'
+            class="list-group-item">
+          {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}} <button (click)="putbookingId = boo.bookingId" class="btn btn-primary">Edit</button>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf='grobooks===null'>
+      No bookings found
+    </div>
+  </div>
   
 
  <!-- <button (click)='findBookings()' class="btn btn-primary">Retrieve Bookings</button>
@@ -41,12 +57,11 @@
   </div>
   <br> -->
 
-
+  <div *ngIf='putbookingId && putbookingId != null'></div>
   <h3>Edit existing booking </h3>
   <div>
       ID of the booking to be edited: {{putbookingId}}
   </div>
-  <div *ngIf='putbookingId && putbookingId != null'>
     <br />
     <div>
       <label>
@@ -77,7 +92,6 @@
     <button (click)='changeBooking()' class="btn btn-primary">Edit selected booking info</button>
   </div>
 
-
   <h3>Search by Parameter</h3>
 
   <div>
@@ -107,6 +121,7 @@
       Booking no.{{otherBook.bookingId}}, {{otherBook.groupName}}, scheduled for: {{otherBook.timeFrame}}, status: {{otherBook.bookingStatus}}, at: {{otherBook.clientName}}, in: {{otherBook.location}}, review: {{otherBook.review}}, score: {{otherBook.score}}
     </div>
   </div>
+
 <!-- 
   <div *ngIf="groupSelector">
     <button (click)='findGroupBookings()' class="btn btn-primary">Search for this Group</button>
@@ -133,9 +148,6 @@
       </ul>
     </div>
   </div> -->
-  <br />
-  <app-calculator></app-calculator>
-  <br />
 
 <!-- <h3>Create new Booking</h3>
 <div>
@@ -183,5 +195,4 @@
     <br />
     <button (click)="addBookings()">Create Booking</button>
   </div>
-</div> -->
-</div>
+</div> --->

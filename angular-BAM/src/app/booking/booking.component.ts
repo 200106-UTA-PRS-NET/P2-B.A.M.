@@ -14,18 +14,20 @@ import {BookingService} from '../services/booking.service';
 export class BookingComponent implements OnInit {
 @Input() currentBook : book;
 @Input()   clientSelector: string;
+@Input() groupSelector: string;
 
   books: book[] = null;
   clibooks: book[] = null;
   grobooks: book[] = null;
 
   bookSelector: number;
-  groupSelector: string;
   idSelector: number;
   //clientSelector: string;
   putbookingId: number;
   putScore: number;
   editval: number;
+
+  curWage: number;
 
   Book: bookpost = {
     groupName: '',
