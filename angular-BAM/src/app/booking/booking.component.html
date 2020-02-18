@@ -1,5 +1,14 @@
 <h2>The Booking Section!</h2>
 
+<div *ngIf = 'currentBook != null'>
+  <p>
+  Would you, the venue known as "{{currentBook.clientName}}" located in {{currentBook.location}}, like to book the performer "{{currentBook.groupName}}" within the following time frame: {{currentBook.timeFrame}}?  
+  </p>
+  
+  <button (click)="addThisBooking(currentBook)">Create Booking</button>
+</div>
+<div *ngIf = 'currentBook == null'>
+
 <button (click)='findBookings()' class="btn btn-primary">Retrieve Bookings</button>
 <div *ngIf='books != null'>
   <p>Bookings:</p>
@@ -159,4 +168,5 @@
     <br />
     <button (click)="addBookings()">Create Booking</button>
   </div>
+</div>
 </div>

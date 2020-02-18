@@ -103,7 +103,6 @@ export class StartpageComponent implements OnInit {
     .then(response => this.CurrentVenue=response);
     // this.startpageservice.getSpecificClient(this.testingUsername)
     // .then(response => this.testLogin=response);
-    this.CurrentVenue.clientPass = "";//REDACTED: OBTAINED WITHOUT USING PASSWORD";
   }
 
   findPasswordVenues(): void{

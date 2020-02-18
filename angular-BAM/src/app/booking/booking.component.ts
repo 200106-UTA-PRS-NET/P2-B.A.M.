@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { book } from '../booking';
 import { bookpost } from '../bookpost';
 import { bookput } from '../bookput';
@@ -12,7 +12,7 @@ import {BookingService} from '../Services/Booking.service';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
-
+@Input() currentBook : book;
   books: book[] = null;
   clibooks: book[] = null;
   grobooks: book[] = null;
@@ -113,8 +113,13 @@ export class BookingComponent implements OnInit {
 
   addBookings(): void{
     this.bookingservice.postBooking(this.Book);
+    this.currentBook = null;
   }
 
+  addThisBooking(b:bookpost): void{
+    this.bookingservice.postBooking(b);
+    this.currentBook = null;
+  }
   changeBooking(): void {
     this.practiceBook.review = this.putBook.review;
     this.practiceBook.bookingStatus = this.putBook.bookingStatus;

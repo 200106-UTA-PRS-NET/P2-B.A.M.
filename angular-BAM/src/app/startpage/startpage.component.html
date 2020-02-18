@@ -120,7 +120,7 @@
 <br>
 <div *ngIf='CurrentVenue.clientName != ""'>
     {{CurrentVenue.clientName}}
-    <app-venue [CurrentVenue] = "CurrentVenue"></app-venue>
+    <app-venue [currentVenue] = "CurrentVenue"></app-venue>
 </div>
 <div *ngIf='CurrentPerformer.groupName != ""'>
     {{CurrentPerformer.groupName}}, {{CurrentPerformer.hourlyRate}}
