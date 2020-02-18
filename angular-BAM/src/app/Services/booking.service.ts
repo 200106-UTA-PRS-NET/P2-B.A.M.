@@ -6,7 +6,7 @@ import { book } from '../booking';
 import { bookput } from '../bookput';
 import { bookpost } from '../bookpost';
 import { HttpClientModule } from '@angular/common/http';
-import { MessageService } from '../Services/message.service';
+import { MessageService } from '../services/message.service';
 
 
 @Injectable({
