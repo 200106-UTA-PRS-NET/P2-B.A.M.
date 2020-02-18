@@ -4,7 +4,7 @@
 </div>
 <br>
 <div>
-  <button (click)='findPerformers()' class="btn btn-primary">Schedule a Booking</button>
+  <button (click)='findPerformers()' class="performerButton">Schedule a Booking</button>
 </div>
 
 <div *ngIf='listPerformers != null'>
@@ -20,7 +20,7 @@
   </div>
   <br />Filter by genre<br />
   <input [(ngModel)]="genreSelector" placeholder="name" />
-  <button (click)='findPerformers()' class="btn btn-primary">Filter</button>
+  <button (click)='findPerformers()' class="performerButton">Filter</button>
   <div *ngIf="genreSelector">
     <ul class="list-group">
       <li *ngFor='let p of listPerformers' class="list-group-item">
@@ -54,12 +54,12 @@
     </label>
   </div>
   <div *ngIf='currentBook.timeFrame != ""'>
-    <button (click)='sendBook()' class="btn btn-primary">Book the upcoming event</button>
+    <button (click)='sendBook()' class="performerButton">Book the upcoming event</button>
   </div>
 </div>
 <br>
 <div>
-  <button (click)='viewHistory()' class="btn btn-primary">View and Edit {{currentVenue.clientName}} bookings</button>
+  <button (click)='viewHistory()' class="performerButton">View and Edit {{currentVenue.clientName}} bookings</button>
 </div>
 
 <div *ngIf='bookingPage == true'>

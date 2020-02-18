@@ -2,18 +2,18 @@
 <div *ngIf="CurrentVenue.clientName == '' && CurrentPerformer.groupName == ''">
     <h2>Please choose to access our site as a Venue or as a Performer</h2>
 
-    <button (click)="choice('Venue')" class="btn btn-primary">Choose Venues</button>
+    <button (click)="choice('Venue')" class="venueButton">Choose Venues</button>
     <br>
-    <button (click)="choice('Performer')" class="btn btn-primary">Choose Performers</button>
+    <button (click)="choice('Performer')" class="performerButton">Choose Performers</button>
 
     <br>
     <br>
     <div *ngIf="chosen">
         <span>We are working with </span>{{chosen}}
         <br>
-        <button (click)="secondChoice('Up')" class="btn btn-primary">Choose Sign up with a new account</button>
+        <button (click)="secondChoice('Up')" class="nextButton">Choose Sign up with a new account</button>
         <br>
-        <button (click)="secondChoice('In')" class="btn btn-primary">Choose Sign in with an existing account</button>
+        <button (click)="secondChoice('In')" class="nextButton">Choose Sign in with an existing account</button>
         <br>
     </div>
     <br>
@@ -31,7 +31,7 @@
             </label>
             <div *ngIf="testingUsername">
                 <div *ngIf="testingPassword">
-                    <button (click) = "findPasswordPerformer()">SIGN IN NOW</button>
+                    <button (click) = "findPasswordPerformer()" class="performerButton">SIGN IN NOW</button>
                 </div>
             </div>
         </div>
@@ -63,7 +63,7 @@
                     <div *ngIf="PLogin.hourlyRate">
                         <div *ngIf="PLogin.rating">
                             <div *ngIf="PLogin.groupPass">
-                                <button (click) = "registerP()">SIGN UP NOW</button>
+                                <button (click) = "registerP()" class="performerButton">SIGN UP NOW</button>
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
             </label>
             <div *ngIf="testingUsername">
                 <div *ngIf="testingPassword">
-                    <button (click) = "findPasswordVenues()">SIGN IN NOW</button>
+                    <button (click) = "findPasswordVenues()" class="venueButton">SIGN IN NOW</button>
                 </div>
             </div>
         </div>
@@ -108,7 +108,7 @@
             <div *ngIf="VLogin.clientName">
                 <div *ngIf="VLogin.clientPass">
                     <div *ngIf="VLogin.location">
-                    <button (click) = "register()">SIGN UP NOW</button>
+                    <button (click) = "register()" class="venueButton">SIGN UP NOW</button>
                 </div>
             </div>
             </div>

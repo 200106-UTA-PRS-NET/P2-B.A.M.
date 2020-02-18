@@ -1,0 +1,29 @@
+.performerButton {
+    width: 200px;
+    color: wheat;
+    background-color: #3535fd;
+}
+
+.venueButton:hover {
+    color: white
+}
+
+.venueButton {
+    width: 200px;
+    color: wheat;
+    background-color: purple;
+}
+
+.performerButton:hover {
+    color: white
+}
+
+.nextButton:hover {
+    color: white
+}
+
+.nextButton {
+    width: 200px;
+    color: wheat;
+    background-color: darkgreen;
+}

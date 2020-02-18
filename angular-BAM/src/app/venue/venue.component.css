@@ -1,0 +1,9 @@
+.performerButton:hover {
+    color: white
+}
+
+.performerButton {
+    width: 200px;
+    color: wheat;
+    background-color: purple;
+}
