@@ -1,49 +1,5 @@
 <h2>Welcome!</h2>
 
-<!-- <h2>Testing the Get functionality:</h2>
-<button (click)='findVenues()' class="btn btn-primary">Get Contacts</button>
-<div *ngIf='logins != null'>
-<h1>Contacts</h1>
-<ul class="list-group">
-    <li *ngFor='let logging of logins'
-    class="list-group-item">
-        {{logging.clientName}}, {{logging.location}}, {{logging.clientPass}}
-    </li>
-</ul>
-</div>
-<div *ngIf='logins===null'>
-    No contacts Recieved
-</div> -->
-<!-- 
-<br>
-<h2>Testing the Get functionality for specific venues:</h2>
-<div>
-    {{testingUsername}},{{testingPassword}}
-</div>
-<div>ENTER USERNAME TO REPLACE HERE</div>
-<div>
-<label>Find this username:
-    <input [(ngModel)]="testingUsername" placeholder="name"/>
-</label>
-</div>
-<div>
-<label>Find this password:
-    <input [(ngModel)]="testingPassword" placeholder="name"/>
-</label>
-</div>
-
-<button (click)='findSpecificVenues()' class="btn btn-primary">Get Username Venues</button>
-<br>
-<button (click)='findPasswordVenues()' class="btn btn-primary">Get Password Venues</button>
-
-<div *ngIf='testLogin.clientName != null'>
-    {{testLogin.clientName}}, {{testLogin.location}}, {{testLogin.clientPass}}
-</div>
-<div *ngIf='testLogin.clientName == null'>
-    No contacts Recieved
-</div> -->
-
-<br>
 <br>
 <h2>Please choose to access our site as a Venue or as a Performer</h2>
 
@@ -160,49 +116,7 @@
         </div>
     </div>
 </div>
-<br>
-<!-- <h2>Testing the Get functionality:</h2>
-<button (click)='findVenues()' class="btn btn-primary">Get Contacts</button>
-<div *ngIf='logins != null'>
-<h1>Contacts</h1>
-<ul class="list-group">
-    <li *ngFor='let logging of logins'
-    class="list-group-item">
-        {{logging.clientName}}, {{logging.location}}, {{logging.clientPass}}
-    </li>
-</ul>
-</div>
-<div *ngIf='logins===null'>
-    No contacts Recieved
-</div> -->
-<!-- 
-<br>
-<h2>Testing the Get functionality for specific venues:</h2>
-<div>
-    {{testingUsername}},{{testingPassword}}
-</div>
-<div>ENTER USERNAME TO REPLACE HERE</div>
-<div>
-<label>Find this username:
-    <input [(ngModel)]="testingUsername" placeholder="name"/>
-</label>
-</div>
-<div>
-<label>Find this password:
-    <input [(ngModel)]="testingPassword" placeholder="name"/>
-</label>
-</div>
 
-<button (click)='findSpecificVenues()' class="btn btn-primary">Get Username Venues</button>
-<br>
-<button (click)='findPasswordVenues()' class="btn btn-primary">Get Password Venues</button>
-
-<div *ngIf='testLogin.clientName != null'>
-    {{testLogin.clientName}}, {{testLogin.location}}, {{testLogin.clientPass}}
-</div>
-<div *ngIf='testLogin.clientName == null'>
-    No contacts Recieved
-</div> -->
 <br>
 <div *ngIf='CurrentVenue.clientName != ""'>
     {{CurrentVenue.clientName}}
