@@ -8,19 +8,22 @@
             <button (click)="ViewBooking()">View Current Bookings</button>
         </li>
         <li>
-            <span>Performance Booking History</span>
+            <button (click)="ViewCompletedBookings()">View Completed Bookings</button>
         </li>
         <li>
-            <span>Your info</span>
+            <button (click)="BookingHistory()">Performer Booking History</button>
         </li>
         <li>
-            <span>Update Info</span>
+            <button (click)="YourInfo()">Your info</button>
         </li>
         <li>
-            <span>Cancel Booking</span>
+            <button (click)="UpdateInfo()">Update Info</button>
         </li>
         <li>
-            <span>Sign Out</span>
+            <button (click)="CancelBooking()">Cancel Booking</button>
+        </li>
+        <li>
+            <button>Sign Out</button>
             
         </li>
     </ol>
@@ -40,13 +43,63 @@
         <h4>Your Current Bookings</h4>
         <ul class="list-group">
             <li *ngFor='let boo of performerBookings' class="list-group-item">
-                <div *ngIf="boo.bookingStatus == 'Upcoming'">
-                    {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}}
-                </div>
+                
+                {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}}
+               
             </li>
         </ul>
         <button (click)="back()">Back</button>
    </div>
+
+   <div *ngIf="viewCompletedBookings == true">
+    <h4>Your Completed Bookings</h4>
+    <ul class="list-group">
+        <li *ngFor='let boo of performerBookings' class="list-group-item">
+            
+            {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}}
+            
+        </li>
+    </ul>
+    <button (click)="back()">Back</button>
+    </div>
+
+    <div *ngIf="bookingHistory == true">
+        <h4>Your Booking History</h4>
+        <ul class="list-group">
+            <li *ngFor='let boo of performerBookings' class="list-group-item">
+                {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}}
+            </li>
+        </ul>
+        <button (click)="back()">Back</button>
+        </div>
+
+    <div *ngIf="yourInfo == true">
+        {{currPerformer.groupName}}, {{currPerformer.performanceType}}, {{currPerformer.hourlyRate}}, {{currPerformer.rating}}<br>
+        <button (click)="back()">Back</button>
+    </div>
+
+    <div *ngIf="updateInfo == true">
+        <h3>Update your profile</h3>
+        Password<input type="text" [(ngModel)]="currPerformer.groupPass"><br>
+        Perfomance Type<input type="text" [(ngModel)]="currPerformer.performanceType"><br>
+        Hourly Rate<input type="number" [(ngModel)]="currPerformer.hourlyRate"><br>
+        Rating<input type="text" [(ngModel)]="currPerformer.rating"><br>
+        <button (click)="updatePerformer()" class="btn btn-primary">Update</button>
+        <button (click)="back()">Back</button>
+    </div>
+
+    <div *ngIf="cancelBooking == true">
+        <li *ngFor='let boo of performerBookings' class="list-group-item">
+            {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}}
+        </li>
+        Select booking by Id
+        <select id="cancel" [(ngModel)]="selectedBooking">
+            <option *ngFor='let boo of performerBookings' [ngValue]="boo">{{boo.bookingId}}</option>
+        </select><br>
+        <button (click)="ConfirmCancel()">Confirm Cancel</button><br><br>
+        <button (click)="back()">Back</button>
+    </div>
+
 </div>
 
 
