@@ -104,7 +104,11 @@
         </label>
         <br>
         <div *ngIf="PLogin.groupName">
+<<<<<<< HEAD
             <div *ngIf="PLogin.performanceType">
+=======
+            <div *ngIf="PLogin.groupPass">
+>>>>>>> M_branch
                 <div *ngIf="PLogin.hourlyRate">
                     <div *ngIf="PLogin.rating">
                         <div *ngIf="PLogin.groupPass">
@@ -161,6 +165,7 @@
     </div>
 </div>
 <br>
+<<<<<<< HEAD
 <!-- <h2>Testing the Get functionality:</h2>
 <button (click)='findVenues()' class="btn btn-primary">Get Contacts</button>
 <div *ngIf='logins != null'>
@@ -174,6 +179,21 @@
 </div>
 <div *ngIf='logins===null'>
     No contacts Recieved
+=======
+
+<!-- <div *ngIf="VLogin.clientName">
+    <div *ngIf="VLogin.clientPass">
+        <div *ngIf="VLogin.location">
+            <button (click) = "register()">REGISTER NOW</button>
+        </div>
+        <div *ngIf="VLogin.clientPass == ''">
+            <button (click) = "signUp()">REGISTER NOW</button>
+        </div>
+    </div>
+</div> -->
+<!-- <div>
+    <button (click)='editVenue()' class="btn btn-primary">Edit Venue with Username</button>
+>>>>>>> M_branch
 </div> -->
 <!-- 
 <br>

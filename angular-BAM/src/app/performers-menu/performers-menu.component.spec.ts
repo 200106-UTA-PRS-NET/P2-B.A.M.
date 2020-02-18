@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PerformersMenuComponent } from './performers-menu.component';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+
+// Other imports
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 describe('PerformersMenuComponent', () => {
   let component: PerformersMenuComponent;
@@ -8,6 +12,7 @@ describe('PerformersMenuComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       declarations: [ PerformersMenuComponent ]
     })
     .compileComponents();

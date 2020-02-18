@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StartpageComponent } from './startpage.component';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+
+// Other imports
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 describe('StartpageComponent', () => {
   let component: StartpageComponent;
@@ -8,6 +12,7 @@ describe('StartpageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       declarations: [ StartpageComponent ]
     })
     .compileComponents();
