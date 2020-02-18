@@ -14,6 +14,7 @@ describe('CalculatorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       declarations: [ CalculatorComponent ]
     })
     .compileComponents();
