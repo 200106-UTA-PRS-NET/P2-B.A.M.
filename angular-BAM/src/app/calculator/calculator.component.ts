@@ -15,11 +15,17 @@ export class CalculatorComponent implements OnInit {
     result: null
   }
 
-  
+  hours:number;
 
   constructor(public caculatorService: CalculatorServiceService) { }
 
   ngOnInit(): void {
+    this.hours = null;
+  }
+
+  totalWages(): void{
+    this.caculatorService.getResult(this.calc.operation, this.calc.expression)
+    .then(response=>this.calc.result = response.result);
   }
 
   result(): void{
