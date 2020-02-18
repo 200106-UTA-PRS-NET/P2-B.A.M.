@@ -4,8 +4,8 @@ import { Performer } from '../performer'
 import { HttpClient } from '@angular/common/http';
 import {Observable} from 'rxjs/Rx';
 import {catchError} from 'rxjs/operators';
-import {StartpageService} from '../Services/startpage.service';
-import {PerformersService} from '../Services/performers.service';
+import {StartpageService} from '../services/startpage.service';
+import {PerformersService} from '../services/performers.service';
 
 
 @Component({

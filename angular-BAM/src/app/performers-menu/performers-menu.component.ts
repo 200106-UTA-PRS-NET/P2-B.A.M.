@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PerformersService } from '../Services/performers.service';
+import { PerformersService } from '../services/performers.service';
 import { Performer } from '../performer';
 
 @Component({
