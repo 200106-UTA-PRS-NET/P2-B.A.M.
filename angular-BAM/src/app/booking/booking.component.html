@@ -38,8 +38,16 @@
       <ul class="list-group">
         <li *ngFor='let boo of grobooks'
             class="list-group-item">
+            <div *ngIf='boo.clientName == clientSelector'>
             <button (click)="storePerformer(boo.groupName,boo.bookingId)" class="btn btn-primary">Edit</button> {{boo.bookingId}}, {{boo.groupName}}, {{boo.timeFrame}}, {{boo.bookingStatus}}, {{boo.clientName}}, {{boo.location}}
-        </li>
+            <br>
+            <div *ngIf='boo.score != 0 && boo.score != null'>
+              This performer's score is {{boo.score}}
+              <br>
+              {{boo.review}}
+            </div>
+          </div>
+          </li>
       </ul>
     </div>
     <div *ngIf='grobooks===null'>
@@ -101,12 +109,12 @@
       <input [(ngModel)]="groupSelector" placeholder="name" />
     </label>
   </div>
-  <div>
+  <!-- <div>
     <label>
       Client to query:<br />
       <input [(ngModel)]="clientSelector" placeholder="name" />
     </label>
-  </div>
+  </div> -->
 
   <div *ngIf="idSelector">
     <button (click)='findIdBookings()' class="btn btn-primary">Search for this ID</button>
