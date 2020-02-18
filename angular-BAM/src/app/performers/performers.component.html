@@ -2,38 +2,49 @@
 <div *ngIf="currPerformer != null">
     <ol>
         <li>
-           <button (click)="editTags()">Configure Tags</button>
+           <button (click)="editTags()" class="menuButton">Configure Tags</button>
         </li>
         <li>
-            <button (click)="ViewBooking()">View Current Bookings</button>
+            <button (click)="ViewBooking()" class="menuButton">View Current Bookings</button>
         </li>
         <li>
-            <button (click)="ViewCompletedBookings()">View Completed Bookings</button>
+            <button (click)="ViewCompletedBookings()" class="menuButton">View Completed Bookings</button>
         </li>
         <li>
-            <button (click)="BookingHistory()">Performer Booking History</button>
+            <button (click)="BookingHistory()" class="menuButton">Performer Booking History</button>
         </li>
         <li>
-            <button (click)="YourInfo()">Your info</button>
+            <button (click)="YourInfo()" class="menuButton">Your info</button>
         </li>
         <li>
-            <button (click)="UpdateInfo()">Update Info</button>
+            <button (click)="UpdateInfo()" class="menuButton">Update Info</button>
         </li>
         <li>
-            <button (click)="CancelBooking()">Cancel Booking</button>
+            <button (click)="CancelBooking()" class="menuButton">Cancel Booking</button>
         </li>
         
     </ol>
 
     <div *ngIf="editYourTags == true">
         <h4>Your Tags</h4>
-        <ul class="list-group">
-            <li *ngFor='let t of performerTagsList' class="list-group-item">
-                {{t.tagId}} {{t.tag}} {{t.groupName}}
-            </li>
-        </ul>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Tag Id</th>
+                    <th>Tag Content</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let t of performerTagsList'>
+                    <td>{{t.tagId}}</td>
+                    <td>{{t.tag}}</td>
+                </tr>
+            </tbody>
+        </table>
+        
         <app-tags [performerName]="currPerformer.groupName"></app-tags>
-        <button (click)="back()">Back</button>
+        <button (click)="back()" class="cancel">Back</button>
    </div>
 
    <div *ngIf="viewBookings == true">
@@ -64,7 +75,7 @@
         </table>
        </div>
 
-        <button (click)="back()">Back</button>
+        <button (click)="back()" class="cancel">Back</button>
    </div>
 
    <div *ngIf="viewCompletedBookings == true">
@@ -95,7 +106,7 @@
         </table>
        </div>
 
-    <button (click)="back()">Back</button>
+    <button (click)="back()" class="cancel">Back</button>
     </div>
 
     <div *ngIf="bookingHistory == true">
@@ -126,7 +137,7 @@
         </table>
        </div>
 
-        <button (click)="back()">Back</button>
+        <button (click)="back()" class="cancel">Back</button>
     </div>
 
     <div *ngIf="yourInfo == true">
@@ -152,7 +163,7 @@
         </table>
         
 
-        <button (click)="back()">Back</button>
+        <button (click)="back()" class="cancel">Back</button>
     </div>
 
     <div *ngIf="updateInfo == true">
@@ -162,7 +173,7 @@
         Hourly Rate<input type="number" [(ngModel)]="currPerformer.hourlyRate"><br>
         Rating<input type="text" [(ngModel)]="currPerformer.rating"><br>
         <button (click)="updatePerformer()" class="btn btn-primary">Update</button>
-        <button (click)="back()">Back</button>
+        <button (click)="back()" class="cancel">Back</button>
     </div>
 
     <div *ngIf="cancelBooking == true">
@@ -193,10 +204,10 @@
             <select id="cancel" [(ngModel)]="selectedBooking">
                 <option *ngFor='let boo of performerBookings' [ngValue]="boo">{{boo.bookingId}}</option>
             </select><br>
-            <button (click)="ConfirmCancel()">Confirm Cancel</button><br><br>
+            <button (click)="ConfirmCancel()" class="cancel">Confirm Cancel</button><br><br>
         </div>
         
-        <button (click)="back()">Back</button>
+        <button (click)="back()" class="cancel">Back</button>
     </div>
 
 </div>
