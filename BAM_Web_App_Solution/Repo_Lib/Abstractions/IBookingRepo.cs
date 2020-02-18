@@ -9,7 +9,8 @@ namespace Repo_Lib.Abstractions
         {
             IEnumerable<T> GetBookings();
             IEnumerable<T> GetGroupBookings(string groupname);
-            IEnumerable<T> GetClientBookings(string clientname);
+        IEnumerable<T> GetGroupBookingsByStatus(string groupname, string status);
+        IEnumerable<T> GetClientBookings(string clientname);
 
             void AddBookings(T bookings);
             void ModifyBookings(T bookings);

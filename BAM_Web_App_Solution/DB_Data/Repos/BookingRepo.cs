@@ -48,6 +48,11 @@ namespace DB_Data.Repos
             return query;
         }
 
+        public IEnumerable<Bookings> GetGroupBookingsByStatus(string groupname, string status)
+        {
+            var query = from e in bdb.Bookings where (e.GroupName == groupname && e.BookingStatus == status) select e;
+            return query;
+        }
         public IEnumerable<Bookings> GetClientBookings(string clientname)
         {
             var query = from e in bdb.Bookings where e.ClientName == clientname select e;
