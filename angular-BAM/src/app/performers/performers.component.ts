@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Performer} from '../performer';
 import { PerformersService } from '../Services/performers.service';
+import { TagsService } from '../Services/tags.service';
+import { Tag, TagWithId } from '../tag';
 
 @Component({
   selector: 'app-performers',
@@ -9,9 +11,17 @@ import { PerformersService } from '../Services/performers.service';
 })
 export class PerformersComponent implements OnInit {
  
-  performersList: Performer[] = null;
+  @Input() currPerformer: Performer;
+  editYourTags: boolean = false;
+  viewBookings: boolean = false;
+  bookingHistory: boolean = false;
+  yourInfo: boolean = false;
+  updateInfo: boolean = false;
+  cancelBooking: boolean = false;
 
-  currPerformer: Performer = null;
+  performerTagsList: TagWithId[] = null;
+
+  performersList: Performer[] = null;
 
   tempPerformer: Performer = {
     groupName: null,
@@ -22,12 +32,7 @@ export class PerformersComponent implements OnInit {
     totalCost: null
   };
   
-  choice: string = '';
-  clearForm: boolean = false; 
-  //currently there is no performer signed in
-  username:string = '';
-  password:string = '';
-  constructor(private perfomersService: PerformersService) { }
+  constructor(private perfomersService: PerformersService, public tagsServices: TagsService) { }
 
   ngOnInit(): void {
   }
@@ -37,28 +42,36 @@ export class PerformersComponent implements OnInit {
     .then(response => this.performersList = response);
   }
   getPerformerByName(): void{
-    this.perfomersService.getPerformerByName(this.username)
+    this.perfomersService.getPerformerByName(this.currPerformer.groupName)
     .then(response => this.tempPerformer = response);
    
   } 
-  signIn(): void {
-    this.perfomersService.signIn(this.username, this.password)
-    .then(response => this.currPerformer = response);
-  }
-
-  signUp(): void { //post a performer
-    this.perfomersService.postPerformer(this.tempPerformer);
-    
-  }
+ 
 
   updatePerformer(): void{
     this.perfomersService.putPerformer(this.currPerformer.groupName, this.currPerformer);
   }
 
-
-  selectOption(choice:string): void {
-    this.choice = choice;
+  //////////
+  editTags(): void{
+    this.tagsServices.getTagsByGroupName(this.currPerformer.groupName)
+    .then(response => this.performerTagsList = response);
+    this.editYourTags = true;
+   
   }
-  
 
+  ViewBooking(): void {
+    
+  }
+
+
+
+  back(): void {
+    this.editYourTags = false;
+    this.viewBookings = false;
+    this.bookingHistory = false;
+    this.yourInfo = false;
+    this.updateInfo = false;
+    this.cancelBooking = false;
+  }
 }

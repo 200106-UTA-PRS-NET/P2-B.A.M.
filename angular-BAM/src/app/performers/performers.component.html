@@ -1,67 +1,44 @@
-<h2>Performers</h2>
-
-
-<button (click)='getPerformers()' class="btn btn-primary">Get Performers</button>
-<div *ngIf='performersList != null'>
-<h1>Performers</h1>
-<ul class="list-group">
-    <li *ngFor='let per of performersList'
-    class="list-group-item">
-        {{per.groupName}}, {{per.performanceType}}, {{per.hourlyRate}}, {{per.rating}}
-    </li>
-</ul>
-</div>
-
-<div>
-    Get Perfomer by Name <input type="text" [(ngModel)]="username"><br>
-    <button (click)="getPerformerByName()">hey</button>
-    <div *ngIf="tempPerformer != null">
-        {{tempPerformer.groupName}}<br>
-        {{tempPerformer.performanceType}}<br>
-    </div>
-</div>
-
-<button (click)="selectOption('signin')" class="btn btn-primary">Sign In</button>
-<button (click)="selectOption('signup')"class="btn btn-primary">Sign Up</button>
-
-<div *ngIf="choice == 'signin'">
-    Username<input type="text" [(ngModel)]="username"><br>
-    Password<input type="text" [(ngModel)]="password"><br>
-    <button (click)="signIn()" class="btn btn-primary">Sign In</button>
-    <div *ngIf="currPerformer != null">
-        Signed in successfully
-        <app-tags [performerName]="currPerformer.groupName"></app-tags>
-    </div>
-</div>
-<div *ngIf="choice == 'signup'">
-    <label for="groupName">Group Name</label><br>
-    <input id="groupName" type="text"[(ngModel)]="tempPerformer.groupName" required ><br><br>
-
-    <label for="groupPass">Password</label><br>
-    <input id="groupPass"  type="password" [(ngModel)]="tempPerformer.groupPass" minlength="6" required><br><br>
-
-    <label for="performanceType">Perfomance Type</label><br>
-    <input id="performanceType"type="text" [(ngModel)]="tempPerformer.performanceType" required><br><br>
-
-    <label for="hourlyRate">Hourly Rate</label><br>
-    <input id="hourlyRate" type="number" [(ngModel)]="tempPerformer.hourlyRate" required><br><br>
-
-    <label for="rating">Rating</label><br>
-    <input type="text" [(ngModel)]="tempPerformer.rating" required><br><br>
-
-    <button (click)="signUp()" class="btn btn-primary">Sign Up</button>
-
-    
-</div>
-
 <div *ngIf="currPerformer != null">
-    <h3>Update your profile</h3>
-    Password<input type="text" [(ngModel)]="currPerformer.groupPass"><br>
-    Perfomance Type<input type="text" [(ngModel)]="currPerformer.performanceType"><br>
-    Hourly Rate<input type="number" [(ngModel)]="currPerformer.hourlyRate"><br>
-    Rating<input type="text" [(ngModel)]="currPerformer.rating"><br>
-    <button (click)="updatePerformer()" class="btn btn-primary">Update</button>
+    <ol>
+        <li>
+           <button (click)="editTags()">Configure Tags</button>
+        </li>
+        <li>
+            <span>View Current Bookings</span>
+        </li>
+        <li>
+            <span>Performance Booking History</span>
+        </li>
+        <li>
+            <span>Your info</span>
+        </li>
+        <li>
+            <span>Update Info</span>
+        </li>
+        <li>
+            <span>Cancel Booking</span>
+        </li>
+        <li>
+            <span>Sign Out</span>
+            
+        </li>
+    </ol>
+
+    <div *ngIf="editYourTags == true">
+        <h4>Your Tags</h4>
+        <ul class="list-group">
+            <li *ngFor='let t of performerTagsList' class="list-group-item">
+                {{t.tagId}} {{t.tag}} {{t.groupName}}
+            </li>
+        </ul>
+        <app-tags [performerName]="currPerformer.groupName"></app-tags>
+        <button (click)="back()">Back</button>
+   </div>
 </div>
+
+
+
+
 
 
 

@@ -40,7 +40,10 @@ export class TagsComponent implements OnInit {
   }
 
   createTag(): void {
+    this.currTag.groupName = this.performerName;
     this.tagsServices.postTag(this.currTag);
+    this.currTag.tag = '';
+    this.currTag.groupName = '';
   }
 
   removeTag(): void {
@@ -48,12 +51,4 @@ export class TagsComponent implements OnInit {
     this.tagId = null;
   }
 
-  getGroupTags(): void {
-    this.tagsServices.getTagsByGroupName(this.performerName)
-    .then(response => this.performerTagsList = response);
-  }
-
-  back(): void {
-    this.tagsList = null;
-  }
 }
