@@ -23,11 +23,11 @@
             Signing In as a Performer
             <br>
             <label>username:
-                <input [(ngModel)]="testingUsername" placeholder="name"/>
+                <input  type = "text"  [(ngModel)]="testingUsername" placeholder="name"/>
             </label>
             <br>
             <label>password:
-            <input [(ngModel)]="testingPassword" placeholder="name"/>
+            <input type = "password"  [(ngModel)]="testingPassword" placeholder="name"/>
             </label>
             <div *ngIf="testingUsername">
                 <div *ngIf="testingPassword">
@@ -78,11 +78,11 @@
             Signing In as a Venue:
             <br>
             <label>username:
-                <input [(ngModel)]="testingUsername" placeholder="name"/>
+                <input type = "text"  [(ngModel)]="testingUsername" placeholder="name"/>
             </label>
             <br>
             <label>password:
-                <input [(ngModel)]="testingPassword" placeholder="name"/>
+                <input type = "password" [(ngModel)]="testingPassword" placeholder="name"/>
             </label>
             <div *ngIf="testingUsername">
                 <div *ngIf="testingPassword">
@@ -95,15 +95,15 @@
             Signing Up as a Venue:
             <br>
             <label>username:
-            <input [(ngModel)]="VLogin.clientName" placeholder="name"/>
+            <input type = "text"  [(ngModel)]="VLogin.clientName" placeholder="name"/>
             </label>
             <br>
             <label>location:
-                <input [(ngModel)]="VLogin.location" placeholder="name"/>
+                <input  type = "text" [(ngModel)]="VLogin.location" placeholder="name"/>
             </label>
             <br>
             <label>password:
-                <input [(ngModel)]="VLogin.clientPass" placeholder="name"/>
+                <input type = "password" [(ngModel)]="VLogin.clientPass" placeholder="name"/>
             </label>
             <div *ngIf="VLogin.clientName">
                 <div *ngIf="VLogin.clientPass">

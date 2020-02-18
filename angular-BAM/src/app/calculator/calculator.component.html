@@ -13,7 +13,8 @@
         <input [(ngModel)]="calc.expression">
     </label>
 </div> -->
-<div>The performer is {{pName}}/{{foundPerformer.groupName}}{{foundPerformer.performanceType}}{{foundPerformer.totalCost}}</div>
+
+<div>
 <label>Please provide the numerical amount of hours the performer {{pName}} played in the event:
     <input type = number [(ngModel)]="hours" placeholder = ""/>
 </label>
@@ -28,7 +29,6 @@
         <button (click) = "totalWages()">Result</button>
     </div>
 </div>
-<p>{{hours}}, {{hourly}}, {{temp}} The Expression is: {{calc.expression}}</p>
 
 <div *ngIf="temp != 0">
     <p>The total payment is: {{temp}}</p>

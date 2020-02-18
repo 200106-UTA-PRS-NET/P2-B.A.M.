@@ -36,11 +36,13 @@ export class VenueComponent implements OnInit {
   constructor(private performerservice: PerformersService) { }
 
   findPerformers(): void{
+    this.sendBookingPage = false;
     this.performerservice.getPerformers()
     .then(response => this.listPerformers = response);
   }
 
   choosePerformer(p:Performer): void{
+      this.sendBookingPage = false; 
       this.bookingPage = false;
       this.sendBookingPage = false;
       this.CurrentPerformer = p;
@@ -52,6 +54,7 @@ export class VenueComponent implements OnInit {
 
   viewHistory(): void{
     this.bookingPage = true;
+    this.sendBookingPage = false;
   }
 
   sendBook(): void{
