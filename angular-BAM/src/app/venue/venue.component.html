@@ -1,18 +1,22 @@
 <div *ngIf='bookingPage == false && sendBookingPage == false'>
   <h2>VENUE</h2>
   <div>
-    <p>...{{genreSelector}}...=>{{tempstring}}</p>
-  </div>
-  <div>
     Logged in as the Venue "{{currentVenue.clientName}}", located at {{currentVenue.location}}.
   </div>
   <div>
-    <button (click)='findPerformers()' class="performerButton">Schedule a Booking</button>
+    <button (click)='viewHistory()' class="performerButton">View and Edit bookings with {{currentVenue.clientName}}</button>
+  </div>
+  <div>
+    <button (click)='findPerformers()' class="performerButton">Find Performers</button>
   </div>
   <div *ngIf='listPerformers != null'>
     <div>
       <br />Filter by genre (performance type):<br />
       <input [(ngModel)]="genreSelector" placeholder="name" />
+    </div>
+    <div>
+      <br />Filter by rating (E, T, M):<br />
+      <input [(ngModel)]="ratingSelector" placeholder="name" />
     </div>
       <div *ngIf='testPerformers == null '>
         <p>NOT FILTERED</p>
@@ -21,7 +25,7 @@
             <div>
               {{p.groupName}}, Performance Type:{{p.performanceType}}, Rating:{{p.rating}}, Hourly Rate:{{p.hourlyRate}}
             </div>
-            <button (click)="choosePerformer(p)" class="btn btn-primary">Edit</button>
+            <button (click)="choosePerformer(p)" class="btn btn-primary">Choose Performer</button>
           </li>
         </ul>
       </div>
@@ -29,10 +33,8 @@
           <p>FILTERED</p>
           <ul class="list-group">
             <li *ngFor='let p of testPerformers' class="list-group-item">
-              <div *ngIf="p.performanceType == genreSelector">
                 {{p.groupName}}, Performance Type:{{p.performanceType}}, Rating:{{p.rating}}, Hourly Rate:{{p.hourlyRate}} <br>
-                <button (click)="choosePerformer(p)" class="btn btn-primary">Edit</button> 
-              </div>
+                <button (click)="choosePerformer(p)" class="btn btn-primary">Choose Performer</button> 
             </li>
           </ul>
         </div>
@@ -60,11 +62,6 @@
       <div *ngIf='currentBook.timeFrame != ""'>
         <button (click)='sendBook()' class="performerButton">Book the upcoming event</button>
       </div>
-    </div>
-
-    <br>
-    <div>
-      <button (click)='viewHistory()' class="performerButton">View and Edit {{currentVenue.clientName}} bookings</button>
     </div>
   </div>
 

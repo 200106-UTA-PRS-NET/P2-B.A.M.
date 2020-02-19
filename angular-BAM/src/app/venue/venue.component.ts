@@ -29,6 +29,8 @@ export class VenueComponent implements OnInit {
 
   sendBookingPage: boolean;
   genreSelector: string;
+  ratingSelector: string;
+  approved:boolean;
 
   currentBook :bookpost = {    
     groupName: '',
@@ -48,15 +50,33 @@ export class VenueComponent implements OnInit {
     this.performerservice.getPerformers()
     .then(response => this.listPerformers = response);
 
-    if(this.genreSelector != "")
+    if(this.genreSelector != "" || this.ratingSelector != "")
     {
       this.tempstring = "O4K";
       this.testPerformers = [];
       for(let p of this.listPerformers)
       {
-        if(p.performanceType == this.genreSelector)
+        this.approved = true;
+
+        if(this.genreSelector != "")
         {
-            this.testPerformers.push(p);
+          if(p.performanceType != this.genreSelector)
+          {
+            this.approved = false;
+          }
+        }
+        
+        if(this.ratingSelector != "")
+        {
+          if(p.rating != this.ratingSelector)
+          {
+            this.approved = false;
+          }
+        } 
+
+        if(this.approved == true)
+        {
+          this.testPerformers.push(p);
         }
       }
     }
@@ -104,6 +124,7 @@ export class VenueComponent implements OnInit {
     this.bookingPage = false;
     this.sendBookingPage = false;
     this.genreSelector = "";
+    this.ratingSelector = "";
   }
 
   ngOnInit(): void {
