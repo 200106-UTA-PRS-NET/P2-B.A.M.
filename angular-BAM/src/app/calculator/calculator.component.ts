@@ -20,7 +20,8 @@ export class CalculatorComponent implements OnInit {
 
   hours:number;
   hourly:number;
-  temp:number;
+  temp:number=0;
+
   foundPerformer: Performer = {
     groupName: '',
     performanceType: '',

@@ -29,7 +29,9 @@
         <button (click) = "totalWages()">Result</button>
     </div>
 </div>
-
+<div *ngIf="calc.expression">
+    <p>Expression is {{calc.expression}}</p>
+</div>
 <div *ngIf="temp != 0">
     <p>The total payment is: {{temp}}</p>
     <button (click) = "submitWages()">Submit these wages to the performer's total cost</button>

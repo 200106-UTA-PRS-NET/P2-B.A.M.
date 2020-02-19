@@ -19,7 +19,8 @@ export class VenueComponent implements OnInit {
   @Input() currentVenue: login;
 
   CurrentPerformer: Performer = null;
-
+  tempstring:string;
+  testPerformers : Performer[] = null;
   listPerformers : Performer[] = null;
 
   performerTags : TagWithId[] = null;
@@ -41,13 +42,35 @@ export class VenueComponent implements OnInit {
 
 
   findPerformers(): void{
-    this.genreSelector = "";
+    this.tempstring = "OK";
     this.sendBookingPage = false;
+    this.CurrentPerformer = null;
     this.performerservice.getPerformers()
     .then(response => this.listPerformers = response);
+
+    if(this.genreSelector != "")
+    {
+      this.tempstring = "O4K";
+      this.testPerformers = [];
+      for(let p of this.listPerformers)
+      {
+        if(p.performanceType == this.genreSelector)
+        {
+            this.testPerformers.push(p);
+        }
+      }
+    }
+    else
+    {
+      this.testPerformers = null;
+      this.tempstring = "O2K";
+      //this.listPerformers = this.tempPerformers;
+      this.tempstring = "O3K";
+    }
   }
 
   choosePerformer(p:Performer): void{
+    
       this.sendBookingPage = false; 
       this.bookingPage = false;
       this.sendBookingPage = false;
@@ -58,26 +81,34 @@ export class VenueComponent implements OnInit {
       this.currentBook.bookingStatus = "Upcoming";
       this.tagsServices.getTagsByGroupName(this.CurrentPerformer.groupName)
       .then(response => this.performerTags = response); 
+      this.listPerformers = null;
   }
 
   viewHistory(): void{
     this.bookingPage = true;
     this.sendBookingPage = false;
+    this.CurrentPerformer = null;
   }
 
   sendBook(): void{
     this.bookingPage = false;
     this.sendBookingPage = true;
+    this.CurrentPerformer = null;
   }
 
   genreFilter(): void {
     
   }
 
-  ngOnInit(): void {
+  returnBooking(): void{
     this.bookingPage = false;
     this.sendBookingPage = false;
-    this.genreSelector = null;
+    this.genreSelector = "";
+  }
+
+  ngOnInit(): void {
+    this.tempstring = null;
+    this.returnBooking();
   }
 
 }

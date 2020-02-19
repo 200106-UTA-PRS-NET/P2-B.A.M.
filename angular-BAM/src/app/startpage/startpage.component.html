@@ -1,5 +1,5 @@
-<h2>BOOKING BOOGIE</h2>
 <div *ngIf="CurrentVenue.clientName == '' && CurrentPerformer.groupName == ''">
+    <h2>BOOKING BOOGIE</h2>
     <h2>Please choose to access our site as a Venue or as a Performer</h2>
 
     <button (click)="choice('Venue')" class="venueButton">Choose Venues</button>
@@ -118,14 +118,16 @@
   
 <br>
 <div *ngIf='CurrentVenue.clientName != ""'>
-    <button (click) = "BackToStart()">Return To Start</button>
     <app-venue [currentVenue] = "CurrentVenue"></app-venue>
+    <br>
+    <br>
     <br>
     <button (click) = "BackToStart()">Return to Start</button>
 </div>
 <div *ngIf='CurrentPerformer.groupName != ""'>
-        <button (click) = "BackToStart()">Return To Start</button>
     <app-performers [currPerformer] = "CurrentPerformer"></app-performers>
+    <br>
+    <br>
     <br>
     <button (click) = "BackToStart()">Return To Start</button>
     
