@@ -3,6 +3,10 @@ using Xunit;
 using BAM_Web_App.Controllers;
 using DB_Data.Repos;
 using DB_Data.Models;
+using XUnitTests;
+using System.Web;
+using System.Net;
+using System.Collections.Generic;
 
 namespace XUnitTestProject
 {
@@ -12,7 +16,7 @@ namespace XUnitTestProject
         private readonly Performers _perform = new Performers();
         private readonly Tags _tag = new Tags();
         private readonly Bookings _book = new Bookings();
-
+        
         [Fact]
         public void addClientName()
         {
@@ -158,5 +162,69 @@ namespace XUnitTestProject
             _book.Location = a;
             Assert.Equal(_book.Location, a);
         }
+
+        [Fact]
+        public void testgetclient()
+        {
+            var context = CreateContext.getNewContext("TestingDB");
+            var repo = new ClientRepo(context);
+            var VC = new VenueController(repo);
+            IEnumerable<Clients> Result = VC.Get();
+            string[] names = { "Alabama Coffee", "Brad's Bistro" };
+            int count = 0;
+            foreach (Clients c in Result)
+            {
+                Assert.Equal(c.ClientName, names[count]);
+                count++;
+            }
+        }
+
+        [Fact]
+        public void testgetbooking()
+        {
+            var context = CreateContext.getNewContext("TestingDB");
+            var repo = new BookingRepo(context);
+            var VC = new BookingController(repo);
+            IEnumerable<Bookings> Result = VC.GetBookings();
+            string[] names = { "Cancelled","Upcoming" };
+            int count = 0;
+            foreach (Bookings b in Result)
+            {
+                Assert.Equal(b.ClientName, names[count]);
+                count++;
+            }
+        }
+        [Fact]
+        public void testgetPerformer()
+        {
+            var context = CreateContext.getNewContext("TestingDB");
+            var repo = new PerformerRepo(context);
+            var VC = new PerformersController(repo);
+            IEnumerable<Performers> Result = VC.GetPerformers();
+            string[] names = { "Zeals Seals", "Young Ones" };
+            int count = 0;
+            foreach (Performers p in Result)
+            {
+                Assert.Equal(p.GroupName, names[count]);
+                count++;
+            }
+        }
+
+        [Fact]
+        public void testgettag()
+        {
+            var context = CreateContext.getNewContext("TestingDB");
+            var repo = new TagRepo(context);
+            var VC = new TagsController(repo);
+            IEnumerable<Tags> Result = VC.GetTags();
+            string[] names = { "Loud", "Fun" };
+            int count = 0;
+            foreach (Tags t in Result)
+            {
+                Assert.Equal(t.Tag, names[count]);
+                count++;
+            }
+        }
+
     }
 }
