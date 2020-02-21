@@ -7,4 +7,4 @@ Project Synopsis:
 	The venue and the performer will be allowed to update their information at any point. Venues and Performers will be able to view their event history, which can assist in finding good recommendations for future events.
 	
 The technologies and environments used include:
-	C#, ASP.NET Core Restful Service, Azure SQL Database, Azure App Services, Azure DevOps with Azure Pipelines, Newton (External Calculator API), Entity Framework Core, HTML, CSS, Typescript with Angular, Swagger, SonarCloud, Docker, Postman, Jasmine, Karma.
+	C#, ASP.NET Core Restful Service, Azure SQL Database, Azure App Services, Azure DevOps with Azure Pipelines, Newton (External Calculator API), Entity Framework Core, HTML, CSS, Typescript with Angular, Swagger, SonarCloud, Docker, Postman, XUnit Test project, Jasmine, Karma.
